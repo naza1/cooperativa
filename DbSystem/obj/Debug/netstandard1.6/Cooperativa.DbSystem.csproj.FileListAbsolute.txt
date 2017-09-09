@@ -1,0 +1,7 @@
+c:\users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\DbSystem\bin\Debug\netstandard1.6\Cooperativa.DbSystem.deps.json
+c:\users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\DbSystem\bin\Debug\netstandard1.6\Cooperativa.DbSystem.dll
+c:\users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\DbSystem\bin\Debug\netstandard1.6\Cooperativa.DbSystem.pdb
+c:\users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\DbSystem\obj\Debug\netstandard1.6\Cooperativa.DbSystem.csprojResolveAssemblyReference.cache
+c:\users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\DbSystem\obj\Debug\netstandard1.6\Cooperativa.DbSystem.AssemblyInfo.cs
+c:\users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\DbSystem\obj\Debug\netstandard1.6\Cooperativa.DbSystem.dll
+c:\users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\DbSystem\obj\Debug\netstandard1.6\Cooperativa.DbSystem.pdb
