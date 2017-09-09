@@ -26,7 +26,15 @@ namespace Cooperativa.FileSystem
 
         public void SaveProject(Project project)
         {
-            System.IO.File.WriteAllText(@"C:\\project.json", JsonConvert.SerializeObject(project));
+            if (File.ReadAllText(@"C:\\cooperativa\\project.json").Length == 0)
+            {
+                File.AppendAllText(@"C:\\cooperativa\\project.json", JsonConvert.SerializeObject(project));
+            }
+            else
+            {
+                File.AppendAllText(@"C:\\cooperativa\\project.json", string.Concat("\n", JsonConvert.SerializeObject(project)));
+            }
+            
         }
 
         public void SaveBudjet(Project budject)

@@ -1,4 +1,6 @@
 ﻿using Cooperativa.FileSystem;
+using FileSystem.Tables;
+using System.Data;
 using System.Windows;
 
 namespace CooperativaConstruccion
@@ -8,10 +10,21 @@ namespace CooperativaConstruccion
     /// </summary>
     public partial class MainWindow : Window
     {
+        private WriteFile writeFile;
         public MainWindow()
         {
             InitializeComponent();
-            new WriteFile();
+            writeFile = new WriteFile();
+        }
+
+        private void Button_CreateProject(object sender, RoutedEventArgs e)
+        {
+            
+            var project = new Project();
+
+            project.Name = textBox_ProjectName.Text;            
+
+            writeFile.SaveProject(project);
         }
     }
 }
