@@ -18,5 +18,7 @@ namespace FileSystem.tablas
         public int CompanyId { get; set; }
 
         public DateTime StartDate { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }

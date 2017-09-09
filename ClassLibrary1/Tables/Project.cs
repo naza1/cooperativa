@@ -19,5 +19,8 @@ namespace FileSystem.Tables
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
+
+        public bool Deleted { get; set; }
+
     }
 }

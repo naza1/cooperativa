@@ -18,5 +18,7 @@ namespace FileSystem.Tables
 
         public int ProjectId { get; set; }
 
+        public bool Deleted { get; set; }
+
     }
 }
