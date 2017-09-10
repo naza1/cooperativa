@@ -5,21 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="MainWindow" Height="695" Width="869">
+        Title="Cooperativa de Construcción" WindowState="Maximized">
     <Grid>
         <Label Content="Proyectos" HorizontalAlignment="Left" Margin="9,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.871,0.615"/>
-        <TextBlock HorizontalAlignment="Left" Margin="208,377,0,0" TextWrapping="Wrap" Text="Nombre de Proyecto: " VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="343,411,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="242"/>
-        <TextBlock HorizontalAlignment="Left" Margin="208,418,0,0" TextWrapping="Wrap" Text="Monto Inicial: " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="208,457,0,0" TextWrapping="Wrap" Text="Fecha Limite: " VerticalAlignment="Top"/>
-        <DatePicker HorizontalAlignment="Left" Margin="343,449,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="208,486,0,0" TextWrapping="Wrap" Text="Estado: " VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="343,486,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Name="Activo">Activo</ComboBoxItem>
-            <ComboBoxItem Name="Inactivo">Inactivo</ComboBoxItem>
-            <ComboBoxItem Name="Finalizado">Finalizado</ComboBoxItem>
-        </ComboBox>
-        <Button Content="Crear Proyecto" HorizontalAlignment="Left" Margin="479,527,0,0" VerticalAlignment="Top" Width="106" Click="Button_CreateProject"/>
-        <TextBox  Name="textBox_ProjectName"  HorizontalAlignment="Left" Height="23" Margin="343,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ListView Name="grillaProyectos" HorizontalAlignment="Left" Height="234" Margin="252,66,0,0" VerticalAlignment="Top" Width="564" Loaded="GrillaProyectos_Loaded">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Nombre" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Inicial" DisplayMemberBinding="{Binding Path=StartBudget}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Actual" DisplayMemberBinding="{Binding Path=ActualBudget}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Fecha Creación" DisplayMemberBinding="{Binding Path=StartDate}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Fecha Fin" DisplayMemberBinding="{Binding Path=EndDate}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Estado" DisplayMemberBinding="{Binding Path=Status}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Name="button_OpenFormNewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="525,551,0,0" VerticalAlignment="Top" Width="106" Click="button_OpenFormNewProject_Click"/>
     </Grid>
 </Window>

@@ -1,7 +1,10 @@
-﻿using Cooperativa.FileSystem;
+﻿using ClassLibrary1.Reader;
+using Cooperativa.FileSystem;
 using FileSystem.Tables;
-using System.Data;
 using System.Windows;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace CooperativaConstruccion
 {
@@ -10,21 +13,35 @@ namespace CooperativaConstruccion
     /// </summary>
     public partial class MainWindow : Window
     {
-        private WriteFile writeFile;
+
+        private ReadFile readFile;
         public MainWindow()
         {
             InitializeComponent();
-            writeFile = new WriteFile();
+
+            readFile = new ReadFile();
+
         }
 
-        private void Button_CreateProject(object sender, RoutedEventArgs e)
+        private void GrillaProyectos_Loaded(object sender, RoutedEventArgs e)
         {
-            
-            var project = new Project();
+            var cadena = readFile.ReadProject();
 
-            project.Name = textBox_ProjectName.Text;            
+            if (cadena != string.Empty)
+            {
+                var projects = JsonConvert.DeserializeObject<List<Project>>(cadena);
 
-            writeFile.SaveProject(project);
+                foreach (var item in projects)
+                {
+                    grillaProyectos.Items.Add(new { item.Name, item.StartBudget, item.StartDate, item.EndDate, item.Status, item.CurrentBudget });
+                }
+            }
+        }
+
+        private void button_OpenFormNewProject_Click(object sender, RoutedEventArgs e)
+        {
+            NewProject newProject = new NewProject();
+            newProject.Show();
         }
     }
 }

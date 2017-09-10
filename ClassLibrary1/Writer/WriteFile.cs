@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using FileSystem.Tables;
+﻿using FileSystem.Tables;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Cooperativa.FileSystem
 {
@@ -26,15 +26,16 @@ namespace Cooperativa.FileSystem
 
         public void SaveProject(Project project)
         {
-            if (File.ReadAllText(@"C:\\cooperativa\\project.json").Length == 0)
-            {
-                File.AppendAllText(@"C:\\cooperativa\\project.json", JsonConvert.SerializeObject(project));
-            }
-            else
-            {
-                File.AppendAllText(@"C:\\cooperativa\\project.json", string.Concat("\n", JsonConvert.SerializeObject(project)));
-            }
-            
+
+            var jsonData = File.ReadAllText(@"C:\\cooperativa\\project.json");
+            var projectList = JsonConvert.DeserializeObject<List<Project>>(jsonData)
+                      ?? new List<Project>();
+
+            projectList.Add(project);
+
+            jsonData = JsonConvert.SerializeObject(projectList);
+
+            File.WriteAllText(@"C:\\cooperativa\\project.json", jsonData);
         }
 
         public void SaveBudjet(Project budject)

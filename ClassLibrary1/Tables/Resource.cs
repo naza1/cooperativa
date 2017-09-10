@@ -15,9 +15,9 @@ namespace FileSystem.tablas
 
         public int StageId { get; set; }
 
-        public int CompanyId { get; set; }
+        public int VoucherId { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public DateTime Date { get; set; }
 
         public bool Deleted { get; set; }
     }

@@ -16,3 +16,5 @@ C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\Coo
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\Newtonsoft.Json.dll
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\ClassLibrary1.pdb
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\Newtonsoft.Json.xml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewProject.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewProject.baml

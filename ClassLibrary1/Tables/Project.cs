@@ -8,19 +8,21 @@ namespace FileSystem.Tables
     {
         public int Id { get; set; }
 
-        public decimal BudgetStart { get; set; }
-
-        public decimal BudgetCurrent { get; set; }
-
-        public string Status { get; set; }
-
         public string Name { get; set; }
+
+        public decimal StartBudget { get; set; }
+
+        public decimal CurrentBudget { get; set; }
+
+        public DateTime Date { get; set; }
 
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
 
-        public bool Deleted { get; set; }
+        public string Status { get; set; }
 
+
+        //public bool Deleted { get; set; }
     }
 }
