@@ -1,11 +1,12 @@
-﻿using FileSystem.Tables;
+﻿using ClassLibrary1.Db;
+using FileSystem.Tables;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Cooperativa.FileSystem
 {
-    public class WriteFile : IWriteFile
+    public class WriteFile
     {
 
         public WriteFile()
@@ -38,18 +39,25 @@ namespace Cooperativa.FileSystem
             File.WriteAllText(@"C:\\cooperativa\\project.json", jsonData);
         }
 
+        public void CreateProject(Project project)
+        {
+            var mongo = new MongoConection();
+
+            mongo.CreateProject(project);
+        }
+
         public void SaveBudjet(Project budject)
         {
-            System.IO.File.WriteAllText(@"C:\\budject.json", JsonConvert.SerializeObject(budject));
+            File.WriteAllText(@"C:\\budject.json", JsonConvert.SerializeObject(budject));
         }
         public void SaveResource(Project resource)
         {
-            System.IO.File.WriteAllText(@"C:\\resource.json", JsonConvert.SerializeObject(resource));
+            File.WriteAllText(@"C:\\resource.json", JsonConvert.SerializeObject(resource));
         }
 
         public void SaveStage(Project stage)
         {
-            System.IO.File.WriteAllText(@"C:\\stage.json", JsonConvert.SerializeObject(stage));
+            File.WriteAllText(@"C:\\stage.json", JsonConvert.SerializeObject(stage));
         }
     }
 }

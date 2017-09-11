@@ -23,25 +23,27 @@ namespace CooperativaConstruccion
 
         }
 
-        private void GrillaProyectos_Loaded(object sender, RoutedEventArgs e)
+        private void ProjectsGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            var cadena = readFile.ReadProject();
+            var cadena = readFile.GetProjects();
 
-            if (cadena != string.Empty)
+            if (cadena.Count != 0)
             {
-                var projects = JsonConvert.DeserializeObject<List<Project>>(cadena);
-
-                foreach (var item in projects)
+                foreach (var item in cadena)
                 {
                     grillaProyectos.Items.Add(new { item.Name, item.StartBudget, item.StartDate, item.EndDate, item.Status, item.CurrentBudget });
                 }
             }
         }
 
-        private void button_OpenFormNewProject_Click(object sender, RoutedEventArgs e)
+        private void Button_OpenFormNewProject(object sender, RoutedEventArgs e)
         {
-            NewProject newProject = new NewProject();
-            newProject.Show();
+            new NewProject().ShowDialog();
+        }
+
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

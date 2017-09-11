@@ -30,19 +30,31 @@ namespace CooperativaConstruccion
 
         private void CreateProject(object sender, RoutedEventArgs e)
         {
-
-            var project = new Project
+            try
             {
-                Id = 1,
-                Name = textBox_ProjectName.Text,
-                StartBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
-                Date = DateTime.Now,
-                StartDate = datePicker_ProjectStartDate.SelectedDate.Value,
-                EndDate = datePicker_ProjectEndDate.SelectedDate.Value,
-                Status = comboBox_ProjectStatus.SelectedItem.ToString()
-            };
+                var project = new Project
+                {
+                    Name = textBox_ProjectName.Text,
+                    StartBudget = int.Parse(textBox_ProjectStartBudjet.Text),
+                    Date = DateTime.Now.ToString(),
+                    StartDate = datePicker_ProjectStartDate.SelectedDate.Value.ToString(),
+                    EndDate = datePicker_ProjectEndDate.SelectedDate.Value.ToString(),
+                    Status = comboBox_ProjectStatus.SelectionBoxItem.ToString()
+                };
 
-            writeFile.SaveProject(project);
+                writeFile.CreateProject(project);
+
+                MessageBox.Show("Proyecto guardado correctemante");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No se pudo crear el proyecto, por favor verifique los datos ingresados");
+            }
+        }
+
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

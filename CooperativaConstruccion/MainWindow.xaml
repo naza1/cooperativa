@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="Cooperativa de Construcción" WindowState="Maximized">
-    <Grid>
+        Title="Cooperativa de Construcción" WindowState="Maximized" Height="649" Width="831" ResizeMode="CanMinimize">
+    <Grid Margin="0,0,-8,-21">
         <Label Content="Proyectos" HorizontalAlignment="Left" Margin="9,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.871,0.615"/>
-        <ListView Name="grillaProyectos" HorizontalAlignment="Left" Height="234" Margin="252,66,0,0" VerticalAlignment="Top" Width="564" Loaded="GrillaProyectos_Loaded">
+        <ListView Name="grillaProyectos" Height="385" Margin="140,66,7,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="684" Loaded="ProjectsGrid_Loaded">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Nombre" DisplayMemberBinding="{Binding Path=Name}"/>
@@ -20,6 +20,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="button_OpenFormNewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="525,551,0,0" VerticalAlignment="Top" Width="106" Click="button_OpenFormNewProject_Click"/>
+        <Button Name="button_OpenFormNewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="106" Click="Button_OpenFormNewProject"/>
+        <Button Content="Cerrar" HorizontalAlignment="Left" Margin="21,238,0,0" VerticalAlignment="Top" Width="75" Click="Close"/>
     </Grid>
 </Window>

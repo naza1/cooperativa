@@ -1,7 +1,13 @@
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\ClassLibrary1.dll
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\MongoDB.Bson.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\MongoDB.Driver.dll
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\MongoDB.Bson.xml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\MongoDB.Driver.xml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\MongoDB.Driver.Core.xml
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\Cooperativa.Filesystem.csprojResolveAssemblyReference.cache
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
