@@ -2,48 +2,34 @@
 using FileSystem.Tables;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 
 namespace Cooperativa.FileSystem
 {
     public class WriteFile
     {
+        private SQLiteConnection _dbConnection;
 
         public WriteFile()
         {
-            if (!File.Exists(@"C:\\cooperativa\\project.json"))
-            {
-                File.Create(@"C:\\cooperativa\\project.json");
-            }
-            if (!File.Exists(@"C:\\cooperativa\\budject.json"))
-            {
-                File.Create(@"C:\\cooperativa\\budject.json");
-            }
-            if (!File.Exists(@"C:\\cooperativa\\resource.json"))
-            {
-                File.Create(@"C:\\cooperativa\\resource.json");
-            }
-        }
+            SQLiteConnection.CreateFile("cooperativa.db3");
 
-        public void SaveProject(Project project)
-        {
-
-            var jsonData = File.ReadAllText(@"C:\\cooperativa\\project.json");
-            var projectList = JsonConvert.DeserializeObject<List<Project>>(jsonData)
-                      ?? new List<Project>();
-
-            projectList.Add(project);
-
-            jsonData = JsonConvert.SerializeObject(projectList);
-
-            File.WriteAllText(@"C:\\cooperativa\\project.json", jsonData);
         }
 
         public void CreateProject(Project project)
-        {
-            var mongo = new MongoConection();
+        {   
+            _dbConnection = new SQLiteConnection("Data Source=cooperativa.db3");
 
-            mongo.CreateProject(project);
+            _dbConnection.Open();
+
+            string sql = "create table Project (id int, name varchar(20))";
+
+            var command = new SQLiteCommand(sql, _dbConnection);
+
+            command.ExecuteNonQuery();
+
+            _dbConnection.Close();
         }
 
         public void SaveBudjet(Project budject)

@@ -46,9 +46,9 @@ namespace CooperativaConstruccion
 
                 MessageBox.Show("Proyecto guardado correctemante");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("No se pudo crear el proyecto, por favor verifique los datos ingresados");
+                MessageBox.Show("No se pudo crear el proyecto, por favor verifique los datos ingresados" + ex);
             }
         }
 
