@@ -8,9 +8,10 @@
         Title="Cooperativa de Construcción" WindowState="Maximized" Height="649" Width="831" ResizeMode="CanMinimize">
     <Grid Margin="0,0,-8,-21">
         <Label Content="Proyectos" HorizontalAlignment="Left" Margin="9,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.871,0.615"/>
-        <ListView Name="grillaProyectos" Height="385" Margin="140,66,7,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="684" Loaded="ProjectsGrid_Loaded">
+        <ListView Name="grillaProyectos" Height="385" Margin="140,66,7,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="684" Loaded="ProjectsGrid_Loaded" MouseDoubleClick="grillaProyectos_MouseDoubleClick">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Proyecto" DisplayMemberBinding="{Binding Path=Id}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Nombre" DisplayMemberBinding="{Binding Path=Name}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Inicial" DisplayMemberBinding="{Binding Path=StartBudget}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Actual" DisplayMemberBinding="{Binding Path=ActualBudget}"/>
@@ -22,5 +23,6 @@
         </ListView>
         <Button Name="button_OpenFormNewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="106" Click="Button_OpenFormNewProject"/>
         <Button Content="Cerrar" HorizontalAlignment="Left" Margin="21,238,0,0" VerticalAlignment="Top" Width="75" Click="Close"/>
+        <Button  Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="106" Click="button_EditProject_Click"/>
     </Grid>
 </Window>

@@ -6,21 +6,36 @@ using System.Windows;
 namespace CooperativaConstruccion
 {
     /// <summary>
-    /// Interaction logic for NewProject.xaml
+    /// Interaction logic for EditProject.xaml
     /// </summary>
-    public partial class NewProject : Window
+    public partial class EditProject : Window
     {
         private DataAccessObject db;
-        private MainWindow _main;
+        private int _projectId = 0;
+        private MainWindow mainWindow;
 
-        public NewProject(MainWindow main)
+        public EditProject(MainWindow mainWindow, int projectId)
         {
             InitializeComponent();
             db = new DataAccessObject();
-            _main = main;
+            this.mainWindow = mainWindow;
+            _projectId = projectId;
+            OnLoad();
         }
 
-        private void CreateProject(object sender, RoutedEventArgs e)
+        private void OnLoad()
+        {
+
+            var proj = db.GetProject(_projectId);
+            textBox_ProjectName.Text = proj.Name;
+            textBox_ProjectStartBudjet.Text = proj.StartBudget.ToString();
+            datePicker_ProjectStartDate.SelectedDate = DateTime.Parse(proj.StartDate);
+            datePicker_ProjectEndDate.SelectedDate = DateTime.Parse(proj.EndDate);
+            comboBox_ProjectStatus.SelectedValue = proj.Status;
+
+        }
+
+        private void UpdateProject(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -34,7 +49,7 @@ namespace CooperativaConstruccion
                     Status = comboBox_ProjectStatus.SelectionBoxItem.ToString()
                 };
 
-                db.InsertProject(project);
+                db.UpdateProject(project);
 
                 MessageBox.Show("Proyecto guardado correctamente!", "Atención", MessageBoxButton.OK);
             }
@@ -46,7 +61,6 @@ namespace CooperativaConstruccion
 
         private void Close(object sender, RoutedEventArgs e)
         {
-            _main.ProjectsGrid_Loaded(sender, e);
             Close();
         }
     }
