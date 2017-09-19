@@ -34,7 +34,7 @@ namespace Cooperativa.FileSystem
 
             _dbConnection.Open();
 
-            string sql = "create table Project (Id integer primary key, Name varchar(50), StartBudget decimal(8,2), CurrentBudget decimal(8,2), CreationDate text, StartDate text, EndDate text, Status text, Deleted numeric)";
+            string sql = "create table Project (Id integer primary key, Name varchar(50), StartBudget decimal(8,2), CurrentBudget decimal(8,2), CreationDate text, StartDate text, EndDate text, Status text, Deleted text)";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -98,7 +98,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"UPDATE [Project] SET [Name] = '{project.Name}', [StartBugdet] = {project.StartBudget}, [CreationDate] = '{project.CreationDate}', [StartDate] = '{project.StartDate}', [EndDate] = '{project.EndDate}', [Status] = '{project.Status}', [Deleted] = {project.Deleted}";
+            var sql = $@"UPDATE [Project] SET [Name] = '{project.Name}', [StartBudget] = {project.StartBudget}, [CreationDate] = '{project.CreationDate}', [StartDate] = '{project.StartDate}', [EndDate] = '{project.EndDate}', [Status] = '{project.Status}', [Deleted] = '0' WHERE [Id] = {project.Id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 

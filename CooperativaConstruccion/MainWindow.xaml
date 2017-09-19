@@ -23,6 +23,6 @@
         </ListView>
         <Button Name="button_OpenFormNewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="106" Click="Button_OpenFormNewProject"/>
         <Button Content="Cerrar" HorizontalAlignment="Left" Margin="21,238,0,0" VerticalAlignment="Top" Width="75" Click="Close"/>
-        <Button  Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="106" Click="button_EditProject_Click"/>
+        <Button  Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditProject_Click"/>
     </Grid>
 </Window>

@@ -18,6 +18,13 @@ namespace CooperativaConstruccion
             InitializeComponent();
             db = new DataAccessObject();
             _main = main;
+            OnLoad();
+        }
+
+        private void OnLoad()
+        {
+            datePicker_ProjectStartDate.SelectedDate = DateTime.Now;
+            datePicker_ProjectEndDate.SelectedDate = DateTime.Now;
         }
 
         private void CreateProject(object sender, RoutedEventArgs e)
@@ -28,10 +35,12 @@ namespace CooperativaConstruccion
                 {
                     Name = textBox_ProjectName.Text,
                     StartBudget = int.Parse(textBox_ProjectStartBudjet.Text),
+                    CurrentBudget = int.Parse(textBox_ProjectStartBudjet.Text),
                     CreationDate = DateTime.Now.Date.ToShortDateString(),
                     StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                     EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
-                    Status = comboBox_ProjectStatus.SelectionBoxItem.ToString()
+                    Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),
+                    Deleted = "0"
                 };
 
                 db.InsertProject(project);

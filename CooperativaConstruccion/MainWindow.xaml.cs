@@ -49,6 +49,10 @@ namespace CooperativaConstruccion
         {
             var item = grillaProyectos.SelectedItem;
 
+            if (item == null)
+            {
+                return;
+            }
             button_EditProject.Visibility = Visibility.Visible;
 
             _projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
