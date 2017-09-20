@@ -63,17 +63,25 @@ namespace CooperativaConstruccion
         {
             try
             {
-                MessageBox.Show("Seguro elimina el proyecto " + _projectId + "?", "Atención!", MessageBoxButton.YesNo);
-                db.DeleteProject(_projectId);
-                ProjectsGrid_Loaded(sender, e);
-                MessageBox.Show("Proyecto eliminado correctamente!", "Atención!", MessageBoxButton.OK);
+                var result = MessageBox.Show("Seguro elimina el proyecto " + _projectId + "?", "Atención!", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    db.DeleteProject(_projectId);
+
+                    ProjectsGrid_Loaded(sender, e);
+
+                    MessageBox.Show("Proyecto eliminado correctamente!", "Atención!", MessageBoxButton.OK);
+                }
                 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudo eliminar el proyecto " + ex, "Error!", MessageBoxButton.OK);
             }
+
             button_EditProject.Visibility = Visibility.Hidden;
+
             button_DeleteProject.Visibility = Visibility.Hidden;
         }
 

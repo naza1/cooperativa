@@ -2,7 +2,9 @@
 using FileSystem.Tables;
 using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CooperativaConstruccion
 {
@@ -39,7 +41,7 @@ namespace CooperativaConstruccion
                 var project = new Project
                 {
                     Name = textBox_ProjectName.Text,
-                    StartBudget = textBox_ProjectStartBudjet.Text.ToString(),
+                    StartBudget = textBox_ProjectStartBudjet.Text,
                     CurrentBudget = textBox_ProjectStartBudjet.Text,
                     CreationDate = DateTime.Now.Date.ToShortDateString(),
                     StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
@@ -48,8 +50,8 @@ namespace CooperativaConstruccion
                     Deleted = "0"
                 };
 
-                var culture = CultureInfo.CreateSpecificCulture("US-en");
-                var a = decimal.Parse(project.StartBudget, culture);
+                //var culture = CultureInfo.CreateSpecificCulture("US-en");
+                //var a = decimal.Parse(project.StartBudget, culture);
 
                 db.InsertProject(project);
 
@@ -68,6 +70,12 @@ namespace CooperativaConstruccion
         private void Close(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void NumericOnly(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            e.Handled = !Regex.IsMatch(e.Text, "^((?:[1-9]\\d*)|(?:(?=[\\d.]+)(?:[1-9]\\d*|0)\\.\\d+))$");
         }
     }
 }

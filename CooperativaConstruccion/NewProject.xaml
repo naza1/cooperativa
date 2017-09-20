@@ -8,9 +8,9 @@
         Title="Nuevo Proyecto" Height="306.276" Width="533.317" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,1">
         <TextBlock HorizontalAlignment="Left" Margin="99,38,0,0" TextWrapping="Wrap" Text="Nombre de Proyecto: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ProjectName"  HorizontalAlignment="Left" Height="23" Margin="234,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242"/>
+        <TextBox Name="textBox_ProjectName" HorizontalAlignment="Left" Height="23" Margin="234,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242"/>
         <TextBlock HorizontalAlignment="Left" Margin="99,79,0,0" TextWrapping="Wrap" Text="Monto Inicial: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ProjectStartBudjet" HorizontalAlignment="Left" Height="23" Margin="234,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="242"/>
+        <TextBox Name="textBox_ProjectStartBudjet"  PreviewTextInput="NumericOnly" HorizontalAlignment="Left" Height="23" Margin="234,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="242"/>
         <TextBlock HorizontalAlignment="Left" Margin="99,118,0,0" TextWrapping="Wrap" Text="Fecha Inicio: " VerticalAlignment="Top"/>
         <DatePicker Name="datePicker_ProjectStartDate" HorizontalAlignment="Left" Margin="234,110,0,0" VerticalAlignment="Top" Width="242"/>
         <TextBlock HorizontalAlignment="Left" Margin="99,158,0,0" TextWrapping="Wrap" Text="Fecha Limite: " VerticalAlignment="Top"/>
