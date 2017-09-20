@@ -34,7 +34,7 @@ namespace Cooperativa.FileSystem
 
             _dbConnection.Open();
 
-            string sql = "create table Project (Id integer primary key, Name varchar(50), StartBudget decimal(8,2), CurrentBudget decimal(8,2), CreationDate text, StartDate text, EndDate text, Status text, Deleted text)";
+            string sql = $@"CREATE TABLE [Project] ([Id] INTEGER primary key, [Name] VARCHAR(50), [StartBudget] DECIMAL(8,2), [CurrentBudget] DECIMAL(8,2), [CreationDate] TEXT, [StartDate] TEXT, [EndDate] TEXT, [Status] TEXT, [Deleted] TEXT)";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -60,7 +60,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"SELECT * FROM [Project] where [Deleted] <> 1;";
+            var sql = $@"SELECT * FROM [Project] WHERE [Deleted] <> '1'";
 
             var projectList = new List<Project>();
 
@@ -92,19 +92,6 @@ namespace Cooperativa.FileSystem
             _dbConnection.Close();
 
             return projectList;
-        }
-
-        public void UpdateProject(Project project)
-        {
-            _dbConnection.Open();
-
-            var sql = $@"UPDATE [Project] SET [Name] = '{project.Name}', [StartBudget] = {project.StartBudget}, [CreationDate] = '{project.CreationDate}', [StartDate] = '{project.StartDate}', [EndDate] = '{project.EndDate}', [Status] = '{project.Status}', [Deleted] = '0' WHERE [Id] = {project.Id}";
-
-            command = new SQLiteCommand(sql, _dbConnection);
-
-            command.ExecuteNonQuery();
-
-            _dbConnection.Close();
         }
 
         public Project GetProject(int id)
@@ -145,6 +132,32 @@ namespace Cooperativa.FileSystem
             _dbConnection.Close();
 
             return proj;
+        }
+
+        public void UpdateProject(Project project)
+        {
+            _dbConnection.Open();
+
+            var sql = $@"UPDATE [Project] SET [Name] = '{project.Name}', [StartBudget] = {project.StartBudget}, [CreationDate] = '{project.CreationDate}', [StartDate] = '{project.StartDate}', [EndDate] = '{project.EndDate}', [Status] = '{project.Status}', [Deleted] = '{project.Deleted}' WHERE [Id] = {project.Id}";
+
+            command = new SQLiteCommand(sql, _dbConnection);
+
+            command.ExecuteNonQuery();
+
+            _dbConnection.Close();
+        }
+
+        public void DeleteProject(int _projectId)
+        {
+            _dbConnection.Open();
+
+            var sql = $@"UPDATE [Project] SET [Deleted] = '1' WHERE [Id] = {_projectId}";
+
+            command = new SQLiteCommand(sql, _dbConnection);
+
+            command.ExecuteNonQuery();
+
+            _dbConnection.Close();
         }
     }
 }

@@ -17,8 +17,8 @@
         <DatePicker Name="datePicker_ProjectEndDate" HorizontalAlignment="Left" Margin="234,150,0,0" VerticalAlignment="Top" Width="242"/>
         <TextBlock HorizontalAlignment="Left" Margin="99,194,0,0" TextWrapping="Wrap" Text="Estado: " VerticalAlignment="Top"/>
         <ComboBox Name="comboBox_ProjectStatus" HorizontalAlignment="Left" Margin="234,194,0,0" VerticalAlignment="Top" Width="242">
-            <ComboBoxItem Name="Activo" Content="Activo"/>
-            <ComboBoxItem Name="Inactivo" Content="Inactivo" Selector.IsSelected="True"/>
+            <ComboBoxItem Name="Activo" Content="Activo" Selector.IsSelected="True"/>
+            <ComboBoxItem Name="Inactivo" Content="Inactivo"/>
             <ComboBoxItem Name="Finalizado" Content="Finalizado"/>
         </ComboBox>
         <Button Name="button_SaveProject" Content="Guardar" HorizontalAlignment="Left" Margin="300,232,0,0" VerticalAlignment="Top" Width="75" Click="CreateProject"/>

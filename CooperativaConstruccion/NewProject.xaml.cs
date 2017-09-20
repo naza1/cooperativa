@@ -23,8 +23,12 @@ namespace CooperativaConstruccion
 
         private void OnLoad()
         {
+            textBox_ProjectName.Text = "";
+            textBox_ProjectStartBudjet.Text = "";
             datePicker_ProjectStartDate.SelectedDate = DateTime.Now;
             datePicker_ProjectEndDate.SelectedDate = DateTime.Now;
+            comboBox_ProjectStatus.Text = "Activo";
+            textBox_ProjectName.Focus();
         }
 
         private void CreateProject(object sender, RoutedEventArgs e)
@@ -34,8 +38,8 @@ namespace CooperativaConstruccion
                 var project = new Project
                 {
                     Name = textBox_ProjectName.Text,
-                    StartBudget = int.Parse(textBox_ProjectStartBudjet.Text),
-                    CurrentBudget = int.Parse(textBox_ProjectStartBudjet.Text),
+                    StartBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
+                    CurrentBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
                     CreationDate = DateTime.Now.Date.ToShortDateString(),
                     StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                     EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
@@ -44,18 +48,18 @@ namespace CooperativaConstruccion
                 };
 
                 db.InsertProject(project);
-
-                MessageBox.Show("Proyecto guardado correctamente!", "Atención", MessageBoxButton.OK);
+                _main.ProjectsGrid_Loaded(sender, e);
+                MessageBox.Show("Proyecto guardado correctamente!", "Atención!", MessageBoxButton.OK);
+                OnLoad();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo crear el proyecto, por favor verifique los datos ingresados " + ex, "Error", MessageBoxButton.OK);
+                MessageBox.Show("No se pudo crear el proyecto, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
             }
         }
 
         private void Close(object sender, RoutedEventArgs e)
         {
-            _main.ProjectsGrid_Loaded(sender, e);
             Close();
         }
     }

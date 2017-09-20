@@ -30,7 +30,7 @@ namespace CooperativaConstruccion
             textBox_ProjectStartBudjet.Text = proj.StartBudget.ToString();
             datePicker_ProjectStartDate.SelectedDate = DateTime.Parse(proj.StartDate);
             datePicker_ProjectEndDate.SelectedDate = DateTime.Parse(proj.EndDate);
-            comboBox_ProjectStatus.SelectedItem = proj.Status;
+            comboBox_ProjectStatus.Text = proj.Status;
         }
 
         private void UpdateProject(object sender, RoutedEventArgs e)
@@ -41,8 +41,8 @@ namespace CooperativaConstruccion
                 {
                     Id = _projectId,
                     Name = textBox_ProjectName.Text,
-                    StartBudget = int.Parse(textBox_ProjectStartBudjet.Text),
-                    CurrentBudget = int.Parse(textBox_ProjectStartBudjet.Text),
+                    StartBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
+                    CurrentBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
                     CreationDate = DateTime.Now.Date.ToShortDateString(),
                     StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                     EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
@@ -51,18 +51,19 @@ namespace CooperativaConstruccion
                 };
 
                 db.UpdateProject(project);
-
-                MessageBox.Show("Proyecto actualizado correctamente!", "Atención", MessageBoxButton.OK);
+                _main.ProjectsGrid_Loaded(sender, e);
+                MessageBox.Show("Proyecto actualizado correctamente!", "Atención!", MessageBoxButton.OK);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo actualizar el proyecto, por favor verifique los datos ingresados " + ex, "Error", MessageBoxButton.OK);
+                MessageBox.Show("No se pudo actualizar el proyecto, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
             }
         }
 
         private void Close(object sender, RoutedEventArgs e)
         {
-            _main.ProjectsGrid_Loaded(sender, e);
+            _main.button_EditProject.Visibility = Visibility.Hidden;
+            _main.button_DeleteProject.Visibility = Visibility.Hidden;
             Close();
         }
     }

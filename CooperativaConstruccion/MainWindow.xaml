@@ -14,7 +14,7 @@
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Proyecto" DisplayMemberBinding="{Binding Path=Id}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Nombre" DisplayMemberBinding="{Binding Path=Name}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Inicial" DisplayMemberBinding="{Binding Path=StartBudget}"/>
-                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Actual" DisplayMemberBinding="{Binding Path=ActualBudget}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Actual" DisplayMemberBinding="{Binding Path=CurrentBudget}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Fecha Creación" DisplayMemberBinding="{Binding Path=StartDate}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Fecha Fin" DisplayMemberBinding="{Binding Path=EndDate}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Estado" DisplayMemberBinding="{Binding Path=Status}"/>
@@ -22,7 +22,8 @@
             </ListView.View>
         </ListView>
         <Button Name="button_OpenFormNewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="106" Click="Button_OpenFormNewProject"/>
-        <Button Content="Cerrar" HorizontalAlignment="Left" Margin="21,238,0,0" VerticalAlignment="Top" Width="75" Click="Close"/>
-        <Button  Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditProject_Click"/>
+        <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="9,161,0,0" VerticalAlignment="Top" Width="107" Click="Close"/>
+        <Button Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditProject_Click"/>
+        <Button Name="button_DeleteProject" Content="Eliminar Proyecto" HorizontalAlignment="Left" Margin="9,136,0,0" VerticalAlignment="Top" Width="107" Visibility="Hidden" Click="button_DeleteProject_Click"/>
     </Grid>
 </Window>
