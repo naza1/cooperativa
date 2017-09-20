@@ -1,6 +1,7 @@
 ﻿using Cooperativa.FileSystem;
 using FileSystem.Tables;
 using System;
+using System.Globalization;
 using System.Windows;
 
 namespace CooperativaConstruccion
@@ -38,8 +39,8 @@ namespace CooperativaConstruccion
                 var project = new Project
                 {
                     Name = textBox_ProjectName.Text,
-                    StartBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
-                    CurrentBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
+                    StartBudget = textBox_ProjectStartBudjet.Text.ToString(),
+                    CurrentBudget = textBox_ProjectStartBudjet.Text,
                     CreationDate = DateTime.Now.Date.ToShortDateString(),
                     StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                     EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
@@ -47,9 +48,15 @@ namespace CooperativaConstruccion
                     Deleted = "0"
                 };
 
+                var culture = CultureInfo.CreateSpecificCulture("US-en");
+                var a = decimal.Parse(project.StartBudget, culture);
+
                 db.InsertProject(project);
+
                 _main.ProjectsGrid_Loaded(sender, e);
+
                 MessageBox.Show("Proyecto guardado correctamente!", "Atención!", MessageBoxButton.OK);
+
                 OnLoad();
             }
             catch (Exception ex)

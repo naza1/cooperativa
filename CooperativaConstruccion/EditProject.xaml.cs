@@ -41,8 +41,8 @@ namespace CooperativaConstruccion
                 {
                     Id = _projectId,
                     Name = textBox_ProjectName.Text,
-                    StartBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
-                    CurrentBudget = decimal.Parse(textBox_ProjectStartBudjet.Text),
+                    StartBudget = textBox_ProjectStartBudjet.Text,
+                    CurrentBudget = textBox_ProjectStartBudjet.Text,
                     CreationDate = DateTime.Now.Date.ToShortDateString(),
                     StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                     EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
@@ -51,7 +51,9 @@ namespace CooperativaConstruccion
                 };
 
                 db.UpdateProject(project);
+
                 _main.ProjectsGrid_Loaded(sender, e);
+
                 MessageBox.Show("Proyecto actualizado correctamente!", "Atención!", MessageBoxButton.OK);
             }
             catch (Exception ex)
