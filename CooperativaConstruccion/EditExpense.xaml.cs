@@ -1,0 +1,219 @@
+﻿using Cooperativa.FileSystem;
+using FileSystem.tablas;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace CooperativaConstruccion
+{
+    /// <summary>
+    /// Lógica de interacción para EditExpense.xaml
+    /// </summary>
+    public partial class EditExpense : Window
+    {
+        private DataAccessObject db;
+        private int _expenseId = 0;
+        private MainWindow _main;
+
+        public EditExpense(MainWindow main, int expenseId)
+        {
+            InitializeComponent();
+            db = new DataAccessObject();
+            _main = main;
+            _expenseId = expenseId;
+            OnLoad();
+        }
+
+        private void OnLoad()
+        {
+            var exp = db.GetExpense(_expenseId);
+            comboBox_ExpenseType.Text = exp.Type;
+            textBox_ExpenseName.Text = exp.Name;
+            textBox_ExpenseAmount.Text = exp.Amount.ToString();
+            textBox_ExpenseUnitPrice.Text = exp.UnitPrice.ToString();
+            textBox_ExpenseTotalPrice.Text = exp.TotalPrice.ToString();
+            textBox_ExpenseVoucherNumber.Text = exp.VoucherNumber.ToString();
+            textBox_ExpenseDescription.Text = exp.Description.ToString();
+            comboBox_ExpenseType.Focus();
+        }
+
+        private void comboBox_ExpenseType_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                textBox_ExpenseName.Focus();
+            }
+        }
+
+        private void textBox_ExpenseName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                textBox_ExpenseAmount.Focus();
+            }
+        }
+
+        private void textBox_ExpenseAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.Tab || e.Key == Key.Escape)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                textBox_ExpenseUnitPrice.Focus();
+            }
+        }
+
+        private void textBox_ExpenseUnitPrice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.Tab || e.Key == Key.Escape)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                textBox_ExpenseTotalPrice.Focus();
+            }
+        }
+
+        private void textBox_ExpenseTotalPrice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.Tab || e.Key == Key.Escape)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                textBox_ExpenseVoucherNumber.Focus();
+            }
+        }
+
+        private void textBox_ExpenseVoucherNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Tab || e.Key == Key.Escape)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                textBox_ExpenseDescription.Focus();
+            }
+        }
+
+        private void textBox_ExpenseDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
+                button_SaveExpense.Focus();
+            }
+        }
+
+        private void button_SaveExpense_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+        }
+
+        private void button_Cancel_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+        }
+
+        private void button_SaveExpense_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var expense = new Expense
+                {
+                    Id = _expenseId,
+                    Name = textBox_ExpenseName.Text,
+                    Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
+                    Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "")),
+                    UnitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "")),
+                    TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", "")),
+                    VoucherNumber = int.Parse(textBox_ExpenseVoucherNumber.Text.ToString()),
+                    Description = textBox_ExpenseDescription.Text,
+                };
+
+                db.InsertExpense(expense);
+
+                _main.ExpensesGrid_Loaded(sender, e);
+
+                MessageBox.Show("Gasto / Jornal actualizado correctamente!", "Atención!", MessageBoxButton.OK);
+
+                OnLoad();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo actualizar el gasto / jornal, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
+                comboBox_ExpenseType.Focus();
+                return;
+            }
+        }
+
+        private void button_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+    }
+}

@@ -15,11 +15,11 @@ namespace CooperativaConstruccion
         private int _projectId = 0;
         private MainWindow _main;
 
-        public EditProject(MainWindow mainWindow, int projectId)
+        public EditProject(MainWindow main, int projectId)
         {
             InitializeComponent();
             db = new DataAccessObject();
-            this._main = mainWindow;
+            _main = main;
             _projectId = projectId;
             OnLoad();
         }
@@ -32,6 +32,7 @@ namespace CooperativaConstruccion
             datePicker_ProjectStartDate.SelectedDate = DateTime.Parse(proj.StartDate);
             datePicker_ProjectEndDate.SelectedDate = DateTime.Parse(proj.EndDate);
             comboBox_ProjectStatus.Text = proj.Status;
+            textBox_ProjectObservations.Text = proj.Observations;
             textBox_ProjectName.Focus();
         }
 
@@ -100,6 +101,20 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Enter)
             {
+                textBox_ProjectObservations.Focus();
+            }
+        }
+
+        private void textBox_ProjectObservations_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
                 button_SaveProject.Focus();
             }
         }
@@ -124,7 +139,7 @@ namespace CooperativaConstruccion
             }
         }
 
-        private void UpdateProject(object sender, RoutedEventArgs e)
+        private void button_SaveProject_Click(object sender, RoutedEventArgs e)
         {
             if (textBox_ProjectName.Text == string.Empty || textBox_ProjectStartBudget.Text == string.Empty || datePicker_ProjectStartDate.Text == string.Empty || datePicker_ProjectEndDate.Text == string.Empty)
             {
@@ -147,12 +162,10 @@ namespace CooperativaConstruccion
                         Id = _projectId,
                         Name = textBox_ProjectName.Text,
                         StartBudget = textBox_ProjectStartBudget.Text.Replace(" ", ""),
-                        CurrentBudget = textBox_ProjectStartBudget.Text,
-                        CreationDate = DateTime.Now.Date.ToShortDateString(),
                         StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                         EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),
-                        Deleted = "0"
+                        Observations = textBox_ProjectObservations.Text,
                     };
 
                     db.UpdateProject(project);
@@ -172,7 +185,7 @@ namespace CooperativaConstruccion
             }
         }
 
-        private void Close(object sender, RoutedEventArgs e)
+        private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
             _main.button_EditProject.Visibility = Visibility.Hidden;
             _main.button_DeleteProject.Visibility = Visibility.Hidden;

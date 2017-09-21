@@ -1,0 +1,30 @@
+﻿<Window x:Class="CooperativaConstruccion.EditExpense"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CooperativaConstruccion"
+        mc:Ignorable="d"
+        Title="Editar Gasto / Jornal" Height="430.809" Width="465.98">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="31,25,0,0" TextWrapping="Wrap" Text="Tipo: " VerticalAlignment="Top"/>
+        <ComboBox Name="comboBox_ExpenseType" HorizontalAlignment="Left" Margin="158,22,0,0" VerticalAlignment="Top" Width="254" KeyDown="comboBox_ExpenseType_KeyDown">
+            <ComboBoxItem Name="Gasto" Content="Gasto" Selector.IsSelected="True"/>
+            <ComboBoxItem Name="Jornal" Content="Jornal"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="31,61,0,0" TextWrapping="Wrap" Text="Nombre: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseName" HorizontalAlignment="Left" Height="23" Margin="158,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" KeyDown="textBox_ExpenseName_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="31,106,0,0" TextWrapping="Wrap" Text="Cantidad: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseAmount" HorizontalAlignment="Left" Height="23" Margin="158,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" KeyDown="textBox_ExpenseAmount_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="244,105,0,0" TextWrapping="Wrap" Text="Precio Unitario: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseUnitPrice" HorizontalAlignment="Left" Height="23" Margin="338,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" KeyDown="textBox_ExpenseUnitPrice_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="31,146,0,0" TextWrapping="Wrap" Text="Precio Total: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseTotalPrice" HorizontalAlignment="Left" Height="23" Margin="158,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254" KeyDown="textBox_ExpenseTotalPrice_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="31,186,0,0" TextWrapping="Wrap" Text="N° de Comprobante: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseVoucherNumber" HorizontalAlignment="Left" Height="23" Margin="158,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254" KeyDown="textBox_ExpenseVoucherNumber_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="31,229,0,0" TextWrapping="Wrap" Text="Descripción:" VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseDescription" HorizontalAlignment="Left" Height="91" Margin="158,227,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254" KeyDown="textBox_ExpenseDescription_KeyDown"/>
+        <Button Name="button_SaveExpense" Content="Guardar" HorizontalAlignment="Left" Margin="235,340,0,0" VerticalAlignment="Top" Width="75" Click="button_SaveExpense_Click" KeyDown="button_SaveExpense_KeyDown"/>
+        <Button Name="button_Cancel" Content="Cancelar" HorizontalAlignment="Left" Margin="336,340,0,0" VerticalAlignment="Top" Width="75" KeyDown="button_Cancel_KeyDown" Click="button_Cancel_Click"/>
+    </Grid>
+</Window>

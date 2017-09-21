@@ -32,6 +32,7 @@ namespace CooperativaConstruccion
             datePicker_ProjectStartDate.SelectedDate = DateTime.Now;
             datePicker_ProjectEndDate.SelectedDate = DateTime.Now;
             comboBox_ProjectStatus.Text = "Activo";
+            textBox_ProjectObservations.Text = "";
             textBox_ProjectName.Focus();
         }
 
@@ -90,6 +91,18 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Enter)
             {
+                textBox_ProjectObservations.Focus();
+            }
+        }
+
+        private void textBox_ProjectObservations_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
+            if (e.Key == Key.Enter)
+            {
                 button_SaveProject.Focus();
             }
         }
@@ -110,7 +123,7 @@ namespace CooperativaConstruccion
             }
         }
 
-        private void CreateProject(object sender, RoutedEventArgs e)
+        private void button_SaveProject_Click(object sender, RoutedEventArgs e)
         {
             if (textBox_ProjectName.Text == string.Empty || textBox_ProjectStartBudget.Text == string.Empty || datePicker_ProjectStartDate.Text == string.Empty || datePicker_ProjectEndDate.Text == string.Empty)
             {
@@ -132,16 +145,12 @@ namespace CooperativaConstruccion
                     {
                         Name = textBox_ProjectName.Text,
                         StartBudget = textBox_ProjectStartBudget.Text.Replace(" ", ""),
-                        CurrentBudget = textBox_ProjectStartBudget.Text,
                         CreationDate = DateTime.Now.Date.ToShortDateString(),
                         StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                         EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),
-                        Deleted = "0"
+                        Observations = textBox_ProjectObservations.Text,
                     };
-
-                    //var culture = CultureInfo.CreateSpecificCulture("US-en");
-                    //var a = decimal.Parse(project.StartBudget, culture);
 
                     db.InsertProject(project);
 
@@ -161,7 +170,7 @@ namespace CooperativaConstruccion
             
         }
 
-        private void Close(object sender, RoutedEventArgs e)
+        private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }

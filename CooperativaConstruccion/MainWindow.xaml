@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="Cooperativa de Construcción" WindowState="Maximized" Height="649" Width="831" ResizeMode="CanMinimize">
+        Title="Cooperativa de Construcción" WindowState="Maximized" Height="649" Width="1281" ResizeMode="CanMinimize">
     <Grid Margin="0,0,-8,-21">
-        <ListView Name="grillaProyectos" Height="385" Margin="140,66,7,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="684" Loaded="ProjectsGrid_Loaded" MouseDoubleClick="grillaProyectos_MouseDoubleClick">
+        <ListView Name="grillaProyectos" Height="385" Margin="156,66,455,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="672" Loaded="ProjectsGrid_Loaded" MouseDoubleClick="grillaProyectos_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Proyecto" DisplayMemberBinding="{Binding Path=Id}"/>
@@ -21,9 +21,23 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="button_OpenFormNewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="106" Click="Button_OpenFormNewProject"/>
-        <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="9,161,0,0" VerticalAlignment="Top" Width="107" Click="Close"/>
-        <Button Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditProject_Click"/>
-        <Button Name="button_DeleteProject" Content="Eliminar Proyecto" HorizontalAlignment="Left" Margin="9,136,0,0" VerticalAlignment="Top" Width="107" Visibility="Hidden" Click="button_DeleteProject_Click"/>
+        <Button Name="button_NewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="21,90,0,0" VerticalAlignment="Top" Width="106" Click="button_NewProject_Click"/>
+        <Button Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="21,121,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditProject_Click"/>
+        <Button Name="button_DeleteProject" Content="Eliminar Proyecto" HorizontalAlignment="Left" Margin="20,153,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteProject_Click"/>
+        <Button Name="button_NewExpense" Content="Agregar Gasto" HorizontalAlignment="Left" Margin="21,240,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_NewExpense_Click"/>
+        <Button Name="button_EditExpense" Content="Modificar Gasto" HorizontalAlignment="Left" Margin="21,275,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditExpense_Click"/>
+        <Button Name="button_DeleteExpense" Content="Eliminar Gasto" HorizontalAlignment="Left" Margin="21,311,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteExpense_Click"/>
+        <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="21,430,0,0" VerticalAlignment="Top" Width="106" Click="button_CloseMainWindow_Click"/>
+        <ListView Name="grillaGastos" HorizontalAlignment="Left" Height="385" Margin="875,66,0,0" VerticalAlignment="Top" Width="343" MouseDoubleClick="grillaGastos_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Código" DisplayMemberBinding="{Binding Path=Id}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Nombre" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Cantidad" DisplayMemberBinding="{Binding Path=Amount}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Precio Unitario" DisplayMemberBinding="{Binding Path=UnitPrice}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Precio Total" DisplayMemberBinding="{Binding Path=TotalPrice}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

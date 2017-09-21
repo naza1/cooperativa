@@ -22,6 +22,8 @@ namespace FileSystem.Tables
 
         public int RemainingDays { get; set; }
 
+        public string Observations { get; set; }
+
         public string Deleted { get; set; }
     }
 }

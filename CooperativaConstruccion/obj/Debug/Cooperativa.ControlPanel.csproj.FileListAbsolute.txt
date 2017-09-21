@@ -55,3 +55,7 @@ C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\Coo
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csproj.GenerateResource.Cache
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.exe
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.pdb
+E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\NewExpense.g.cs
+E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\NewExpense.baml
+E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\EditExpense.g.cs
+E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\EditExpense.baml
