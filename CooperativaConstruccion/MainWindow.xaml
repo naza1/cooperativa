@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="Cooperativa de Construcción" WindowState="Maximized" Height="649" Width="831" ResizeMode="CanMinimize">
     <Grid Margin="0,0,-8,-21">
-        <Label Content="Proyectos" HorizontalAlignment="Left" Margin="9,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.871,0.615"/>
         <ListView Name="grillaProyectos" Height="385" Margin="140,66,7,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="684" Loaded="ProjectsGrid_Loaded" MouseDoubleClick="grillaProyectos_MouseDoubleClick">
             <ListView.View>
                 <GridView>
@@ -15,9 +14,10 @@
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Nombre" DisplayMemberBinding="{Binding Path=Name}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Inicial" DisplayMemberBinding="{Binding Path=StartBudget}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Monto Actual" DisplayMemberBinding="{Binding Path=CurrentBudget}"/>
-                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Fecha Creación" DisplayMemberBinding="{Binding Path=StartDate}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Fecha Inicio" DisplayMemberBinding="{Binding Path=StartDate}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Fecha Fin" DisplayMemberBinding="{Binding Path=EndDate}"/>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Estado" DisplayMemberBinding="{Binding Path=Status}"/>
+                    <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Días Restantes" DisplayMemberBinding="{Binding Path=RemainingDays}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -34,7 +34,7 @@ namespace Cooperativa.FileSystem
 
             _dbConnection.Open();
 
-            string sql = $@"CREATE TABLE [Project] ([Id] INTEGER primary key, [Name] VARCHAR(50), [StartBudget] text, [CurrentBudget] text, [CreationDate] TEXT, [StartDate] TEXT, [EndDate] TEXT, [Status] TEXT, [Deleted] TEXT)";
+            string sql = $@"CREATE TABLE [Project] ([Id] INTEGER primary key, [Name] VARCHAR(50), [StartBudget] text, [CreationDate] TEXT, [StartDate] TEXT, [EndDate] TEXT, [Status] TEXT, [Deleted] TEXT)";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -47,7 +47,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"INSERT INTO[Project] VALUES(null, '{project.Name}', '{project.StartBudget}', '{project.CurrentBudget}', '{project.CreationDate}', '{project.StartDate}', '{project.EndDate}', '{project.Status}', '{project.Deleted}')";
+            var sql = $@"INSERT INTO[Project] VALUES(null, '{project.Name}', '{project.StartBudget}', '{project.CreationDate}', '{project.StartDate}', '{project.EndDate}', '{project.Status}', '{project.Deleted}')";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -76,13 +76,15 @@ namespace Cooperativa.FileSystem
                             Id = rdr.GetInt32(0),
                             Name = rdr.GetString(1),
                             StartBudget = rdr.GetString(2),
-                            CurrentBudget = rdr.GetString(3),
-                            CreationDate = rdr.GetString(4),
-                            StartDate = rdr.GetString(5),
-                            EndDate = rdr.GetString(6),
-                            Status = rdr.GetString(7),
-                            Deleted = rdr.GetString(8)
+                            CreationDate = rdr.GetString(3),
+                            StartDate = rdr.GetString(4),
+                            EndDate = rdr.GetString(5),
+                            Status = rdr.GetString(6),
+                            Deleted = rdr.GetString(7)
                         };
+
+                        project.CurrentBudget = CalculateCurrentBudget(project.Id, project.StartBudget).ToString();
+                        project.RemainingDays = CalculateRemainingDays(project.StartDate, project.EndDate);
 
                         projectList.Add(project);
                     }
@@ -92,6 +94,16 @@ namespace Cooperativa.FileSystem
             _dbConnection.Close();
 
             return projectList;
+        }
+
+        //TODO: Falta restar los materiales cuando esten
+        private decimal CalculateCurrentBudget(int id, string startBudget)
+        {
+            return decimal.Parse(startBudget);
+        }
+        private int CalculateRemainingDays(string startDate, string endDate)
+        {
+            return int.Parse((DateTime.Parse(endDate) - DateTime.Parse(startDate)).TotalDays.ToString());
         }
 
         public Project GetProject(int id)
@@ -116,12 +128,11 @@ namespace Cooperativa.FileSystem
                             Id = rdr.GetInt32(0),
                             Name = rdr.GetString(1),
                             StartBudget = rdr.GetString(2),
-                            CurrentBudget = rdr.GetString(3),
-                            CreationDate = rdr.GetString(4),
-                            StartDate = rdr.GetString(5),
-                            EndDate = rdr.GetString(6),
-                            Status = rdr.GetString(7),
-                            Deleted = rdr.GetString(8)
+                            CreationDate = rdr.GetString(3),
+                            StartDate = rdr.GetString(4),
+                            EndDate = rdr.GetString(5),
+                            Status = rdr.GetString(6),
+                            Deleted = rdr.GetString(7)
                         };
 
                         proj = project;
@@ -138,7 +149,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"UPDATE [Project] SET [Name] = '{project.Name}', [StartBudget] = '{project.StartBudget}', [CreationDate] = '{project.CreationDate}', [StartDate] = '{project.StartDate}', [EndDate] = '{project.EndDate}', [Status] = '{project.Status}', [Deleted] = '{project.Deleted}' WHERE [Id] = {project.Id}";
+            var sql = $@"UPDATE [Project] SET [Name] = '{project.Name}', [StartBudget] = '{project.StartBudget}', [StartDate] = '{project.StartDate}', [EndDate] = '{project.EndDate}', [Status] = '{project.Status}' WHERE [Id] = {project.Id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 

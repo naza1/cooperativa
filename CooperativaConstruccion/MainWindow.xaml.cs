@@ -18,7 +18,6 @@ namespace CooperativaConstruccion
             InitializeComponent();
 
             db = new DataAccessObject();
-
         }
 
         public void ProjectsGrid_Loaded(object sender, RoutedEventArgs e)
@@ -31,7 +30,7 @@ namespace CooperativaConstruccion
             {
                 foreach (var item in cadena)
                 {
-                    grillaProyectos.Items.Add(new {item.Id, item.Name, item.StartBudget, item.CurrentBudget, item.StartDate, item.EndDate, item.Status});
+                    grillaProyectos.Items.Add(new {item.Id, item.Name, item.StartBudget, item.CurrentBudget, item.StartDate, item.EndDate, item.Status, item.RemainingDays});
                 }
             }
         }
@@ -56,33 +55,49 @@ namespace CooperativaConstruccion
 
         private void button_EditProject_Click(object sender, RoutedEventArgs e)
         {
-            new EditProject(this, _projectId).ShowDialog();
+            if (_projectId == 0)
+            {
+                MessageBox.Show("Seleccione un proyecto!", "Error!", MessageBoxButton.OK);
+                return;
+            }
+            else
+            {
+                new EditProject(this, _projectId).ShowDialog();
+            }
         }
 
         private void button_DeleteProject_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (_projectId == 0)
             {
-                var result = MessageBox.Show("Seguro elimina el proyecto " + _projectId + "?", "Atención!", MessageBoxButton.YesNo);
-
-                if (result == MessageBoxResult.Yes)
+                MessageBox.Show("Seleccione un proyecto!", "Error!", MessageBoxButton.OK);
+                return;
+            }
+            else
+            {
+                try
                 {
-                    db.DeleteProject(_projectId);
+                    var result = MessageBox.Show("Seguro desea eliminar el proyecto " + _projectId + "?", "Atención!", MessageBoxButton.YesNo);
 
-                    ProjectsGrid_Loaded(sender, e);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        db.DeleteProject(_projectId);
 
-                    MessageBox.Show("Proyecto eliminado correctamente!", "Atención!", MessageBoxButton.OK);
+                        ProjectsGrid_Loaded(sender, e);
+
+                        MessageBox.Show("Proyecto eliminado correctamente!", "Atención!", MessageBoxButton.OK);
+                    }
+
                 }
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo eliminar el proyecto " + ex, "Error!", MessageBoxButton.OK);
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo eliminar el proyecto " + ex, "Error!", MessageBoxButton.OK);
+                }
 
-            button_EditProject.Visibility = Visibility.Hidden;
+                button_EditProject.Visibility = Visibility.Hidden;
 
-            button_DeleteProject.Visibility = Visibility.Hidden;
+                button_DeleteProject.Visibility = Visibility.Hidden;
+            }
         }
 
         private void Close(object sender, RoutedEventArgs e)

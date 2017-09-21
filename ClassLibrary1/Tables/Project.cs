@@ -20,6 +20,8 @@ namespace FileSystem.Tables
 
         public string Status { get; set; }
 
+        public int RemainingDays { get; set; }
+
         public string Deleted { get; set; }
     }
 }
