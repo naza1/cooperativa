@@ -63,7 +63,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"SELECT * FROM [Project] WHERE [Deleted] <> '1'";
+            var sql = "SELECT * FROM [Project] WHERE [Deleted] <> '1'";
 
             var projectList = new List<Project>();
 
@@ -99,7 +99,7 @@ namespace Cooperativa.FileSystem
             return projectList;
         }
 
-        private decimal CalculateCurrentBudget(int id, string startBudget)
+        public decimal CalculateCurrentBudget(int id, string startBudget)
         {
             var sql = $@"SELECT SUM([TotalPrice]) FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {id}";
 
@@ -119,19 +119,55 @@ namespace Cooperativa.FileSystem
                     
                 }
             }
+
             return decimal.Parse(startBudget, CultureInfo.CreateSpecificCulture("en-US")) - total;
+        }
+
+        public decimal CalculateTotalExpense(int id)
+        {
+            _dbConnection.Open();
+
+            var sql = $@"SELECT SUM([TotalPrice]) FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {id}";
+
+            var total = 0m;
+
+            using (var cmd = new SQLiteCommand(sql, _dbConnection))
+            {
+                using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        if (!rdr.IsDBNull(0))
+                        {
+                            total = rdr.GetDecimal(0);
+                        }
+                    }
+
+                }
+            }
+
+            _dbConnection.Close();
+
+            return total;
         }
 
         private int CalculateRemainingDays(string startDate, string endDate)
         {
-            return int.Parse((DateTime.Parse(endDate) - DateTime.Now.Date).TotalDays.ToString());
+            var startDateProject = DateTime.Parse(startDate);
+
+            if (startDateProject <= DateTime.UtcNow)
+            {
+                return int.Parse((DateTime.Parse(endDate) - DateTime.Now.Date).TotalDays.ToString());
+            }
+
+            return int.Parse((DateTime.Parse(endDate) - startDateProject).TotalDays.ToString());
         }
 
         public Project GetProject(int id)
         {
             _dbConnection.Open();
 
-            var sql = $@"SELECT * FROM [Project] WHERE Id = {id}";
+            var sql = $"SELECT * FROM [Project] WHERE Id = {id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -184,13 +220,21 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"UPDATE [Project] SET [Deleted] = '1' WHERE [Id] = {id}";
+            var sql = $"UPDATE [Project] SET [Deleted] = '1' WHERE [Id] = {id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
             command.ExecuteNonQuery();
 
+
+            var sql2 = $"UPDATE [Expense] SET [Deleted] = '1' WHERE [ProjectId] = {id}";
+
+            command = new SQLiteCommand(sql2, _dbConnection);
+
+            command.ExecuteNonQuery();
+
             _dbConnection.Close();
+
         }
 
         private void CreateExpenseTable()

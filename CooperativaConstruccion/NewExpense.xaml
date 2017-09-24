@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="Nuevo Gasto / Jornal" Height="440" Width="465" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Nuevo Gasto / Jornal" Height="440" Width="465" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid Margin="0,0,0,0">
         <TextBlock HorizontalAlignment="Left" Margin="30,40,0,0" TextWrapping="Wrap" Text="Tipo: " VerticalAlignment="Top"/>
         <ComboBox Name="comboBox_ExpenseType" HorizontalAlignment="Left" Width="250" Margin="160,40,0,0" VerticalAlignment="Top" KeyDown="comboBox_ExpenseType_KeyDown">
@@ -15,9 +15,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="30,80,0,0" TextWrapping="Wrap" Text="Nombre: " VerticalAlignment="Top"/>
         <TextBox Name="textBox_ExpenseName" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ExpenseName_KeyDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,120,0,0" TextWrapping="Wrap" Text="Cantidad: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ExpenseAmount" HorizontalAlignment="Left" Height="25" Width="70" Margin="160,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ExpenseAmount_KeyDown"/>
+        <TextBox Name="textBox_ExpenseAmount" HorizontalAlignment="Left" Height="25" Width="70" Margin="160,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ExpenseAmount_KeyDown" LostFocus="textBox_ExpenseAmount_LostFocus"/>
         <TextBlock HorizontalAlignment="Left" Margin="240,120,0,0" TextWrapping="Wrap" Text="Precio Unitario: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ExpenseUnitPrice" HorizontalAlignment="Left" Height="25" Width="80" Margin="330,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ExpenseUnitPrice_KeyDown"/>
+        <TextBox Name="textBox_ExpenseUnitPrice" HorizontalAlignment="Left" Height="25" Width="80" Margin="330,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ExpenseUnitPrice_KeyDown" LostFocus="textBox_ExpenseUnitPrice_LostFocus"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,160,0,0" TextWrapping="Wrap" Text="Precio Total: " VerticalAlignment="Top"/>
         <TextBox Name="textBox_ExpenseTotalPrice" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ExpenseTotalPrice_KeyDown" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,200,0,0" TextWrapping="Wrap" Text="N° de Comprobante: " VerticalAlignment="Top"/>

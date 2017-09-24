@@ -59,3 +59,7 @@ E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\Ne
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\NewExpense.baml
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\EditExpense.g.cs
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\EditExpense.baml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditExpense.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewExpense.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditExpense.baml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewExpense.baml

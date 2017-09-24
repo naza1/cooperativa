@@ -40,6 +40,7 @@ namespace CooperativaConstruccion
             if (_projectId != 0)
             {
                 grillaGastos.Items.Clear();
+                TotalGastos.Text = string.Empty;
 
                 var cadena = db.GetExpenses(_projectId);
 
@@ -50,6 +51,8 @@ namespace CooperativaConstruccion
                         grillaGastos.Items.Add(new {item.Id, item.Name, item.Amount, item.UnitPrice, item.TotalPrice});
                     }
                 }
+
+                TotalGastos.Text = "Total: " + db.CalculateTotalExpense(_projectId).ToString().Replace(",",".");
             }
         }
 
@@ -126,12 +129,8 @@ namespace CooperativaConstruccion
                 {
                     MessageBox.Show("No se pudo eliminar el Proyecto " + ex, "Error!", MessageBoxButton.OK);
                 }
-                button_EditProject.Visibility = Visibility.Hidden;
-                button_DeleteProject.Visibility = Visibility.Hidden;
-                button_NewExpense.Visibility = Visibility.Hidden;
-                button_EditExpense.Visibility = Visibility.Hidden;
-                button_DeleteExpense.Visibility = Visibility.Hidden;
-                grillaGastos.Items.Clear();
+
+                HiddenButtons();
             }
         }
 
@@ -189,18 +188,24 @@ namespace CooperativaConstruccion
                     MessageBox.Show("No se pudo eliminar el Gasto / Jornal " + ex, "Error!", MessageBoxButton.OK);
                 }
 
-                button_EditProject.Visibility = Visibility.Hidden;
-                button_DeleteProject.Visibility = Visibility.Hidden;
-                button_NewExpense.Visibility = Visibility.Hidden;
-                button_EditExpense.Visibility = Visibility.Hidden;
-                button_DeleteExpense.Visibility = Visibility.Hidden;
-                grillaGastos.Items.Clear();
+                HiddenButtons();
             }
         }
 
         private void button_CloseMainWindow_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        public void HiddenButtons()
+        {
+            button_EditProject.Visibility = Visibility.Hidden;
+            button_DeleteProject.Visibility = Visibility.Hidden;
+            button_NewExpense.Visibility = Visibility.Hidden;
+            button_EditExpense.Visibility = Visibility.Hidden;
+            button_DeleteExpense.Visibility = Visibility.Hidden;
+            grillaGastos.Items.Clear();
+            TotalGastos.Text = string.Empty;
         }
     }
 }

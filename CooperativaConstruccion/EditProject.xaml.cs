@@ -40,12 +40,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HiddenButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -66,12 +61,7 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HiddenButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -84,12 +74,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HiddenButtons();
                 Close();
             }
         }
@@ -98,12 +83,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HiddenButtons();
                 Close();
             }
         }
@@ -112,12 +92,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HiddenButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -130,12 +105,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HiddenButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -148,12 +118,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HiddenButtons();
                 Close();
             }
         }
@@ -162,12 +127,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HiddenButtons();
                 Close();
             }
         }
@@ -204,14 +164,12 @@ namespace CooperativaConstruccion
                     db.UpdateProject(project);
 
                     _main.ProjectsGrid_Loaded(sender, e);
+
                     Close();
+
                     MessageBox.Show("Proyecto actualizado correctamente!", "Atención!", MessageBoxButton.OK);
-                    _main.button_EditProject.Visibility = Visibility.Hidden;
-                    _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                    _main.button_NewExpense.Visibility = Visibility.Hidden;
-                    _main.button_EditExpense.Visibility = Visibility.Hidden;
-                    _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                    _main.grillaGastos.Items.Clear();
+
+                    _main.HiddenButtons();
                 }
                 catch (Exception ex)
                 {
@@ -224,13 +182,13 @@ namespace CooperativaConstruccion
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            _main.button_EditProject.Visibility = Visibility.Hidden;
-            _main.button_DeleteProject.Visibility = Visibility.Hidden;
-            _main.button_NewExpense.Visibility = Visibility.Hidden;
-            _main.button_EditExpense.Visibility = Visibility.Hidden;
-            _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-            _main.grillaGastos.Items.Clear();
+            _main.HiddenButtons();
             Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _main.HiddenButtons();
         }
     }
 }
