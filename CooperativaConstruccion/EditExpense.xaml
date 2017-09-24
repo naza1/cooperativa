@@ -5,26 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="Editar Gasto / Jornal" Height="430.809" Width="465.98">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="31,25,0,0" TextWrapping="Wrap" Text="Tipo: " VerticalAlignment="Top"/>
-        <ComboBox Name="comboBox_ExpenseType" HorizontalAlignment="Left" Margin="158,22,0,0" VerticalAlignment="Top" Width="254" KeyDown="comboBox_ExpenseType_KeyDown">
+        Title="Editar Gasto / Jornal" Height="440" Width="465" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,0">
+        <TextBlock HorizontalAlignment="Left" Margin="30,40,0,0" TextWrapping="Wrap" Text="Tipo: " VerticalAlignment="Top"/>
+        <ComboBox Name="comboBox_ExpenseType" HorizontalAlignment="Left" Width="250" Margin="160,40,0,0" VerticalAlignment="Top" KeyDown="comboBox_ExpenseType_KeyDown">
             <ComboBoxItem Name="Gasto" Content="Gasto" Selector.IsSelected="True"/>
             <ComboBoxItem Name="Jornal" Content="Jornal"/>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="31,61,0,0" TextWrapping="Wrap" Text="Nombre: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ExpenseName" HorizontalAlignment="Left" Height="23" Margin="158,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" KeyDown="textBox_ExpenseName_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,106,0,0" TextWrapping="Wrap" Text="Cantidad: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ExpenseAmount" HorizontalAlignment="Left" Height="23" Margin="158,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" KeyDown="textBox_ExpenseAmount_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="244,105,0,0" TextWrapping="Wrap" Text="Precio Unitario: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ExpenseUnitPrice" HorizontalAlignment="Left" Height="23" Margin="338,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" KeyDown="textBox_ExpenseUnitPrice_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,146,0,0" TextWrapping="Wrap" Text="Precio Total: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ExpenseTotalPrice" HorizontalAlignment="Left" Height="23" Margin="158,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254" KeyDown="textBox_ExpenseTotalPrice_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,186,0,0" TextWrapping="Wrap" Text="N° de Comprobante: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ExpenseVoucherNumber" HorizontalAlignment="Left" Height="23" Margin="158,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254" KeyDown="textBox_ExpenseVoucherNumber_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,229,0,0" TextWrapping="Wrap" Text="Descripción:" VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ExpenseDescription" HorizontalAlignment="Left" Height="91" Margin="158,227,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254" KeyDown="textBox_ExpenseDescription_KeyDown"/>
-        <Button Name="button_SaveExpense" Content="Guardar" HorizontalAlignment="Left" Margin="235,340,0,0" VerticalAlignment="Top" Width="75" Click="button_SaveExpense_Click" KeyDown="button_SaveExpense_KeyDown"/>
-        <Button Name="button_Cancel" Content="Cancelar" HorizontalAlignment="Left" Margin="336,340,0,0" VerticalAlignment="Top" Width="75" KeyDown="button_Cancel_KeyDown" Click="button_Cancel_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,80,0,0" TextWrapping="Wrap" Text="Nombre: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseName" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ExpenseName_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,120,0,0" TextWrapping="Wrap" Text="Cantidad: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseAmount" HorizontalAlignment="Left" Height="25" Width="75" Margin="160,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ExpenseAmount_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="240,120,0,0" TextWrapping="Wrap" Text="Precio Unitario: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseUnitPrice" HorizontalAlignment="Left" Height="25" Width="75" Margin="330,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ExpenseUnitPrice_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,160,0,0" TextWrapping="Wrap" Text="Precio Total: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseTotalPrice" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ExpenseTotalPrice_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,200,0,0" TextWrapping="Wrap" Text="N° de Comprobante: " VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseVoucherNumber" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ExpenseVoucherNumber_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,240,0,0" TextWrapping="Wrap" Text="Descripción:" VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ExpenseDescription" HorizontalAlignment="Left" Height="100" Width="250" Margin="160,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ExpenseDescription_KeyDown" AcceptsReturn="True"/>
+        <Button Name="button_SaveExpense" Content="Guardar" HorizontalAlignment="Left" Width="75" Margin="235,355,0,0" VerticalAlignment="Top" Click="button_SaveExpense_Click" KeyDown="button_SaveExpense_KeyDown"/>
+        <Button Name="button_Cancel" Content="Cancelar" HorizontalAlignment="Left" Width="75" Margin="335,355,0,0" VerticalAlignment="Top" KeyDown="button_Cancel_KeyDown" Click="button_Cancel_Click"/>
     </Grid>
 </Window>

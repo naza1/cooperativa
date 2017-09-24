@@ -40,6 +40,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -60,6 +66,12 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -72,6 +84,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
         }
@@ -80,13 +98,26 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
         }
+
         private void comboBox_ProjectStatus_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -99,11 +130,13 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
-            }
-            if (e.Key == Key.Enter)
-            {
-                button_SaveProject.Focus();
             }
         }
 
@@ -111,6 +144,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
         }
@@ -119,6 +158,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
         }
@@ -172,6 +217,12 @@ namespace CooperativaConstruccion
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
+            _main.button_EditProject.Visibility = Visibility.Hidden;
+            _main.button_DeleteProject.Visibility = Visibility.Hidden;
+            _main.button_NewExpense.Visibility = Visibility.Hidden;
+            _main.button_EditExpense.Visibility = Visibility.Hidden;
+            _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+            _main.grillaGastos.Items.Clear();
             Close();
         }
     }

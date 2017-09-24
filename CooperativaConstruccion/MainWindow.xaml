@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="Cooperativa de Construcción" WindowState="Maximized" Height="649" Width="1281" ResizeMode="CanMinimize">
-    <Grid Margin="0,0,-8,-21">
-        <ListView Name="grillaProyectos" Height="385" Margin="156,66,455,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="672" Loaded="ProjectsGrid_Loaded" MouseDoubleClick="grillaProyectos_MouseDoubleClick">
+        Title="Cooperativa de Construcción" WindowState="Maximized" ResizeMode="NoResize" Icon="Icon.ico">
+    <Grid Margin="0,0,0,0">
+        <TextBlock HorizontalAlignment="Left" Margin="160,60,0,0" TextWrapping="Wrap" Text="PROYECTOS" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" Margin="900,60,0,0" TextWrapping="Wrap" Text="GASTOS / JORNALES" VerticalAlignment="Top"/>
+        <ListView Name="grillaProyectos" Height="500" Width="700" Margin="160,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Loaded="ProjectsGrid_Loaded" MouseDoubleClick="grillaProyectos_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Proyecto" DisplayMemberBinding="{Binding Path=Id}"/>
@@ -21,14 +23,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="button_NewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="21,90,0,0" VerticalAlignment="Top" Width="106" Click="button_NewProject_Click"/>
-        <Button Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="21,121,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditProject_Click"/>
-        <Button Name="button_DeleteProject" Content="Eliminar Proyecto" HorizontalAlignment="Left" Margin="20,153,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteProject_Click"/>
-        <Button Name="button_NewExpense" Content="Agregar Gasto" HorizontalAlignment="Left" Margin="21,240,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_NewExpense_Click"/>
-        <Button Name="button_EditExpense" Content="Modificar Gasto" HorizontalAlignment="Left" Margin="21,275,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditExpense_Click"/>
-        <Button Name="button_DeleteExpense" Content="Eliminar Gasto" HorizontalAlignment="Left" Margin="21,311,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteExpense_Click"/>
-        <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="21,430,0,0" VerticalAlignment="Top" Width="106" Click="button_CloseMainWindow_Click"/>
-        <ListView Name="grillaGastos" HorizontalAlignment="Left" Height="385" Margin="875,66,0,0" VerticalAlignment="Top" Width="343" MouseDoubleClick="grillaGastos_MouseDoubleClick">
+        <Button Name="button_NewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top" Width="106" Click="button_NewProject_Click"/>
+        <Button Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditProject_Click"/>
+        <Button Name="button_DeleteProject" Content="Eliminar Proyecto" HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteProject_Click"/>
+        <Button Name="button_NewExpense" Content="Agregar Gasto" HorizontalAlignment="Left" Margin="20,280,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_NewExpense_Click"/>
+        <Button Name="button_EditExpense" Content="Modificar Gasto" HorizontalAlignment="Left" Margin="20,310,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditExpense_Click"/>
+        <Button Name="button_DeleteExpense" Content="Eliminar Gasto" HorizontalAlignment="Left" Margin="20,340,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteExpense_Click"/>
+        <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="20,440,0,0" VerticalAlignment="Top" Width="106" Click="button_CloseMainWindow_Click"/>
+        <ListView Name="grillaGastos" Height="500" Width="350" Margin="900,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" MouseDoubleClick="grillaGastos_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Código" DisplayMemberBinding="{Binding Path=Id}"/>

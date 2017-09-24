@@ -35,7 +35,6 @@ namespace Cooperativa.FileSystem
 
         private void CreateProjectTable()
         {
-
             _dbConnection.Open();
 
             string sql = $@"CREATE TABLE [Project] ([Id] INTEGER primary key, [Name] TEXT, [StartBudget] TEXT, [CreationDate] TEXT, [StartDate] TEXT, [EndDate] TEXT, [Status] TEXT, [Observations] TEXT, [Deleted] TEXT)";
@@ -74,12 +73,11 @@ namespace Cooperativa.FileSystem
                 {
                     while (rdr.Read())
                     {
-
                         var project = new Project
                         {
                             Id = rdr.GetInt32(0),
                             Name = rdr.GetString(1),
-                            StartBudget = rdr.GetString(2),
+                            StartBudget = "$ " + rdr.GetString(2),
                             CreationDate = rdr.GetString(3),
                             StartDate = rdr.GetString(4),
                             EndDate = rdr.GetString(5),
@@ -88,7 +86,7 @@ namespace Cooperativa.FileSystem
                             Deleted = rdr.GetString(8)
                         };
 
-                        project.CurrentBudget = CalculateCurrentBudget(project.Id, project.StartBudget).ToString().Replace(",", ".");
+                        project.CurrentBudget = "$ " + CalculateCurrentBudget(project.Id, project.StartBudget.Replace("$ ", "")).ToString().Replace(",", ".");
                         project.RemainingDays = CalculateRemainingDays(project.StartDate, project.EndDate);
 
                         projectList.Add(project);
@@ -101,14 +99,11 @@ namespace Cooperativa.FileSystem
             return projectList;
         }
 
-        //TODO: Falta restar los materiales cuando esten
         private decimal CalculateCurrentBudget(int id, string startBudget)
         {
-            /*_dbConnection.Open();
+            var sql = $@"SELECT SUM([TotalPrice]) FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {id}";
 
-            var sql = $@"SELECT SUM(TotalPrice) FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {id}";
-
-            var totalPrice = 0;
+            var total = 0m;
 
             using (var cmd = new SQLiteCommand(sql, _dbConnection))
             {
@@ -116,15 +111,20 @@ namespace Cooperativa.FileSystem
                 {
                     while (rdr.Read())
                     {
-                        totalPrice = decimal.Parse(rdr.GetInt32(0));
+                        if (!rdr.IsDBNull(0))
+                        {
+                            total = rdr.GetDecimal(0);
+                        }
                     }
+                    
                 }
-            }*/
-            return decimal.Parse(startBudget, CultureInfo.CreateSpecificCulture("en-US"));
+            }
+            return decimal.Parse(startBudget, CultureInfo.CreateSpecificCulture("en-US")) - total;
         }
+
         private int CalculateRemainingDays(string startDate, string endDate)
         {
-            return int.Parse((DateTime.Parse(endDate) - DateTime.Parse(startDate)).TotalDays.ToString());
+            return int.Parse((DateTime.Parse(endDate) - DateTime.Now.Date).TotalDays.ToString());
         }
 
         public Project GetProject(int id)
@@ -197,7 +197,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            string sql = $@"CREATE TABLE [Expense] ([Id] INTEGER PRIMARY KEY, [ProjectId] INTEGER, [Name] TEXT, [Type] TEXT, [Amount] TEXT, [UnitPrice] TEXT, [TotalPrice] TEXT, [VoucherNumber] INTEGER, [Date] TEXT, [Description] TEXT, [Deleted] TEXT, FOREIGN KEY(ProjectId) REFERENCES Poject(Id))";
+            string sql = $@"CREATE TABLE [Expense] ([Id] INTEGER PRIMARY KEY, [ProjectId] INTEGER, [Name] TEXT, [Type] TEXT, [Amount] TEXT, [UnitPrice] TEXT, [TotalPrice] TEXT, [VoucherNumber] TEXT, [Date] TEXT, [Description] TEXT, [Deleted] TEXT, FOREIGN KEY(ProjectId) REFERENCES Poject(Id))";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -210,7 +210,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"INSERT INTO[Expense] VALUES(null, {expense.ProjectId}, '{expense.Name}', '{expense.Type}', '{expense.Amount}', '{expense.UnitPrice}', '{expense.TotalPrice}', {expense.VoucherNumber}, '{expense.Date}', '{expense.Description}', '0')";
+            var sql = $@"INSERT INTO[Expense] VALUES(null, {expense.ProjectId}, '{expense.Name}', '{expense.Type}', '{expense.Amount}', '{expense.UnitPrice}', '{expense.TotalPrice}', '{expense.VoucherNumber}', '{expense.Date}', '{expense.Description}', '0')";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -240,10 +240,10 @@ namespace Cooperativa.FileSystem
                             ProjectId = rdr.GetInt32(1),
                             Name = rdr.GetString(2),
                             Type = rdr.GetString(3),
-                            Amount = rdr.GetDecimal(4),
-                            UnitPrice = rdr.GetDecimal(5),
-                            TotalPrice = rdr.GetDecimal(6),
-                            VoucherNumber = rdr.GetInt32(7),
+                            Amount = rdr.GetString(4),
+                            UnitPrice = "$ " + rdr.GetString(5),
+                            TotalPrice = "$ " + rdr.GetString(6),
+                            VoucherNumber = rdr.GetString(7),
                             Date = rdr.GetString(8),
                             Description = rdr.GetString(9),
                             Deleted = rdr.GetString(10)
@@ -282,10 +282,10 @@ namespace Cooperativa.FileSystem
                             ProjectId = rdr.GetInt32(1),
                             Name = rdr.GetString(2),
                             Type = rdr.GetString(3),
-                            Amount = rdr.GetDecimal(4),
-                            UnitPrice = rdr.GetDecimal(5),
-                            TotalPrice = rdr.GetDecimal(6),
-                            VoucherNumber = rdr.GetInt32(7),
+                            Amount = rdr.GetString(4),
+                            UnitPrice = rdr.GetString(5),
+                            TotalPrice = rdr.GetString(6),
+                            VoucherNumber = rdr.GetString(7),
                             Date = rdr.GetString(8),
                             Description = rdr.GetString(9),
                             Deleted = rdr.GetString(10)
@@ -305,7 +305,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"UPDATE [Expense] SET [Name] = '{expense.Name}', [Type] = '{expense.Type}', [Amount] = '{expense.Amount}', [UnitPrice] = '{expense.UnitPrice}', [TotalPrice] = '{expense.TotalPrice}', [VoucherNumber] = {expense.VoucherNumber}, [Description] = '{expense.Description}' WHERE [Id] = {expense.Id}";
+            var sql = $@"UPDATE [Expense] SET [Name] = '{expense.Name}', [Type] = '{expense.Type}', [Amount] = '{expense.Amount}', [UnitPrice] = '{expense.UnitPrice}', [TotalPrice] = '{expense.TotalPrice}', [VoucherNumber] = '{expense.VoucherNumber}', [Description] = '{expense.Description}' WHERE [Id] = {expense.Id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 

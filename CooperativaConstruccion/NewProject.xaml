@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="Nuevo Proyecto" Height="440.809" Width="465.98" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0,1">
-        <TextBlock HorizontalAlignment="Left" Margin="31,38,0,0" TextWrapping="Wrap" Text="Nombre de Proyecto: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ProjectName" HorizontalAlignment="Left" Height="23" Margin="166,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" KeyDown="textBox_ProjectName_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,79,0,0" TextWrapping="Wrap" Text="Monto Inicial: " VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ProjectStartBudget" HorizontalAlignment="Left" Height="23" Margin="166,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="242" KeyDown="textBox_ProjectStartBudget_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,118,0,0" TextWrapping="Wrap" Text="Fecha Inicio: " VerticalAlignment="Top"/>
-        <DatePicker Name="datePicker_ProjectStartDate" HorizontalAlignment="Left" Margin="166,110,0,0" VerticalAlignment="Top" Width="242" KeyDown="datePicker_ProjectStartDate_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,158,0,0" TextWrapping="Wrap" Text="Fecha Fin: " VerticalAlignment="Top"/>
-        <DatePicker Name="datePicker_ProjectEndDate" HorizontalAlignment="Left" Margin="166,150,0,0" VerticalAlignment="Top" Width="242" KeyDown="datePicker_ProjectEndDate_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,194,0,0" TextWrapping="Wrap" Text="Estado: " VerticalAlignment="Top"/>
-        <ComboBox Name="comboBox_ProjectStatus" HorizontalAlignment="Left" Margin="166,194,0,0" VerticalAlignment="Top" Width="242" KeyDown="comboBox_ProjectStatus_KeyDown">
+        Title="Nuevo Proyecto" Height="440" Width="465" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,0">
+        <TextBlock HorizontalAlignment="Left" Margin="30,40,0,0" TextWrapping="Wrap" Text="Nombre de Proyecto:" VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ProjectName" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ProjectName_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,80,0,0" TextWrapping="Wrap" Text="Monto Inicial:" VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ProjectStartBudget" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ProjectStartBudget_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,120,0,0" TextWrapping="Wrap" Text="Fecha Inicio:" VerticalAlignment="Top"/>
+        <DatePicker Name="datePicker_ProjectStartDate" HorizontalAlignment="Left" Width="250" Margin="160,120,0,0" VerticalAlignment="Top" KeyDown="datePicker_ProjectStartDate_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,160,0,0" TextWrapping="Wrap" Text="Fecha Fin:" VerticalAlignment="Top"/>
+        <DatePicker Name="datePicker_ProjectEndDate" HorizontalAlignment="Left" Width="250" Margin="160,160,0,0" VerticalAlignment="Top" KeyDown="datePicker_ProjectEndDate_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,200,0,0" TextWrapping="Wrap" Text="Estado:" VerticalAlignment="Top"/>
+        <ComboBox Name="comboBox_ProjectStatus" HorizontalAlignment="Left" Width="250" Margin="160,200,0,0" VerticalAlignment="Top" KeyDown="comboBox_ProjectStatus_KeyDown">
             <ComboBoxItem Name="Activo" Content="Activo" Selector.IsSelected="True"/>
             <ComboBoxItem Name="Inactivo" Content="Inactivo"/>
             <ComboBoxItem Name="Finalizado" Content="Finalizado"/>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="31,238,0,0" TextWrapping="Wrap" Text="Observaciones:" VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ProjectObservations" HorizontalAlignment="Left" Height="91" Margin="166,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="242" KeyDown="textBox_ProjectObservations_KeyDown"/>
-        <Button Name="button_SaveProject" Content="Guardar" HorizontalAlignment="Left" Margin="232,353,0,0" VerticalAlignment="Top" Width="75" Click="button_SaveProject_Click" KeyDown="button_SaveProject_KeyDown"/>
-        <Button Name="button_Cancel" Content="Cancelar" HorizontalAlignment="Left" Margin="333,353,0,0" VerticalAlignment="Top" Width="75" Click="button_Cancel_Click" KeyDown="button_Cancel_KeyDown"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,240,0,0" TextWrapping="Wrap" Text="Observaciones:" VerticalAlignment="Top"/>
+        <TextBox Name="textBox_ProjectObservations" HorizontalAlignment="Left" Height="100" Width="250" Margin="160,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ProjectObservations_KeyDown" AcceptsReturn="True"/>
+        <Button Name="button_SaveProject" Content="Guardar" HorizontalAlignment="Left" Width="75" Margin="235,355,0,0" VerticalAlignment="Top" Click="button_SaveProject_Click" KeyDown="button_SaveProject_KeyDown"/>
+        <Button Name="button_Cancel" Content="Cancelar" HorizontalAlignment="Left" Width="75" Margin="335,355,0,0" VerticalAlignment="Top" Click="button_Cancel_Click" KeyDown="button_Cancel_KeyDown"/>
     </Grid>
 </Window>

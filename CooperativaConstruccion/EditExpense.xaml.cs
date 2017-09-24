@@ -2,6 +2,7 @@
 using FileSystem.tablas;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,11 +40,11 @@ namespace CooperativaConstruccion
             var exp = db.GetExpense(_expenseId);
             comboBox_ExpenseType.Text = exp.Type;
             textBox_ExpenseName.Text = exp.Name;
-            textBox_ExpenseAmount.Text = exp.Amount.ToString();
-            textBox_ExpenseUnitPrice.Text = exp.UnitPrice.ToString();
-            textBox_ExpenseTotalPrice.Text = exp.TotalPrice.ToString();
-            textBox_ExpenseVoucherNumber.Text = exp.VoucherNumber.ToString();
-            textBox_ExpenseDescription.Text = exp.Description.ToString();
+            textBox_ExpenseAmount.Text = exp.Amount;
+            textBox_ExpenseUnitPrice.Text = exp.UnitPrice;
+            textBox_ExpenseTotalPrice.Text = exp.TotalPrice;
+            textBox_ExpenseVoucherNumber.Text = exp.VoucherNumber;
+            textBox_ExpenseDescription.Text = exp.Description;
             comboBox_ExpenseType.Focus();
         }
 
@@ -51,6 +52,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -63,6 +70,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -83,6 +96,12 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -103,26 +122,38 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
-                textBox_ExpenseTotalPrice.Focus();
+                if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+                {
+                    textBox_ExpenseTotalPrice.Text = (decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), CultureInfo.CreateSpecificCulture("en-US")) * decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), CultureInfo.CreateSpecificCulture("en-US"))).ToString().Replace(",", ".");
+                }
+                else
+                {
+                    textBox_ExpenseTotalPrice.Text = "0";
+                }
+                textBox_ExpenseVoucherNumber.Focus();
             }
         }
 
         private void textBox_ExpenseTotalPrice_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.Tab || e.Key == Key.Escape)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -133,7 +164,7 @@ namespace CooperativaConstruccion
 
         private void textBox_ExpenseVoucherNumber_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Tab || e.Key == Key.Escape)
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key >= Key.A && e.Key <= Key.Z || e.Key == Key.OemMinus || e.Key == Key.Subtract || e.Key == Key.Tab)
             {
                 e.Handled = false;
             }
@@ -143,6 +174,12 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -155,6 +192,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -167,6 +210,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
         }
@@ -175,6 +224,12 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
                 Close();
             }
         }
@@ -188,24 +243,30 @@ namespace CooperativaConstruccion
                     Id = _expenseId,
                     Name = textBox_ExpenseName.Text,
                     Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
-                    Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "")),
-                    UnitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "")),
-                    TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", "")),
-                    VoucherNumber = int.Parse(textBox_ExpenseVoucherNumber.Text.ToString()),
+                    Amount = textBox_ExpenseAmount.Text.Replace(" ", ""),
+                    UnitPrice = textBox_ExpenseUnitPrice.Text.Replace(" ", ""),
+                    TotalPrice = textBox_ExpenseTotalPrice.Text.Replace(" ", ""),
+                    VoucherNumber = textBox_ExpenseVoucherNumber.Text,
                     Description = textBox_ExpenseDescription.Text,
                 };
 
-                db.InsertExpense(expense);
+                db.UpdateExpense(expense);
+
+                _main.ProjectsGrid_Loaded(sender, e);
 
                 _main.ExpensesGrid_Loaded(sender, e);
-
+                Close();
                 MessageBox.Show("Gasto / Jornal actualizado correctamente!", "Atención!", MessageBoxButton.OK);
-
-                OnLoad();
+                _main.button_EditProject.Visibility = Visibility.Hidden;
+                _main.button_DeleteProject.Visibility = Visibility.Hidden;
+                _main.button_NewExpense.Visibility = Visibility.Hidden;
+                _main.button_EditExpense.Visibility = Visibility.Hidden;
+                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+                _main.grillaGastos.Items.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo actualizar el gasto / jornal, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
+                MessageBox.Show("No se pudo actualizar el Gasto / Jornal, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
                 comboBox_ExpenseType.Focus();
                 return;
             }
@@ -213,6 +274,12 @@ namespace CooperativaConstruccion
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
+            _main.button_EditProject.Visibility = Visibility.Hidden;
+            _main.button_DeleteProject.Visibility = Visibility.Hidden;
+            _main.button_NewExpense.Visibility = Visibility.Hidden;
+            _main.button_EditExpense.Visibility = Visibility.Hidden;
+            _main.button_DeleteExpense.Visibility = Visibility.Hidden;
+            _main.grillaGastos.Items.Clear();
             Close();
         }
     }
