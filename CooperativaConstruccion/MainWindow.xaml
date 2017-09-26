@@ -41,6 +41,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock Name="TotalGastos" HorizontalAlignment="Center" Margin="900,600,0,0" TextWrapping="Wrap" Text="Total:" VerticalAlignment="Top"/>
+        <TextBlock Name="TotalGastos" HorizontalAlignment="Center" Margin="900,600,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </Window>

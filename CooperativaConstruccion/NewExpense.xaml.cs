@@ -41,13 +41,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
-                _main.TotalGastos.Text = string.Empty;
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -60,12 +54,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -86,16 +75,10 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
-                _main.TotalGastos.Text = string.Empty;
+                _main.HideButtons();
                 Close();
             }
-            if (e.Key == Key.Enter || e.Key == Key.Tab)
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
@@ -116,6 +99,24 @@ namespace CooperativaConstruccion
             }
         }
 
+        private void textBox_ExpenseAmount_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+            {
+                var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+            }
+            else
+            {
+                textBox_ExpenseTotalPrice.Text = "0";
+            }
+        }
+
         private void textBox_ExpenseUnitPrice_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.Tab || e.Key == Key.Escape)
@@ -128,17 +129,12 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
-                if(textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+                if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
                     var culture = CultureInfo.CreateSpecificCulture("en-US");
 
@@ -157,21 +153,67 @@ namespace CooperativaConstruccion
             }
         }
 
+        private void textBox_ExpenseUnitPrice_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+            {
+                var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+            }
+            else
+            {
+                textBox_ExpenseTotalPrice.Text = "0";
+            }
+        }
+
         private void textBox_ExpenseTotalPrice_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
-                _main.button_EditProject.Visibility = Visibility.Hidden;
-                _main.button_DeleteProject.Visibility = Visibility.Hidden;
-                _main.button_NewExpense.Visibility = Visibility.Hidden;
-                _main.button_EditExpense.Visibility = Visibility.Hidden;
-                _main.button_DeleteExpense.Visibility = Visibility.Hidden;
-                _main.grillaGastos.Items.Clear();
+                _main.HideButtons();
                 Close();
             }
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
+                if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+                {
+                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                }
+                else
+                {
+                    textBox_ExpenseTotalPrice.Text = "0";
+                }
+
                 textBox_ExpenseVoucherNumber.Focus();
+            }
+        }
+
+        private void textBox_ExpenseTotalPrice_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+            {
+                var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+            }
+            else
+            {
+                textBox_ExpenseTotalPrice.Text = "0";
             }
         }
 
@@ -187,7 +229,7 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -200,7 +242,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -213,7 +255,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
         }
@@ -222,14 +264,14 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
         }
 
         private void button_SaveExpense_Click(object sender, RoutedEventArgs e)
         {
-            if (textBox_ExpenseName.Text == string.Empty || textBox_ExpenseAmount.Text == string.Empty || textBox_ExpenseUnitPrice.Text == string.Empty || textBox_ExpenseVoucherNumber.Text == string.Empty || textBox_ExpenseTotalPrice.Text == string.Empty)
+            if (textBox_ExpenseName.Text == string.Empty || textBox_ExpenseAmount.Text == string.Empty || textBox_ExpenseUnitPrice.Text == string.Empty || textBox_ExpenseTotalPrice.Text == string.Empty || textBox_ExpenseVoucherNumber.Text == string.Empty)
             {
                 MessageBox.Show("Verifique los datos ingresados!", "Error!", MessageBoxButton.OK);
 
@@ -277,49 +319,13 @@ namespace CooperativaConstruccion
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            _main.HiddenButtons();
+            _main.HideButtons();
             Close();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _main.HiddenButtons();
-        }
-
-        private void textBox_ExpenseAmount_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
-            {
-                var culture = CultureInfo.CreateSpecificCulture("en-US");
-
-                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
-
-                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
-            }
-            else
-            {
-                textBox_ExpenseTotalPrice.Text = "0";
-            }
-        }
-
-        private void textBox_ExpenseUnitPrice_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
-            {
-                var culture = CultureInfo.CreateSpecificCulture("en-US");
-
-                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
-
-                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
-            }
-            else
-            {
-                textBox_ExpenseTotalPrice.Text = "0";
-            }
+            _main.HideButtons();
         }
     }
 }

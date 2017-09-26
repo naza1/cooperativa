@@ -42,7 +42,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -55,7 +55,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -76,12 +76,45 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
+                if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+                {
+                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                }
+                else
+                {
+                    textBox_ExpenseTotalPrice.Text = "0";
+                }
+
                 textBox_ExpenseUnitPrice.Focus();
+            }
+        }
+
+        private void textBox_ExpenseAmount_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+            {
+                var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+            }
+            else
+            {
+                textBox_ExpenseTotalPrice.Text = "0";
             }
         }
 
@@ -97,20 +130,45 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
-                    textBox_ExpenseTotalPrice.Text = (decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), CultureInfo.CreateSpecificCulture("en-US")) * decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), CultureInfo.CreateSpecificCulture("en-US"))).ToString().Replace(",", ".");
+                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
                 }
                 else
                 {
                     textBox_ExpenseTotalPrice.Text = "0";
                 }
+
                 textBox_ExpenseVoucherNumber.Focus();
+            }
+        }
+
+        private void textBox_ExpenseUnitPrice_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+            {
+                var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+            }
+            else
+            {
+                textBox_ExpenseTotalPrice.Text = "0";
             }
         }
 
@@ -118,12 +176,45 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
+                if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+                {
+                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                }
+                else
+                {
+                    textBox_ExpenseTotalPrice.Text = "0";
+                }
+
                 textBox_ExpenseVoucherNumber.Focus();
+            }
+        }
+
+        private void textBox_ExpenseTotalPrice_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
+            {
+                var culture = CultureInfo.CreateSpecificCulture("en-US");
+
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
+
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+            }
+            else
+            {
+                textBox_ExpenseTotalPrice.Text = "0";
             }
         }
 
@@ -139,7 +230,7 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -152,7 +243,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -165,7 +256,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
         }
@@ -174,58 +265,69 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
         }
 
         private void button_SaveExpense_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (textBox_ExpenseName.Text == string.Empty || textBox_ExpenseAmount.Text == string.Empty || textBox_ExpenseUnitPrice.Text == string.Empty || textBox_ExpenseTotalPrice.Text == string.Empty || textBox_ExpenseVoucherNumber.Text == string.Empty)
             {
-                var expense = new Expense
-                {
-                    Id = _expenseId,
-                    Name = textBox_ExpenseName.Text,
-                    Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
-                    Amount = textBox_ExpenseAmount.Text.Replace(" ", ""),
-                    UnitPrice = textBox_ExpenseUnitPrice.Text.Replace(" ", ""),
-                    TotalPrice = textBox_ExpenseTotalPrice.Text.Replace(" ", ""),
-                    VoucherNumber = textBox_ExpenseVoucherNumber.Text,
-                    Description = textBox_ExpenseDescription.Text,
-                };
-
-                db.UpdateExpense(expense);
-
-                _main.ProjectsGrid_Loaded(sender, e);
-
-                _main.ExpensesGrid_Loaded(sender, e);
-
-                Close();
-
-                MessageBox.Show("Gasto / Jornal actualizado correctamente!", "Atención!", MessageBoxButton.OK);
-
-                _main.HiddenButtons();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo actualizar el Gasto / Jornal, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Verifique los datos ingresados!", "Error!", MessageBoxButton.OK);
 
                 comboBox_ExpenseType.Focus();
 
                 return;
             }
+            else
+            {
+                try
+                {
+                    var expense = new Expense
+                    {
+                        Id = _expenseId,
+                        Name = textBox_ExpenseName.Text,
+                        Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
+                        Amount = textBox_ExpenseAmount.Text.Replace(" ", ""),
+                        UnitPrice = textBox_ExpenseUnitPrice.Text.Replace(" ", ""),
+                        TotalPrice = textBox_ExpenseTotalPrice.Text.Replace(" ", ""),
+                        VoucherNumber = textBox_ExpenseVoucherNumber.Text,
+                        Description = textBox_ExpenseDescription.Text,
+                    };
+
+                    db.UpdateExpense(expense);
+
+                    _main.ProjectsGrid_Loaded(sender, e);
+
+                    _main.ExpensesGrid_Loaded(sender, e);
+
+                    Close();
+
+                    MessageBox.Show("Gasto / Jornal actualizado correctamente!", "Atención!", MessageBoxButton.OK);
+
+                    _main.HideButtons();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo actualizar el Gasto / Jornal, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
+
+                    comboBox_ExpenseType.Focus();
+
+                    return;
+                }
+            }
         }
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            _main.HiddenButtons();
+            _main.HideButtons();
             Close();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _main.HiddenButtons();
+            _main.HideButtons();
         }
     }
 }

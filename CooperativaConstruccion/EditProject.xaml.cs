@@ -40,7 +40,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -61,7 +61,7 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -74,8 +74,16 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
+            }
+        }
+
+        private void datePicker_ProjectStartDate_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (datePicker_ProjectStartDate.SelectedDate.Value.Date > DateTime.Now)
+            {
+                comboBox_ProjectStatus.Text = "Inactivo";
             }
         }
 
@@ -83,8 +91,16 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
+            }
+        }
+
+        private void datePicker_ProjectEndDate_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (datePicker_ProjectEndDate.SelectedDate.Value.Date < DateTime.Now)
+            {
+                comboBox_ProjectStatus.Text = "Finalizado";
             }
         }
 
@@ -92,7 +108,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -105,7 +121,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -118,7 +134,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
         }
@@ -127,7 +143,7 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HiddenButtons();
+                _main.HideButtons();
                 Close();
             }
         }
@@ -169,7 +185,7 @@ namespace CooperativaConstruccion
 
                     MessageBox.Show("Proyecto actualizado correctamente!", "Atención!", MessageBoxButton.OK);
 
-                    _main.HiddenButtons();
+                    _main.HideButtons();
                 }
                 catch (Exception ex)
                 {
@@ -182,13 +198,13 @@ namespace CooperativaConstruccion
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            _main.HiddenButtons();
+            _main.HideButtons();
             Close();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _main.HiddenButtons();
+            _main.HideButtons();
         }
     }
 }

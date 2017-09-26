@@ -18,6 +18,7 @@ namespace CooperativaConstruccion
         {
             InitializeComponent();
             db = new DataAccessObject();
+            HideButtons();
         }
 
         public void ProjectsGrid_Loaded(object sender, RoutedEventArgs e)
@@ -52,7 +53,7 @@ namespace CooperativaConstruccion
                     }
                 }
 
-                TotalGastos.Text = "Total: " + db.CalculateTotalExpense(_projectId).ToString().Replace(",",".");
+                TotalGastos.Text = "TOTAL:  $" + db.CalculateTotalExpense(_projectId).ToString().Replace(",",".");
             }
         }
 
@@ -130,7 +131,7 @@ namespace CooperativaConstruccion
                     MessageBox.Show("No se pudo eliminar el Proyecto " + ex, "Error!", MessageBoxButton.OK);
                 }
 
-                HiddenButtons();
+                HideButtons();
             }
         }
 
@@ -188,7 +189,7 @@ namespace CooperativaConstruccion
                     MessageBox.Show("No se pudo eliminar el Gasto / Jornal " + ex, "Error!", MessageBoxButton.OK);
                 }
 
-                HiddenButtons();
+                HideButtons();
             }
         }
 
@@ -197,7 +198,7 @@ namespace CooperativaConstruccion
             Close();
         }
 
-        public void HiddenButtons()
+        public void HideButtons()
         {
             button_EditProject.Visibility = Visibility.Hidden;
             button_DeleteProject.Visibility = Visibility.Hidden;
