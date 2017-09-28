@@ -22,6 +22,8 @@ namespace Cooperativa.FileSystem
 
                 _dbConnection = new SQLiteConnection("Data Source=cooperativa.db3");
 
+                CreateWorkTable();
+
                 CreateProjectTable();
 
                 CreateExpenseTable();
@@ -33,11 +35,24 @@ namespace Cooperativa.FileSystem
 
         }
 
+        private void CreateWorkTable()
+        {
+            _dbConnection.Open();
+
+            string sql = $@"CREATE TABLE [Work] ([Id] INTEGER primary key, [Description] TEXT)";
+
+            command = new SQLiteCommand(sql, _dbConnection);
+
+            command.ExecuteNonQuery();
+
+            _dbConnection.Close();
+        }
+
         private void CreateProjectTable()
         {
             _dbConnection.Open();
 
-            string sql = $@"CREATE TABLE [Project] ([Id] INTEGER primary key, [Name] TEXT, [StartBudget] TEXT, [CreationDate] TEXT, [StartDate] TEXT, [EndDate] TEXT, [Status] TEXT, [Observations] TEXT, [Deleted] TEXT)";
+            string sql = $@"CREATE TABLE [Project] ([Id] INTEGER primary key, [Name] TEXT, [StartBudget] REAL, [CreationDate] TEXT, [StartDate] TEXT, [EndDate] TEXT, [Status] TEXT, [Observations] TEXT, [Deleted] TEXT)";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -50,7 +65,24 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"INSERT INTO[Project] VALUES(null, '{project.Name}', '{project.StartBudget}', '{project.CreationDate}', '{project.StartDate}', '{project.EndDate}', '{project.Status}', '{project.Observations}', '0')";
+            var projectStartBudget = project.StartBudget;
+
+            var sql = $@"INSERT INTO[Project] VALUES(null, '{project.Name}', @projectStartBudget, '{project.CreationDate}', '{project.StartDate}', '{project.EndDate}', '{project.Status}', '{project.Observations}', '0')";
+
+            command = new SQLiteCommand(sql, _dbConnection);
+
+            command.Parameters.AddWithValue("@projectStartBudget", projectStartBudget);
+
+            command.ExecuteNonQuery();
+
+            _dbConnection.Close();
+        }
+
+        public void InsertWork(Work work)
+        {
+            _dbConnection.Open();
+
+            var sql = $@"INSERT INTO[Work] VALUES(null, '{work.Description}')";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -77,7 +109,7 @@ namespace Cooperativa.FileSystem
                         {
                             Id = rdr.GetInt32(0),
                             Name = rdr.GetString(1),
-                            StartBudget = "$ " + rdr.GetString(2),
+                            StartBudget = rdr.GetDecimal(2),
                             CreationDate = rdr.GetString(3),
                             StartDate = rdr.GetString(4),
                             EndDate = rdr.GetString(5),
@@ -86,7 +118,7 @@ namespace Cooperativa.FileSystem
                             Deleted = rdr.GetString(8)
                         };
 
-                        project.CurrentBudget = "$ " + CalculateCurrentBudget(project.Id, project.StartBudget.Replace("$ ", "")).ToString().Replace(",", ".");
+                        //project.CurrentBudget = "$ " + CalculateCurrentBudget(project.Id, project.StartBudget.Replace("$ ", "")).ToString().Replace(",", ".");
                         project.RemainingDays = CalculateRemainingDays(project.StartDate, project.EndDate);
 
                         projectList.Add(project);
@@ -123,7 +155,7 @@ namespace Cooperativa.FileSystem
             return decimal.Parse(startBudget, CultureInfo.CreateSpecificCulture("en-US")) - total;
         }
 
-        public decimal CalculateTotalExpense(int id)
+        public decimal CalculateTotalExpenses(int id)
         {
             _dbConnection.Open();
 
@@ -154,12 +186,18 @@ namespace Cooperativa.FileSystem
         private int CalculateRemainingDays(string startDate, string endDate)
         {
             var startDateProject = DateTime.Parse(startDate);
+            var endDateProject = DateTime.Parse(endDate);
 
-            if (startDateProject <= DateTime.UtcNow)
+            if (endDateProject < DateTime.Now)
+            {
+                return 0;
+            }
+
+            if (startDateProject <= DateTime.Now)
             {
                 return int.Parse((DateTime.Parse(endDate) - DateTime.Now.Date).TotalDays.ToString());
             }
-
+            
             return int.Parse((DateTime.Parse(endDate) - startDateProject).TotalDays.ToString());
         }
 
@@ -184,7 +222,7 @@ namespace Cooperativa.FileSystem
                         {
                             Id = rdr.GetInt32(0),
                             Name = rdr.GetString(1),
-                            StartBudget = rdr.GetString(2),
+                            StartBudget = rdr.GetDecimal(2),
                             CreationDate = rdr.GetString(3),
                             StartDate = rdr.GetString(4),
                             EndDate = rdr.GetString(5),

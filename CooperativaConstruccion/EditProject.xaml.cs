@@ -28,7 +28,7 @@ namespace CooperativaConstruccion
         {
             var proj = db.GetProject(_projectId);
             textBox_ProjectName.Text = proj.Name;
-            textBox_ProjectStartBudget.Text = proj.StartBudget;
+            textBox_ProjectStartBudget.Text = proj.StartBudget.ToString();
             datePicker_ProjectStartDate.SelectedDate = DateTime.Parse(proj.StartDate);
             datePicker_ProjectEndDate.SelectedDate = DateTime.Parse(proj.EndDate);
             comboBox_ProjectStatus.Text = proj.Status;
@@ -170,7 +170,7 @@ namespace CooperativaConstruccion
                     {
                         Id = _projectId,
                         Name = textBox_ProjectName.Text,
-                        StartBudget = textBox_ProjectStartBudget.Text.Replace(" ", ""),
+                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text),
                         StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                         EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),

@@ -53,7 +53,7 @@ namespace CooperativaConstruccion
                     }
                 }
 
-                TotalGastos.Text = "TOTAL:  $" + db.CalculateTotalExpense(_projectId).ToString().Replace(",",".");
+                TotalGastos.Text = "TOTAL:  $" + db.CalculateTotalExpenses(_projectId).ToString().Replace(",",".");
             }
         }
 

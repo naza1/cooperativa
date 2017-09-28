@@ -8,9 +8,9 @@ namespace FileSystem.Tables
 
         public string Name { get; set; }
 
-        public string StartBudget { get; set; }
+        public decimal StartBudget { get; set; }
 
-        public string CurrentBudget { get; set; }
+        public decimal CurrentBudget { get; set; }
 
         public string CreationDate { get; set; }
 
