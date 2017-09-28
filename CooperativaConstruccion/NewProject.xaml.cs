@@ -169,7 +169,7 @@ namespace CooperativaConstruccion
                     var project = new Project
                     {
                         Name = textBox_ProjectName.Text,
-                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text, culture),
+                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text.Replace(" ", ""), culture),
                         CreationDate = DateTime.Now.Date.ToShortDateString(),
                         StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                         EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),

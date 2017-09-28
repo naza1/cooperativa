@@ -1,6 +1,7 @@
 ﻿using Cooperativa.FileSystem;
 using FileSystem.Tables;
 using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Input;
 
@@ -166,11 +167,13 @@ namespace CooperativaConstruccion
             {
                 try
                 {
+                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+
                     var project = new Project
                     {
                         Id = _projectId,
                         Name = textBox_ProjectName.Text,
-                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text),
+                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text.Replace(" ", ""), culture),
                         StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
                         EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),

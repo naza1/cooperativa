@@ -30,9 +30,9 @@ namespace CooperativaConstruccion
             var exp = db.GetExpense(_expenseId);
             comboBox_ExpenseType.Text = exp.Type;
             textBox_ExpenseName.Text = exp.Name;
-            textBox_ExpenseAmount.Text = exp.Amount;
-            textBox_ExpenseUnitPrice.Text = exp.UnitPrice;
-            textBox_ExpenseTotalPrice.Text = exp.TotalPrice;
+            textBox_ExpenseAmount.Text = exp.Amount.ToString();
+            textBox_ExpenseUnitPrice.Text = exp.UnitPrice.ToString();
+            textBox_ExpenseTotalPrice.Text = exp.TotalPrice.ToString();
             textBox_ExpenseVoucherNumber.Text = exp.VoucherNumber;
             textBox_ExpenseDescription.Text = exp.Description;
             comboBox_ExpenseType.Focus();
@@ -289,9 +289,9 @@ namespace CooperativaConstruccion
                         Id = _expenseId,
                         Name = textBox_ExpenseName.Text,
                         Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
-                        Amount = textBox_ExpenseAmount.Text.Replace(" ", ""),
-                        UnitPrice = textBox_ExpenseUnitPrice.Text.Replace(" ", ""),
-                        TotalPrice = textBox_ExpenseTotalPrice.Text.Replace(" ", ""),
+                        Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "")),
+                        UnitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "")),
+                        TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", "")),
                         VoucherNumber = textBox_ExpenseVoucherNumber.Text,
                         Description = textBox_ExpenseDescription.Text,
                     };

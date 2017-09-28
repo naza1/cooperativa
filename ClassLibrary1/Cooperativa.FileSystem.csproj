@@ -68,7 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\Project.cs" />
     <Compile Include="Tables\Expense.cs" />
-    <Compile Include="Tables\Stage.cs" />
     <Compile Include="Tables\Work.cs" />
     <Compile Include="Writer\DataAccessObject.cs" />
   </ItemGroup>

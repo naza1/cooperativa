@@ -14,11 +14,11 @@ namespace FileSystem.tablas
 
         public string Type { get; set; }
 
-        public string Amount { get; set; }
+        public decimal Amount { get; set; }
 
-        public string UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
 
-        public string TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
 
         public string VoucherNumber { get; set; }
 

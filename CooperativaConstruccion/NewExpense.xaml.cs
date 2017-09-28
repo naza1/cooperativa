@@ -283,14 +283,16 @@ namespace CooperativaConstruccion
             {
                 try
                 {
+                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+
                     var expense = new Expense
                     {
                         ProjectId = _projectId,
                         Name = textBox_ExpenseName.Text,
                         Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
-                        Amount = textBox_ExpenseAmount.Text.Replace(" ", ""),
-                        UnitPrice = textBox_ExpenseUnitPrice.Text.Replace(" ", ""),
-                        TotalPrice = textBox_ExpenseTotalPrice.Text.Replace(" ", ""),
+                        Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture),
+                        UnitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture),
+                        TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", ""), culture),
                         VoucherNumber = textBox_ExpenseVoucherNumber.Text,
                         Date = DateTime.Now.Date.ToShortDateString(),
                         Description = textBox_ExpenseDescription.Text,
