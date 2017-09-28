@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cooperativa.ControlPanel", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cooperativa.FileSystem", "ClassLibrary1\Cooperativa.FileSystem.csproj", "{F039A937-3174-4609-93B7-D589F0178665}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{4420B9FD-EF09-4DE5-AE00-034D4C8BAC85}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,8 +21,6 @@ Global
 		{F039A937-3174-4609-93B7-D589F0178665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F039A937-3174-4609-93B7-D589F0178665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F039A937-3174-4609-93B7-D589F0178665}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4420B9FD-EF09-4DE5-AE00-034D4C8BAC85}.Debug|Any CPU.ActiveCfg = Debug
-		{4420B9FD-EF09-4DE5-AE00-034D4C8BAC85}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
