@@ -15,6 +15,7 @@ namespace CooperativaConstruccion
         private DataAccessObject db;
         private int _expenseId = 0;
         private MainWindow _main;
+        private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public EditExpense(MainWindow main, int expenseId)
         {
@@ -83,7 +84,6 @@ namespace CooperativaConstruccion
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
 
                     var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
 
@@ -104,7 +104,6 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
-                var culture = CultureInfo.CreateSpecificCulture("en-US");
 
                 var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
 
@@ -137,7 +136,6 @@ namespace CooperativaConstruccion
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
 
                     var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
 
@@ -158,7 +156,6 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
-                var culture = CultureInfo.CreateSpecificCulture("en-US");
 
                 var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
 
@@ -179,11 +176,11 @@ namespace CooperativaConstruccion
                 _main.HideButtons();
                 Close();
             }
+
             if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
 
                     var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
 
@@ -204,7 +201,6 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
-                var culture = CultureInfo.CreateSpecificCulture("en-US");
 
                 var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
 

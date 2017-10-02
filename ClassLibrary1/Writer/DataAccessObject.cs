@@ -1,10 +1,10 @@
-﻿using FileSystem.Tables;
+﻿using FileSystem.tablas;
+using FileSystem.Tables;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.IO;
-using System;
 using System.Globalization;
-using FileSystem.tablas;
+using System.IO;
 
 namespace Cooperativa.FileSystem
 {
@@ -12,6 +12,7 @@ namespace Cooperativa.FileSystem
     {
         private SQLiteConnection _dbConnection;
         private SQLiteCommand command;
+        private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public DataAccessObject()
         {
@@ -22,8 +23,6 @@ namespace Cooperativa.FileSystem
 
                 _dbConnection = new SQLiteConnection("Data Source=cooperativa.db3");
 
-                CreateWorkTable();
-
                 CreateProjectTable();
 
                 CreateExpenseTable();
@@ -33,19 +32,6 @@ namespace Cooperativa.FileSystem
                 _dbConnection = new SQLiteConnection("Data Source=cooperativa.db3");
             }
 
-        }
-
-        private void CreateWorkTable()
-        {
-            _dbConnection.Open();
-
-            string sql = $@"CREATE TABLE [Work] ([Id] INTEGER primary key, [Description] TEXT)";
-
-            command = new SQLiteCommand(sql, _dbConnection);
-
-            command.ExecuteNonQuery();
-
-            _dbConnection.Close();
         }
 
         private void CreateProjectTable()
@@ -70,19 +56,6 @@ namespace Cooperativa.FileSystem
             command = new SQLiteCommand(sql, _dbConnection);
 
             command.Parameters.AddWithValue("@projectStartBudget", project.StartBudget);
-
-            command.ExecuteNonQuery();
-
-            _dbConnection.Close();
-        }
-
-        public void InsertWork(Work work)
-        {
-            _dbConnection.Open();
-
-            var sql = $@"INSERT INTO[Work] VALUES(null, '{work.Description}')";
-
-            command = new SQLiteCommand(sql, _dbConnection);
 
             command.ExecuteNonQuery();
 
@@ -131,7 +104,7 @@ namespace Cooperativa.FileSystem
 
         public decimal CalculateCurrentBudget(int id, decimal startBudget)
         {
-            var sql = $@"SELECT SUM([TotalPrice]) FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {id}";
+            var sql = $"SELECT SUM([TotalPrice]) FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {id}";
 
             var total = 0m;
 
@@ -157,7 +130,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"SELECT SUM([TotalPrice]) FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {id}";
+            var sql = $"SELECT SUM([TotalPrice]) FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {id}";
 
             var total = 0m;
 
@@ -181,10 +154,12 @@ namespace Cooperativa.FileSystem
             return total;
         }
 
-        private int CalculateRemainingDays(string startDate, string endDate)
+        private double CalculateRemainingDays(string startDate, string endDate)
         {
-            var startDateProject = DateTime.Parse(startDate);
-            var endDateProject = DateTime.Parse(endDate);
+
+            var startDateProject = DateTime.Parse(startDate, culture);
+
+            var endDateProject = DateTime.Parse(endDate, culture);
 
             if (endDateProject < DateTime.Now)
             {
@@ -193,10 +168,10 @@ namespace Cooperativa.FileSystem
 
             if (startDateProject <= DateTime.Now)
             {
-                return int.Parse((endDateProject - DateTime.Now.Date).TotalDays.ToString());
+                return (endDateProject - DateTime.Now.Date).TotalDays;
             }
             
-            return int.Parse((endDateProject - startDateProject).TotalDays.ToString());
+            return (endDateProject - startDateProject).TotalDays;
         }
 
         public Project GetProject(int id)
@@ -243,7 +218,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"UPDATE [Project] SET [Name] = '{project.Name}', [StartBudget] = '@projectStartBudget', [StartDate] = '{project.StartDate}', [EndDate] = '{project.EndDate}', [Status] = '{project.Status}', [Observations] = '{project.Observations}' WHERE [Id] = {project.Id}";
+            var sql = $"UPDATE [Project] SET [Name] = '{project.Name}', [StartBudget] = @projectStartBudget, [StartDate] = '{project.StartDate}', [EndDate] = '{project.EndDate}', [Status] = '{project.Status}', [Observations] = '{project.Observations}' WHERE [Id] = {project.Id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -279,7 +254,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            string sql = $@"CREATE TABLE [Expense] ([Id] INTEGER PRIMARY KEY, [ProjectId] INTEGER, [Name] TEXT, [Type] TEXT, [Amount] REAL, [UnitPrice] REAL, [TotalPrice] REAL, [VoucherNumber] TEXT, [Date] TEXT, [Description] TEXT, [Deleted] TEXT, FOREIGN KEY(ProjectId) REFERENCES Poject(Id))";
+            string sql = $"CREATE TABLE [Expense] ([Id] INTEGER PRIMARY KEY, [ProjectId] INTEGER, [Name] TEXT, [Type] TEXT, [Amount] REAL, [UnitPrice] REAL, [TotalPrice] REAL, [VoucherNumber] TEXT, [Date] TEXT, [Description] TEXT, [Deleted] TEXT, FOREIGN KEY(ProjectId) REFERENCES Poject(Id))";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -292,7 +267,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"INSERT INTO[Expense] VALUES(null, {expense.ProjectId}, '{expense.Name}', '{expense.Type}', @expenseAmount, @expenseUnitPrice, @expenseTotalPrice, '{expense.VoucherNumber}', '{expense.Date}', '{expense.Description}', '0')";
+            var sql = $"INSERT INTO[Expense] VALUES(null, {expense.ProjectId}, '{expense.Name}', '{expense.Type}', @expenseAmount, @expenseUnitPrice, @expenseTotalPrice, '{expense.VoucherNumber}', '{expense.Date}', '{expense.Description}', '0')";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -311,7 +286,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"SELECT * FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {projectId}";
+            var sql = $"SELECT * FROM [Expense] WHERE [Deleted] <> '1' AND [ProjectId] = {projectId}";
 
             var expenseList = new List<Expense>();
 
@@ -351,7 +326,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"SELECT * FROM [Expense] WHERE Id = {id}";
+            var sql = $"SELECT * FROM [Expense] WHERE Id = {id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -393,7 +368,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"UPDATE [Expense] SET [Name] = '{expense.Name}', [Type] = '{expense.Type}', [Amount] = @expenseAmount, [UnitPrice] = @expenseUnitPrice, [TotalPrice] = @expenseTotalPrice, [VoucherNumber] = '{expense.VoucherNumber}', [Description] = '{expense.Description}' WHERE [Id] = {expense.Id}";
+            var sql = $"UPDATE [Expense] SET [Name] = '{expense.Name}', [Type] = '{expense.Type}', [Amount] = @expenseAmount, [UnitPrice] = @expenseUnitPrice, [TotalPrice] = @expenseTotalPrice, [VoucherNumber] = '{expense.VoucherNumber}', [Description] = '{expense.Description}' WHERE [Id] = {expense.Id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 
@@ -412,7 +387,7 @@ namespace Cooperativa.FileSystem
         {
             _dbConnection.Open();
 
-            var sql = $@"UPDATE [Expense] SET [Deleted] = '1' WHERE [Id] = {id}";
+            var sql = $"UPDATE [Expense] SET [Deleted] = '1' WHERE [Id] = {id}";
 
             command = new SQLiteCommand(sql, _dbConnection);
 

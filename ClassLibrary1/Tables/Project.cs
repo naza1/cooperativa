@@ -20,7 +20,7 @@ namespace FileSystem.Tables
 
         public string Status { get; set; }
 
-        public int RemainingDays { get; set; }
+        public double RemainingDays { get; set; }
 
         public string Observations { get; set; }
 

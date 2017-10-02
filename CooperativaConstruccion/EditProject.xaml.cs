@@ -15,6 +15,7 @@ namespace CooperativaConstruccion
         private DataAccessObject db;
         private int _projectId = 0;
         private MainWindow _main;
+        private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public EditProject(MainWindow main, int projectId)
         {
@@ -27,11 +28,13 @@ namespace CooperativaConstruccion
 
         private void OnLoad()
         {
+
             var proj = db.GetProject(_projectId);
+
             textBox_ProjectName.Text = proj.Name;
-            textBox_ProjectStartBudget.Text = proj.StartBudget.ToString();
-            datePicker_ProjectStartDate.SelectedDate = DateTime.Parse(proj.StartDate);
-            datePicker_ProjectEndDate.SelectedDate = DateTime.Parse(proj.EndDate);
+            textBox_ProjectStartBudget.Text = proj.StartBudget.ToString(culture);
+            datePicker_ProjectStartDate.SelectedDate = DateTime.Parse(proj.StartDate, culture);
+            datePicker_ProjectEndDate.SelectedDate = DateTime.Parse(proj.EndDate, culture);
             comboBox_ProjectStatus.Text = proj.Status;
             textBox_ProjectObservations.Text = proj.Observations;
             textBox_ProjectName.Focus();
@@ -167,15 +170,14 @@ namespace CooperativaConstruccion
             {
                 try
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
 
                     var project = new Project
                     {
                         Id = _projectId,
                         Name = textBox_ProjectName.Text,
                         StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text.Replace(" ", ""), culture),
-                        StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
-                        EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
+                        StartDate = datePicker_ProjectStartDate.SelectedDate.Value.ToShortDateString().ToString(culture),
+                        EndDate = datePicker_ProjectEndDate.SelectedDate.Value.ToShortDateString().ToString(culture),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),
                         Observations = textBox_ProjectObservations.Text,
                     };

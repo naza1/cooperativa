@@ -1,5 +1,6 @@
 ﻿using Cooperativa.FileSystem;
 using System;
+using System.Globalization;
 using System.Windows;
 
 namespace CooperativaConstruccion
@@ -13,6 +14,7 @@ namespace CooperativaConstruccion
         private DataAccessObject db;
         private int _projectId = 0;
         private int _expenseId = 0;
+        private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public MainWindow()
         {
@@ -31,7 +33,19 @@ namespace CooperativaConstruccion
             {
                 foreach (var item in cadena)
                 {
-                    grillaProyectos.Items.Add(new {item.Id, item.Name, item.StartBudget, item.CurrentBudget, item.StartDate, item.EndDate, item.Status, item.RemainingDays});
+                    var o = new
+                    {
+                        item.Id,
+                        item.Name,
+                        item.StartBudget,
+                        item.CurrentBudget,
+                        item.StartDate,
+                        item.EndDate,
+                        item.Status,
+                        item.RemainingDays
+                    };
+
+                    grillaProyectos.Items.Add(o);
                 }
             }
         }
@@ -49,11 +63,21 @@ namespace CooperativaConstruccion
                 {
                     foreach (var item in cadena)
                     {
-                        grillaGastos.Items.Add(new {item.Id, item.Name, item.Amount, item.UnitPrice, item.TotalPrice});
+
+                        var o = new
+                        {
+                            item.Id,
+                            item.Name,
+                            item.Amount,
+                            item.UnitPrice,
+                            item.TotalPrice
+                        };
+
+                        grillaGastos.Items.Add(o);
                     }
                 }
 
-                TotalGastos.Text = "TOTAL:  $" + db.CalculateTotalExpenses(_projectId).ToString().Replace(",",".");
+                TotalGastos.Text = "TOTAL:  $" + db.CalculateTotalExpenses(_projectId);
             }
         }
 
@@ -65,10 +89,13 @@ namespace CooperativaConstruccion
             {
                 return;
             }
+
             button_EditProject.Visibility = Visibility.Visible;
             button_DeleteProject.Visibility = Visibility.Visible;
             button_NewExpense.Visibility = Visibility.Visible;
+
             _projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
+
             ExpensesGrid_Loaded(sender, e);
         }
 
@@ -80,8 +107,10 @@ namespace CooperativaConstruccion
             {
                 return;
             }
+
             button_EditExpense.Visibility = Visibility.Visible;
             button_DeleteExpense.Visibility = Visibility.Visible;
+
             _expenseId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
         }
 
