@@ -38,3 +38,23 @@ C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\Cla
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csproj.CoreCompileInputs.cache
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\x86\SQLite.Interop.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\x64\SQLite.Interop.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\EntityFramework.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\System.Data.SQLite.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\System.Data.SQLite.EF6.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\System.Data.SQLite.Linq.dll
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\EntityFramework.xml
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\System.Data.SQLite.xml
+E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\System.Data.SQLite.dll.config
+E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csprojResolveAssemblyReference.cache
+E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csproj.CoreCompileInputs.cache
+E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

@@ -14,6 +14,7 @@ namespace CooperativaConstruccion
     {
         private DataAccessObject db;
         private MainWindow _main;
+        private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public NewProject(MainWindow main)
         {
@@ -77,28 +78,12 @@ namespace CooperativaConstruccion
             }
         }
 
-        private void datePicker_ProjectStartDate_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            if (datePicker_ProjectStartDate.SelectedDate.Value.Date > DateTime.Now)
-            {
-                comboBox_ProjectStatus.Text = "Inactivo";
-            }
-        }
-
         private void datePicker_ProjectEndDate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
                 _main.HideButtons();
                 Close();
-            }
-        }
-
-        private void datePicker_ProjectEndDate_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            if (datePicker_ProjectEndDate.SelectedDate.Value.Date < DateTime.Now)
-            {
-                comboBox_ProjectStatus.Text = "Finalizado";
             }
         }
 
@@ -164,15 +149,13 @@ namespace CooperativaConstruccion
             {
                 try
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
-
                     var project = new Project
                     {
                         Name = textBox_ProjectName.Text,
-                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text.Replace(" ", ""), culture),
+                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text.Replace(" ", "").Replace(".", ","), culture),
                         CreationDate = DateTime.Now.Date.ToShortDateString(),
-                        StartDate = datePicker_ProjectStartDate.SelectedDate.Value.Date.ToShortDateString(),
-                        EndDate = datePicker_ProjectEndDate.SelectedDate.Value.Date.ToShortDateString(),
+                        StartDate = datePicker_ProjectStartDate.SelectedDate.Value.ToShortDateString().ToString(culture),
+                        EndDate = datePicker_ProjectEndDate.SelectedDate.Value.ToShortDateString().ToString(culture),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),
                         Observations = textBox_ProjectObservations.Text,
                     };
@@ -184,6 +167,7 @@ namespace CooperativaConstruccion
                     MessageBox.Show("Proyecto guardado correctamente!", "Atención!", MessageBoxButton.OK);
 
                     OnLoad();
+
                     Close();
                 }
                 catch (Exception ex)

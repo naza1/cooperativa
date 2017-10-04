@@ -12,9 +12,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="30,80,0,0" TextWrapping="Wrap" Text="Monto Inicial:" VerticalAlignment="Top"/>
         <TextBox Name="textBox_ProjectStartBudget" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ProjectStartBudget_KeyDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,120,0,0" TextWrapping="Wrap" Text="Fecha Inicio:" VerticalAlignment="Top"/>
-        <DatePicker Name="datePicker_ProjectStartDate" HorizontalAlignment="Left" Width="250" Margin="160,120,0,0" VerticalAlignment="Top" KeyDown="datePicker_ProjectStartDate_KeyDown" SelectedDateChanged="datePicker_ProjectStartDate_SelectedDateChanged"/>
+        <DatePicker Name="datePicker_ProjectStartDate" HorizontalAlignment="Left" Width="250" Margin="160,120,0,0" VerticalAlignment="Top" KeyDown="datePicker_ProjectStartDate_KeyDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,160,0,0" TextWrapping="Wrap" Text="Fecha Fin:" VerticalAlignment="Top"/>
-        <DatePicker Name="datePicker_ProjectEndDate" HorizontalAlignment="Left" Width="250" Margin="160,160,0,0" VerticalAlignment="Top" KeyDown="datePicker_ProjectEndDate_KeyDown" SelectedDateChanged="datePicker_ProjectEndDate_SelectedDateChanged"/>
+        <DatePicker Name="datePicker_ProjectEndDate" HorizontalAlignment="Left" Width="250" Margin="160,160,0,0" VerticalAlignment="Top" KeyDown="datePicker_ProjectEndDate_KeyDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,200,0,0" TextWrapping="Wrap" Text="Estado:" VerticalAlignment="Top"/>
         <ComboBox Name="comboBox_ProjectStatus" HorizontalAlignment="Left" Width="250" Margin="160,200,0,0" VerticalAlignment="Top" KeyDown="comboBox_ProjectStatus_KeyDown">
             <ComboBoxItem Name="Activo" Content="Activo" Selector.IsSelected="True"/>

@@ -33,12 +33,14 @@ namespace CooperativaConstruccion
             {
                 foreach (var item in cadena)
                 {
+                    var StartBudget = item.StartBudget.ToString("C");
+                    var CurrentBudget = item.CurrentBudget.ToString("C");
                     var o = new
                     {
                         item.Id,
                         item.Name,
-                        item.StartBudget,
-                        item.CurrentBudget,
+                        StartBudget,
+                        CurrentBudget,
                         item.StartDate,
                         item.EndDate,
                         item.Status,
@@ -63,21 +65,22 @@ namespace CooperativaConstruccion
                 {
                     foreach (var item in cadena)
                     {
-
+                        var UnitPrice = item.UnitPrice.ToString("C");
+                        var TotalPrice = item.TotalPrice.ToString("C");
                         var o = new
                         {
                             item.Id,
                             item.Name,
                             item.Amount,
-                            item.UnitPrice,
-                            item.TotalPrice
+                            UnitPrice,
+                            TotalPrice
                         };
 
                         grillaGastos.Items.Add(o);
                     }
                 }
 
-                TotalGastos.Text = "TOTAL:  $" + db.CalculateTotalExpenses(_projectId);
+                TotalGastos.Text = "TOTAL:   " + db.CalculateTotalExpenses(_projectId).ToString("C");
             }
         }
 
@@ -206,6 +209,8 @@ namespace CooperativaConstruccion
                     if (result == MessageBoxResult.Yes)
                     {
                         db.DeleteExpense(_expenseId);
+
+                        ProjectsGrid_Loaded(sender, e);
 
                         ExpensesGrid_Loaded(sender, e);
 

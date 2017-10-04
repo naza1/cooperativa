@@ -13,8 +13,8 @@ namespace CooperativaConstruccion
     public partial class EditExpense : Window
     {
         private DataAccessObject db;
-        private int _expenseId = 0;
         private MainWindow _main;
+        private int _expenseId = 0;
         private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public EditExpense(MainWindow main, int expenseId)
@@ -84,16 +84,15 @@ namespace CooperativaConstruccion
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
                 }
                 else
                 {
-                    textBox_ExpenseTotalPrice.Text = "0";
+                    textBox_ExpenseTotalPrice.Text = "0,00";
                 }
 
                 textBox_ExpenseUnitPrice.Focus();
@@ -104,16 +103,15 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
             }
             else
             {
-                textBox_ExpenseTotalPrice.Text = "0";
+                textBox_ExpenseTotalPrice.Text = "0,00";
             }
         }
 
@@ -136,16 +134,15 @@ namespace CooperativaConstruccion
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
                 }
                 else
                 {
-                    textBox_ExpenseTotalPrice.Text = "0";
+                    textBox_ExpenseTotalPrice.Text = "0,00";
                 }
 
                 textBox_ExpenseVoucherNumber.Focus();
@@ -156,16 +153,15 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
             }
             else
             {
-                textBox_ExpenseTotalPrice.Text = "0";
+                textBox_ExpenseTotalPrice.Text = "0,00";
             }
         }
 
@@ -181,16 +177,15 @@ namespace CooperativaConstruccion
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
                 }
                 else
                 {
-                    textBox_ExpenseTotalPrice.Text = "0";
+                    textBox_ExpenseTotalPrice.Text = "0,00";
                 }
 
                 textBox_ExpenseVoucherNumber.Focus();
@@ -201,16 +196,15 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
             }
             else
             {
-                textBox_ExpenseTotalPrice.Text = "0";
+                textBox_ExpenseTotalPrice.Text = "0,00";
             }
         }
 
@@ -285,9 +279,9 @@ namespace CooperativaConstruccion
                         Id = _expenseId,
                         Name = textBox_ExpenseName.Text,
                         Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
-                        Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "")),
-                        UnitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "")),
-                        TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", "")),
+                        Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture),
+                        UnitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture),
+                        TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", "").Replace(".", ","), culture),
                         VoucherNumber = textBox_ExpenseVoucherNumber.Text,
                         Description = textBox_ExpenseDescription.Text,
                     };

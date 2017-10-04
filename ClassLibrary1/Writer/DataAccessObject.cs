@@ -12,11 +12,9 @@ namespace Cooperativa.FileSystem
     {
         private SQLiteConnection _dbConnection;
         private SQLiteCommand command;
-        private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public DataAccessObject()
         {
-
             if (!File.Exists("cooperativa.db3"))
             {
                 SQLiteConnection.CreateFile("cooperativa.db3");
@@ -31,7 +29,6 @@ namespace Cooperativa.FileSystem
             {
                 _dbConnection = new SQLiteConnection("Data Source=cooperativa.db3");
             }
-
         }
 
         private void CreateProjectTable()
@@ -156,10 +153,9 @@ namespace Cooperativa.FileSystem
 
         private double CalculateRemainingDays(string startDate, string endDate)
         {
+            var startDateProject = DateTime.Parse(startDate);
 
-            var startDateProject = DateTime.Parse(startDate, culture);
-
-            var endDateProject = DateTime.Parse(endDate, culture);
+            var endDateProject = DateTime.Parse(endDate);
 
             if (endDateProject < DateTime.Now)
             {
@@ -296,7 +292,6 @@ namespace Cooperativa.FileSystem
                 {
                     while (rdr.Read())
                     {
-
                         var expense = new Expense
                         {
                             Id = rdr.GetInt32(0),
@@ -338,7 +333,6 @@ namespace Cooperativa.FileSystem
                 {
                     while (rdr.Read())
                     {
-
                         var expense = new Expense
                         {
                             Id = rdr.GetInt32(0),

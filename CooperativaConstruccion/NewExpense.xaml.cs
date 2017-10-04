@@ -13,8 +13,9 @@ namespace CooperativaConstruccion
     public partial class NewExpense : Window
     {
         private DataAccessObject db;
-        private int _projectId = 0;
         private MainWindow _main;
+        private int _projectId = 0;
+        private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public NewExpense(MainWindow main, int projectId)
         {
@@ -82,17 +83,15 @@ namespace CooperativaConstruccion
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
                 }
                 else
                 {
-                    textBox_ExpenseTotalPrice.Text = "0";
+                    textBox_ExpenseTotalPrice.Text = "0,00";
                 }
 
                 textBox_ExpenseUnitPrice.Focus();
@@ -103,17 +102,15 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
-                var culture = CultureInfo.CreateSpecificCulture("en-US");
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
             }
             else
             {
-                textBox_ExpenseTotalPrice.Text = "0";
+                textBox_ExpenseTotalPrice.Text = "0,00";
             }
         }
 
@@ -136,17 +133,15 @@ namespace CooperativaConstruccion
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
                 }
                 else
                 {
-                    textBox_ExpenseTotalPrice.Text = "0";
+                    textBox_ExpenseTotalPrice.Text = "0,00";
                 }
 
                 textBox_ExpenseVoucherNumber.Focus();
@@ -157,17 +152,15 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
-                var culture = CultureInfo.CreateSpecificCulture("en-US");
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
             }
             else
             {
-                textBox_ExpenseTotalPrice.Text = "0";
+                textBox_ExpenseTotalPrice.Text = "0,00";
             }
         }
 
@@ -182,17 +175,15 @@ namespace CooperativaConstruccion
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
+                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                    var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                    textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
                 }
                 else
                 {
-                    textBox_ExpenseTotalPrice.Text = "0";
+                    textBox_ExpenseTotalPrice.Text = "0,00";
                 }
 
                 textBox_ExpenseVoucherNumber.Focus();
@@ -203,17 +194,15 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
             {
-                var culture = CultureInfo.CreateSpecificCulture("en-US");
+                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture);
+                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture);
 
-                var unitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture);
-
-                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString().Replace(",", ".");
+                textBox_ExpenseTotalPrice.Text = (amount * unitPrice).ToString();
             }
             else
             {
-                textBox_ExpenseTotalPrice.Text = "0";
+                textBox_ExpenseTotalPrice.Text = "0,00";
             }
         }
 
@@ -283,16 +272,14 @@ namespace CooperativaConstruccion
             {
                 try
                 {
-                    var culture = CultureInfo.CreateSpecificCulture("en-US");
-
                     var expense = new Expense
                     {
                         ProjectId = _projectId,
                         Name = textBox_ExpenseName.Text,
                         Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
-                        Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", ""), culture),
-                        UnitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", ""), culture),
-                        TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", ""), culture),
+                        Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture),
+                        UnitPrice = decimal.Parse(textBox_ExpenseUnitPrice.Text.Replace(" ", "").Replace(".", ","), culture),
+                        TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", "").Replace(".", ","), culture),
                         VoucherNumber = textBox_ExpenseVoucherNumber.Text,
                         Date = DateTime.Now.Date.ToShortDateString(),
                         Description = textBox_ExpenseDescription.Text,

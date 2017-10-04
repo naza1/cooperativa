@@ -13,8 +13,8 @@ namespace CooperativaConstruccion
     public partial class EditProject : Window
     {
         private DataAccessObject db;
-        private int _projectId = 0;
         private MainWindow _main;
+        private int _projectId = 0;
         private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public EditProject(MainWindow main, int projectId)
@@ -28,7 +28,6 @@ namespace CooperativaConstruccion
 
         private void OnLoad()
         {
-
             var proj = db.GetProject(_projectId);
 
             textBox_ProjectName.Text = proj.Name;
@@ -83,28 +82,12 @@ namespace CooperativaConstruccion
             }
         }
 
-        private void datePicker_ProjectStartDate_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            if (datePicker_ProjectStartDate.SelectedDate.Value.Date > DateTime.Now)
-            {
-                comboBox_ProjectStatus.Text = "Inactivo";
-            }
-        }
-
         private void datePicker_ProjectEndDate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
                 _main.HideButtons();
                 Close();
-            }
-        }
-
-        private void datePicker_ProjectEndDate_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            if (datePicker_ProjectEndDate.SelectedDate.Value.Date < DateTime.Now)
-            {
-                comboBox_ProjectStatus.Text = "Finalizado";
             }
         }
 
@@ -157,25 +140,29 @@ namespace CooperativaConstruccion
             if (textBox_ProjectName.Text == string.Empty || textBox_ProjectStartBudget.Text == string.Empty || datePicker_ProjectStartDate.Text == string.Empty || datePicker_ProjectEndDate.Text == string.Empty)
             {
                 MessageBox.Show("Verifique los datos ingresados!", "Error!", MessageBoxButton.OK);
+
                 textBox_ProjectName.Focus();
+
                 return;
             }
             else if (datePicker_ProjectStartDate.SelectedDate.Value.Date.CompareTo(datePicker_ProjectEndDate.SelectedDate.Value.Date) > 0)
             {
+
                 MessageBox.Show("Verifique las fechas ingresadas!", "Error!", MessageBoxButton.OK);
+
                 datePicker_ProjectStartDate.Focus();
+
                 return;
             }
             else
             {
                 try
                 {
-
                     var project = new Project
                     {
                         Id = _projectId,
                         Name = textBox_ProjectName.Text,
-                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text.Replace(" ", ""), culture),
+                        StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text.Replace(" ", "").Replace(".", ","), culture),
                         StartDate = datePicker_ProjectStartDate.SelectedDate.Value.ToShortDateString().ToString(culture),
                         EndDate = datePicker_ProjectEndDate.SelectedDate.Value.ToShortDateString().ToString(culture),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),
@@ -195,7 +182,9 @@ namespace CooperativaConstruccion
                 catch (Exception ex)
                 {
                     MessageBox.Show("No se pudo actualizar el Proyecto, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
+
                     textBox_ProjectName.Focus();
+
                     return;
                 }
             }
