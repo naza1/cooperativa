@@ -114,6 +114,14 @@ namespace CooperativaConstruccion
             }
         }
 
+        private void textBox_ExpenseAmount_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void textBox_ExpenseUnitPrice_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Decimal || e.Key == Key.OemPeriod || e.Key == Key.Tab || e.Key == Key.Escape)
@@ -161,6 +169,14 @@ namespace CooperativaConstruccion
             else
             {
                 textBox_ExpenseTotalPrice.Text = "0,00";
+            }
+        }
+
+        private void textBox_ExpenseUnitPrice_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
             }
         }
 

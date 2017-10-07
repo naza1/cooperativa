@@ -69,6 +69,14 @@ namespace CooperativaConstruccion
             }
         }
 
+        private void textBox_ProjectStartBudget_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void datePicker_ProjectStartDate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
@@ -78,12 +86,28 @@ namespace CooperativaConstruccion
             }
         }
 
+        private void datePicker_ProjectStartDate_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void datePicker_ProjectEndDate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
                 _main.HideButtons();
                 Close();
+            }
+        }
+
+        private void datePicker_ProjectEndDate_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
             }
         }
 
