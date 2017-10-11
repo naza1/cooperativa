@@ -3,7 +3,6 @@ using FileSystem.Tables;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Globalization;
 using System.IO;
 
 namespace Cooperativa.FileSystem
@@ -15,11 +14,13 @@ namespace Cooperativa.FileSystem
 
         public DataAccessObject()
         {
-            if (!File.Exists("cooperativa.db3"))
+            if (!File.Exists("dataBase\\cooperativa.db3"))
             {
-                SQLiteConnection.CreateFile("cooperativa.db3");
+                Directory.CreateDirectory("dataBase");
 
-                _dbConnection = new SQLiteConnection("Data Source=cooperativa.db3");
+                SQLiteConnection.CreateFile("dataBase\\cooperativa.db3");
+
+                _dbConnection = new SQLiteConnection("Data Source=dataBase\\cooperativa.db3");
 
                 CreateProjectTable();
 
@@ -27,7 +28,7 @@ namespace Cooperativa.FileSystem
             }
             else
             {
-                _dbConnection = new SQLiteConnection("Data Source=cooperativa.db3");
+                _dbConnection = new SQLiteConnection("Data Source=dataBase\\cooperativa.db3");
             }
         }
 
