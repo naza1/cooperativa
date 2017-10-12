@@ -27,43 +27,10 @@ E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\Co
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csproj.CoreCompileInputs.cache
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.exe
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.pdb
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditProject.g.cs
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\MainWindow.g.cs
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewProject.g.cs
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\App.g.cs
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion_MarkupCompile.cache
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion_MarkupCompile.lref
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csprojResolveAssemblyReference.cache
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\x86\SQLite.Interop.dll
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\x64\SQLite.Interop.dll
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\CooperativaConstruccion.exe.config
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\CooperativaConstruccion.exe
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\CooperativaConstruccion.pdb
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\ClassLibrary1.dll
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\Newtonsoft.Json.dll
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\System.Data.SQLite.dll
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\ClassLibrary1.pdb
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\ClassLibrary1.dll.config
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\Newtonsoft.Json.xml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\System.Data.SQLite.xml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditProject.baml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\MainWindow.baml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewProject.baml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.g.resources
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.Properties.Resources.resources
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csproj.GenerateResource.Cache
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.exe
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.pdb
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\NewExpense.g.cs
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\NewExpense.baml
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\EditExpense.g.cs
 E:\Documentos\cooperativa-nueva\cooperativa\CooperativaConstruccion\obj\Debug\EditExpense.baml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditExpense.g.cs
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewExpense.g.cs
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditExpense.baml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewExpense.baml
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csproj.CoreCompileInputs.cache
 E:\Documentos\cooperativa\CooperativaConstruccion\bin\Debug\x86\SQLite.Interop.dll
 E:\Documentos\cooperativa\CooperativaConstruccion\bin\Debug\x64\SQLite.Interop.dll
 E:\Documentos\cooperativa\CooperativaConstruccion\bin\Debug\CooperativaConstruccion.exe.config
@@ -97,3 +64,38 @@ E:\Documentos\cooperativa\CooperativaConstruccion\obj\Debug\Cooperativa.ControlP
 E:\Documentos\cooperativa\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csproj.CoreCompileInputs.cache
 E:\Documentos\cooperativa\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.exe
 E:\Documentos\cooperativa\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.pdb
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csprojResolveAssemblyReference.cache
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditExpense.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditProject.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\HelpWindow.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\MainWindow.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewExpense.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewProject.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\App.g.cs
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion_MarkupCompile.cache
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion_MarkupCompile.lref
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\x86\SQLite.Interop.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\CooperativaConstruccion.exe.config
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\CooperativaConstruccion.exe
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\CooperativaConstruccion.pdb
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\ClassLibrary1.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\System.Data.SQLite.dll
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\ClassLibrary1.pdb
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\ClassLibrary1.dll.config
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\Newtonsoft.Json.xml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\System.Data.SQLite.xml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditExpense.baml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\EditProject.baml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\HelpWindow.baml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\MainWindow.baml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewExpense.baml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\NewProject.baml
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.g.resources
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.Properties.Resources.resources
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csproj.GenerateResource.Cache
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\Cooperativa.ControlPanel.csproj.CoreCompileInputs.cache
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.exe
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\CooperativaConstruccion\obj\Debug\CooperativaConstruccion.pdb

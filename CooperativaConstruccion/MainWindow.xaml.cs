@@ -242,5 +242,10 @@ namespace CooperativaConstruccion
             grillaGastos.Items.Clear();
             TotalGastos.Text = string.Empty;
         }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            new HelpWindow().ShowDialog();
+        }
     }
 }
