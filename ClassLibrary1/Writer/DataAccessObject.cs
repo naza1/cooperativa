@@ -57,7 +57,14 @@ namespace Cooperativa.FileSystem
 
             command.ExecuteNonQuery();
 
+            //sql = @"select last_insert_rowid()";
+            //command = new SQLiteCommand(sql, _dbConnection);
+
+            //var id = command.ExecuteScalar();
+
             _dbConnection.Close();
+
+            //return int.Parse(id.ToString());
         }
 
         public List<Project> GetProjects()

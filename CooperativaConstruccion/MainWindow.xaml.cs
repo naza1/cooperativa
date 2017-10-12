@@ -13,6 +13,7 @@ namespace CooperativaConstruccion
 
         private DataAccessObject db;
         private int _projectId = 0;
+        private int _projectIndex = 0;
         private int _expenseId = 0;
         private CultureInfo culture = new CultureInfo("es-AR", true);
 
@@ -80,7 +81,7 @@ namespace CooperativaConstruccion
                     }
                 }
 
-                TotalGastos.Text = "TOTAL:   " + db.CalculateTotalExpenses(_projectId).ToString("C");
+                TotalGastos.Text = "TOTAL GASTOS / JORNALES:   " + db.CalculateTotalExpenses(_projectId).ToString("C");
             }
         }
 
@@ -98,6 +99,7 @@ namespace CooperativaConstruccion
             button_NewExpense.Visibility = Visibility.Visible;
 
             _projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
+            _projectIndex = grillaProyectos.SelectedIndex;
 
             ExpensesGrid_Loaded(sender, e);
         }
@@ -120,6 +122,8 @@ namespace CooperativaConstruccion
         private void button_NewProject_Click(object sender, RoutedEventArgs e)
         {
             new NewProject(this).ShowDialog();
+
+            grillaProyectos.SelectedIndex = grillaProyectos.Items.Count + 1;
         }
 
         private void button_EditProject_Click(object sender, RoutedEventArgs e)
@@ -131,7 +135,7 @@ namespace CooperativaConstruccion
             }
             else
             {
-                new EditProject(this, _projectId).ShowDialog();
+                new EditProject(this, _projectId, _projectIndex).ShowDialog();
             }
         }
 
@@ -154,6 +158,8 @@ namespace CooperativaConstruccion
 
                         ProjectsGrid_Loaded(sender, e);
 
+                        HideButtons();
+
                         MessageBox.Show("Proyecto eliminado correctamente!", "Atención!", MessageBoxButton.OK);
                     }
 
@@ -162,8 +168,6 @@ namespace CooperativaConstruccion
                 {
                     MessageBox.Show("No se pudo eliminar el Proyecto " + ex, "Error!", MessageBoxButton.OK);
                 }
-
-                HideButtons();
             }
         }
 
@@ -232,6 +236,16 @@ namespace CooperativaConstruccion
             Close();
         }
 
+        private void button_Help_Click(object sender, RoutedEventArgs e)
+        {
+            new HelpWindow().ShowDialog();
+        }
+
+        private void button_About_Click(object sender, RoutedEventArgs e)
+        {
+            new AboutWindow().ShowDialog();
+        }
+
         public void HideButtons()
         {
             button_EditProject.Visibility = Visibility.Hidden;
@@ -241,11 +255,6 @@ namespace CooperativaConstruccion
             button_DeleteExpense.Visibility = Visibility.Hidden;
             grillaGastos.Items.Clear();
             TotalGastos.Text = string.Empty;
-        }
-
-        private void helpButton_Click(object sender, RoutedEventArgs e)
-        {
-            new HelpWindow().ShowDialog();
         }
     }
 }

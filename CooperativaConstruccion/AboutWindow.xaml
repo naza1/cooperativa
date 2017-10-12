@@ -1,0 +1,17 @@
+﻿<Window x:Class="CooperativaConstruccion.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CooperativaConstruccion"
+        mc:Ignorable="d"
+        Title="Acerca" Height="220" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Versión 1.0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Leonardo Chiessa (leonardochiessa@gmail.com)" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nazareno Real (nazarenoreal@yahoo.com.ar)" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+        <Label Content="Sistema de Gestión Cooperativa de Construcción" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+        <Label Content="© 2017 Todos los Derechos Reservados." HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+        <Image Source="Icon.jpg" HorizontalAlignment="Left" Height="100" Margin="300,30,0,0" VerticalAlignment="Top" Width="100"/>
+    </Grid>
+</Window>

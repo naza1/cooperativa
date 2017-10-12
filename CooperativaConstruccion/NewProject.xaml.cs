@@ -39,7 +39,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -60,7 +59,6 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -81,7 +79,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -98,7 +95,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -115,7 +111,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -128,7 +123,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -137,7 +131,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -146,7 +139,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -181,18 +173,25 @@ namespace CooperativaConstruccion
                         StartDate = datePicker_ProjectStartDate.SelectedDate.Value.ToShortDateString().ToString(culture),
                         EndDate = datePicker_ProjectEndDate.SelectedDate.Value.ToShortDateString().ToString(culture),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),
-                        Observations = textBox_ProjectObservations.Text,
+                        Observations = textBox_ProjectObservations.Text
                     };
 
                     db.InsertProject(project);
 
                     _main.ProjectsGrid_Loaded(sender, e);
 
-                    MessageBox.Show("Proyecto guardado correctamente!", "Atención!", MessageBoxButton.OK);
+                    //_main.grillaProyectos.SelectedItem = _projectId;
+                    //_main.grillaProyectos.SelectedIndex = _projectId;
 
-                    OnLoad();
+                    //_main.grillaProyectos.SelectedIndex = _main.grillaProyectos.Items.Count + 1;
 
                     Close();
+
+                    MessageBox.Show("Proyecto guardado correctamente!", "Atención!", MessageBoxButton.OK);
+
+
+                    //_projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
+                    //_projectIndex = grillaProyectos.SelectedIndex;
                 }
                 catch (Exception ex)
                 {
@@ -208,13 +207,7 @@ namespace CooperativaConstruccion
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            _main.HideButtons();
             Close();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            _main.HideButtons();
         }
     }
 }

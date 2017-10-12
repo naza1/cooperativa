@@ -15,14 +15,16 @@ namespace CooperativaConstruccion
         private DataAccessObject db;
         private MainWindow _main;
         private int _projectId = 0;
+        private int _projectIndex = 0;
         private CultureInfo culture = new CultureInfo("es-AR", true);
 
-        public EditProject(MainWindow main, int projectId)
+        public EditProject(MainWindow main, int projectId, int projectIndex)
         {
             InitializeComponent();
             db = new DataAccessObject();
             _main = main;
             _projectId = projectId;
+            _projectIndex = projectIndex;
             OnLoad();
         }
 
@@ -43,7 +45,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -64,7 +65,6 @@ namespace CooperativaConstruccion
             }
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -85,7 +85,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -102,7 +101,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -119,7 +117,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -132,7 +129,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
             if (e.Key == Key.Enter)
@@ -145,7 +141,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -154,7 +149,6 @@ namespace CooperativaConstruccion
         {
             if (e.Key == Key.Escape)
             {
-                _main.HideButtons();
                 Close();
             }
         }
@@ -197,11 +191,12 @@ namespace CooperativaConstruccion
 
                     _main.ProjectsGrid_Loaded(sender, e);
 
+                    _main.grillaProyectos.SelectedIndex = _projectIndex;
+
                     Close();
 
                     MessageBox.Show("Proyecto actualizado correctamente!", "Atención!", MessageBoxButton.OK);
 
-                    _main.HideButtons();
                 }
                 catch (Exception ex)
                 {
@@ -216,13 +211,7 @@ namespace CooperativaConstruccion
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            _main.HideButtons();
             Close();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            _main.HideButtons();
         }
     }
 }
