@@ -30,8 +30,8 @@
         <Button Name="button_EditExpense" Content="Modificar Gasto" HorizontalAlignment="Left" Margin="20,310,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditExpense_Click"/>
         <Button Name="button_DeleteExpense" Content="Eliminar Gasto" HorizontalAlignment="Left" Margin="20,340,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteExpense_Click"/>
         <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="20,440,0,0" VerticalAlignment="Top" Width="106" Click="button_CloseMainWindow_Click"/>
-        <Button Name="button_Help" Content="Ayuda" HorizontalAlignment="Left" Margin="20,470,0,0" VerticalAlignment="Top" Width="106" Click="button_Help_Click"/>
-        <Button Name="button_About" Content="Acerca" HorizontalAlignment="Left" Margin="20,500,0,0" VerticalAlignment="Top" Width="106" Click="button_About_Click"/>
+        <Button Name="button_Help" Content="Ayuda" HorizontalAlignment="Left" Margin="20,470,0,60" VerticalAlignment="Bottom" Width="106" Click="button_Help_Click"/>
+        <Button Name="button_About" Content="Acerca" HorizontalAlignment="Left" Margin="20,500,0,30" VerticalAlignment="Bottom" Width="106" Click="button_About_Click"/>
         <ListView Name="grillaGastos" Height="Auto" Width="500" Margin="700,90,0,30" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseLeftButtonUp="grillaGastos_MouseDoubleClick">
             <ListView.View>
                 <GridView>

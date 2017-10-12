@@ -45,7 +45,7 @@ namespace Cooperativa.FileSystem
             _dbConnection.Close();
         }
 
-        public void InsertProject(Project project)
+        public int InsertProject(Project project)
         {
             _dbConnection.Open();
 
@@ -57,14 +57,14 @@ namespace Cooperativa.FileSystem
 
             command.ExecuteNonQuery();
 
-            //sql = @"select last_insert_rowid()";
-            //command = new SQLiteCommand(sql, _dbConnection);
+            sql = @"select last_insert_rowid()";
+            command = new SQLiteCommand(sql, _dbConnection);
 
-            //var id = command.ExecuteScalar();
+            var id = command.ExecuteScalar();
 
             _dbConnection.Close();
 
-            //return int.Parse(id.ToString());
+            return int.Parse(id.ToString());
         }
 
         public List<Project> GetProjects()

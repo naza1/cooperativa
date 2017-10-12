@@ -176,22 +176,16 @@ namespace CooperativaConstruccion
                         Observations = textBox_ProjectObservations.Text
                     };
 
-                    db.InsertProject(project);
+                    _main._projectId = db.InsertProject(project);
 
                     _main.ProjectsGrid_Loaded(sender, e);
-
-                    //_main.grillaProyectos.SelectedItem = _projectId;
-                    //_main.grillaProyectos.SelectedIndex = _projectId;
-
-                    //_main.grillaProyectos.SelectedIndex = _main.grillaProyectos.Items.Count + 1;
+                    
+                    _main.grillaProyectos.SelectedIndex = _main.grillaProyectos.Items.Count - 1;
 
                     Close();
 
-                    MessageBox.Show("Proyecto guardado correctamente!", "Atención!", MessageBoxButton.OK);
+                    MessageBox.Show("Proyecto creado correctamente!", "Atención!", MessageBoxButton.OK);
 
-
-                    //_projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
-                    //_projectIndex = grillaProyectos.SelectedIndex;
                 }
                 catch (Exception ex)
                 {

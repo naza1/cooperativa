@@ -12,7 +12,7 @@ namespace CooperativaConstruccion
     {
 
         private DataAccessObject db;
-        private int _projectId = 0;
+        public int _projectId = 0;
         private int _projectIndex = 0;
         private int _expenseId = 0;
         private CultureInfo culture = new CultureInfo("es-AR", true);
@@ -123,7 +123,12 @@ namespace CooperativaConstruccion
         {
             new NewProject(this).ShowDialog();
 
-            grillaProyectos.SelectedIndex = grillaProyectos.Items.Count + 1;
+            if (_projectId != 0)
+            {
+                button_EditProject.Visibility = Visibility.Visible;
+                button_DeleteProject.Visibility = Visibility.Visible;
+                button_NewExpense.Visibility = Visibility.Visible;
+            }
         }
 
         private void button_EditProject_Click(object sender, RoutedEventArgs e)
