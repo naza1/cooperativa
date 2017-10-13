@@ -9,7 +9,7 @@
     <Grid Margin="0,0,0,0">
         <TextBlock HorizontalAlignment="Left" Margin="160,60,0,0" TextWrapping="Wrap" Text="PROYECTOS" VerticalAlignment="Top"/>
         <TextBlock Name="TotalGastos" HorizontalAlignment="Center" Margin="700,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ListView Name="grillaProyectos" Height="Auto" Width="600" Margin="160,90,0,30" VerticalAlignment="Stretch" HorizontalAlignment="Left" Loaded="ProjectsGrid_Loaded" MouseLeftButtonUp="grillaProyectos_MouseDoubleClick">
+        <ListView Name="grillaProyectos" Height="Auto" Width="700" Margin="160,90,0,30" VerticalAlignment="Stretch" HorizontalAlignment="Left" Loaded="ProjectsGrid_Loaded" MouseLeftButtonUp="grillaProyectos_MouseDoubleClick"> 
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Proyecto" DisplayMemberBinding="{Binding Path=Id}"/>
@@ -32,7 +32,7 @@
         <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="20,440,0,0" VerticalAlignment="Top" Width="106" Click="button_CloseMainWindow_Click"/>
         <Button Name="button_Help" Content="Ayuda" HorizontalAlignment="Left" Margin="20,470,0,60" VerticalAlignment="Bottom" Width="106" Click="button_Help_Click"/>
         <Button Name="button_About" Content="Acerca" HorizontalAlignment="Left" Margin="20,500,0,30" VerticalAlignment="Bottom" Width="106" Click="button_About_Click"/>
-        <ListView Name="grillaGastos" Height="Auto" Width="500" Margin="700,90,0,30" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseLeftButtonUp="grillaGastos_MouseDoubleClick">
+        <ListView Name="grillaGastos" Height="Auto" Width="600" Margin="700,90,30,30" VerticalAlignment="Stretch" HorizontalAlignment="Right" MouseLeftButtonUp="grillaGastos_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Código" DisplayMemberBinding="{Binding Path=Id}"/>
