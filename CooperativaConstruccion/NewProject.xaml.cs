@@ -140,6 +140,8 @@ namespace CooperativaConstruccion
 
                     _main.grillaProyectos.SelectedIndex = projectIndex;
 
+                    _main.grillaGastos.Items.Clear();
+
                     _main._projectIndex = projectIndex;
 
                     Close();

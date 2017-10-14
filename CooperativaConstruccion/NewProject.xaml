@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Nuevo Proyecto" Height="440" Width="465" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyDown="NewProject_KeyDown">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="30,40,0,0" TextWrapping="Wrap" Text="Nombre de Proyecto:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,40,0,0" TextWrapping="Wrap" Text="Nombre del Proyecto:" VerticalAlignment="Top"/>
         <TextBox Name="textBox_ProjectName" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ProjectName_KeyDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,80,0,0" TextWrapping="Wrap" Text="Monto Inicial:" VerticalAlignment="Top"/>
         <TextBox Name="textBox_ProjectStartBudget" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ProjectStartBudget_KeyDown" CommandManager.PreviewExecuted="textBox_ProjectStartBudget_PreviewExecuted"/>
@@ -22,7 +22,7 @@
             <ComboBoxItem Name="Finalizado" Content="Finalizado"/>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="30,240,0,0" TextWrapping="Wrap" Text="Observaciones:" VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ProjectObservations" HorizontalAlignment="Left" Height="100" Width="250" Margin="160,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" AcceptsReturn="True"/>
+        <TextBox Name="textBox_ProjectObservations" HorizontalAlignment="Left" Height="100" Width="250" Margin="160,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" AcceptsReturn="True"/>
         <Button Name="button_SaveProject" Content="Guardar" HorizontalAlignment="Left" Width="75" Margin="235,355,0,0" VerticalAlignment="Top" Click="button_SaveProject_Click"/>
         <Button Name="button_Cancel" Content="Cancelar" HorizontalAlignment="Left" Width="75" Margin="335,355,0,0" VerticalAlignment="Top" Click="button_Cancel_Click"/>
     </Grid>

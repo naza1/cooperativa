@@ -226,7 +226,7 @@ namespace CooperativaConstruccion
             {
                 MessageBox.Show("Verifique los datos ingresados!", "Error!", MessageBoxButton.OK);
 
-                comboBox_ExpenseType.Focus();
+                textBox_ExpenseName.Focus();
 
                 return;
             }

@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Cooperativa de Construcción" WindowState="Maximized" ResizeMode="CanMinimize" Icon="Icon.ico">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="160,60,0,0" TextWrapping="Wrap" Text="PROYECTOS" VerticalAlignment="Top"/>
-        <TextBlock Name="TotalGastos" HorizontalAlignment="Right" Margin="0,60,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ListView ItemsSource="{Binding Updates}" Name="grillaProyectos" Height="Auto" Width="Auto" Margin="160,90,0,30" VerticalAlignment="Stretch" HorizontalAlignment="Left" Loaded="ProjectsGrid_Loaded" MouseLeftButtonUp="grillaProyectos_MouseClick"> 
+        <TextBlock FontWeight="Bold" HorizontalAlignment="Left" Margin="160,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="PROYECTOS"/>
+        <TextBlock FontWeight="Bold" HorizontalAlignment="Right" Margin="0,60,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Name="TotalGastos"/>
+        <ListView ItemsSource="{Binding Updates}" Name="grillaProyectos" Height="Auto" Width="Auto" Margin="160,90,0,30" VerticalAlignment="Stretch" HorizontalAlignment="Left" Loaded="ProjectsGrid_Loaded" MouseLeftButtonUp="grillaProyectos_MouseClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Proyecto" DisplayMemberBinding="{Binding Path=Id}"/>
@@ -24,26 +24,26 @@
             </ListView.View>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="FontSize" Value="14" />
-                    <Setter Property="Foreground" Value="Black" />
-                    <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="FontStyle" Value="Italic" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="HorizontalContentAlignment" Value="Center" />
-                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="FontStyle" Value="Italic"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
         <Button Name="button_NewProject" Content="Crear Proyecto" HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top" Width="106" Click="button_NewProject_Click"/>
-        <Button Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditProject_Click"/>
-        <Button Name="button_DeleteProject" Content="Eliminar Proyecto" HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteProject_Click"/>
-        <Button Name="button_NewExpense" Content="Agregar Gasto" HorizontalAlignment="Left" Margin="20,280,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_NewExpense_Click"/>
-        <Button Name="button_EditExpense" Content="Modificar Gasto" HorizontalAlignment="Left" Margin="20,310,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_EditExpense_Click"/>
-        <Button Name="button_DeleteExpense" Content="Eliminar Gasto" HorizontalAlignment="Left" Margin="20,340,0,0" VerticalAlignment="Top" Width="106" Visibility="Hidden" Click="button_DeleteExpense_Click"/>
+        <Button Name="button_EditProject" Content="Modificar Proyecto" HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top" Width="106" Click="button_EditProject_Click"/>
+        <Button Name="button_DeleteProject" Content="Eliminar Proyecto" HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top" Width="106" Click="button_DeleteProject_Click"/>
+        <Button Name="button_NewExpense" Content="Agregar Gasto" HorizontalAlignment="Left" Margin="20,280,0,0" VerticalAlignment="Top" Width="106" Click="button_NewExpense_Click"/>
+        <Button Name="button_EditExpense" Content="Modificar Gasto" HorizontalAlignment="Left" Margin="20,310,0,0" VerticalAlignment="Top" Width="106" Click="button_EditExpense_Click"/>
+        <Button Name="button_DeleteExpense" Content="Eliminar Gasto" HorizontalAlignment="Left" Margin="20,340,0,0" VerticalAlignment="Top" Width="106" Click="button_DeleteExpense_Click"/>
         <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="20,440,0,0" VerticalAlignment="Top" Width="106" Click="button_CloseMainWindow_Click"/>
         <Button Name="button_Help" Content="Ayuda" HorizontalAlignment="Left" Margin="20,470,0,60" VerticalAlignment="Bottom" Width="106" Click="button_Help_Click"/>
         <Button Name="button_About" Content="Acerca" HorizontalAlignment="Left" Margin="20,500,0,30" VerticalAlignment="Bottom" Width="106" Click="button_About_Click"/>
-        <ListView ItemsSource="{Binding Updates}" Name="grillaGastos" Height="Auto" Width="Auto" Margin="700,90,30,30" VerticalAlignment="Stretch" HorizontalAlignment="Right" MouseLeftButtonUp="grillaGastos_MouseClick">
+        <ListView ItemsSource="{Binding Updates}" Name="grillaGastos" Height="Auto" Width="Auto" Margin="0,90,30,30" VerticalAlignment="Stretch" HorizontalAlignment="Right" MouseLeftButtonUp="grillaGastos_MouseClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Código" DisplayMemberBinding="{Binding Path=Id}"/>
@@ -55,13 +55,13 @@
             </ListView.View>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="FontSize" Value="14" />
-                    <Setter Property="Foreground" Value="Black" />
-                    <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="FontStyle" Value="Italic" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="HorizontalContentAlignment" Value="Center" />
-                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="FontStyle" Value="Italic"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>

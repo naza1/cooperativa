@@ -102,6 +102,7 @@ namespace CooperativaConstruccion
 
             _projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
             _projectIndex = grillaProyectos.SelectedIndex;
+            _expenseId = 0;
 
             ExpensesGrid_Loaded(sender, e);
         }
@@ -172,7 +173,6 @@ namespace CooperativaConstruccion
 
                         MessageBox.Show("Proyecto eliminado correctamente!", "Atención!", MessageBoxButton.OK);
                     }
-
                 }
                 catch (Exception ex)
                 {
