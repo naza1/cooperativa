@@ -35,12 +35,16 @@ namespace CooperativaConstruccion
             textBox_ProjectName.Focus();
         }
 
-        private void textBox_ProjectName_KeyDown(object sender, KeyEventArgs e)
+        private void NewProject_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
                 Close();
             }
+        }
+
+        private void textBox_ProjectName_KeyDown(object sender, KeyEventArgs e)
+        {
             if (e.Key == Key.Enter)
             {
                 textBox_ProjectStartBudget.Focus();
@@ -57,10 +61,6 @@ namespace CooperativaConstruccion
             {
                 e.Handled = true;
             }
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
             if (e.Key == Key.Enter)
             {
                 datePicker_ProjectStartDate.Focus();
@@ -75,27 +75,11 @@ namespace CooperativaConstruccion
             }
         }
 
-        private void datePicker_ProjectStartDate_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
-        }
-
         private void datePicker_ProjectStartDate_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Paste)
             {
                 e.Handled = true;
-            }
-        }
-
-        private void datePicker_ProjectEndDate_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
             }
         }
 
@@ -109,37 +93,9 @@ namespace CooperativaConstruccion
 
         private void comboBox_ProjectStatus_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
             if (e.Key == Key.Enter)
             {
                 textBox_ProjectObservations.Focus();
-            }
-        }
-
-        private void textBox_ProjectObservations_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
-        }
-
-        private void button_SaveProject_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
-        }
-
-        private void button_Cancel_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
             }
         }
 
@@ -179,8 +135,12 @@ namespace CooperativaConstruccion
                     _main._projectId = db.InsertProject(project);
 
                     _main.ProjectsGrid_Loaded(sender, e);
-                    
-                    _main.grillaProyectos.SelectedIndex = _main.grillaProyectos.Items.Count - 1;
+
+                    var projectIndex = _main.grillaProyectos.Items.Count - 1;
+
+                    _main.grillaProyectos.SelectedIndex = projectIndex;
+
+                    _main._projectIndex = projectIndex;
 
                     Close();
 

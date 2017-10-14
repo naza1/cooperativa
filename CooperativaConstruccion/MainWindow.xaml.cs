@@ -13,9 +13,9 @@ namespace CooperativaConstruccion
 
         private DataAccessObject db;
         public int _projectId = 0;
-        private int _projectIndex = 0;
-        private int _expenseId = 0;
-        private CultureInfo culture = new CultureInfo("es-AR", true);
+        public int _projectIndex = 0;
+        public int _expenseId = 0;
+        public int _expenseIndex = 0;
 
         public MainWindow()
         {
@@ -85,7 +85,7 @@ namespace CooperativaConstruccion
             }
         }
 
-        private void grillaProyectos_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void grillaProyectos_MouseClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var item = grillaProyectos.SelectedItem;
 
@@ -97,6 +97,8 @@ namespace CooperativaConstruccion
             button_EditProject.Visibility = Visibility.Visible;
             button_DeleteProject.Visibility = Visibility.Visible;
             button_NewExpense.Visibility = Visibility.Visible;
+            button_EditExpense.Visibility = Visibility.Hidden;
+            button_DeleteExpense.Visibility = Visibility.Hidden;
 
             _projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
             _projectIndex = grillaProyectos.SelectedIndex;
@@ -104,7 +106,7 @@ namespace CooperativaConstruccion
             ExpensesGrid_Loaded(sender, e);
         }
 
-        private void grillaGastos_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void grillaGastos_MouseClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var item = grillaGastos.SelectedItem;
 
@@ -117,6 +119,7 @@ namespace CooperativaConstruccion
             button_DeleteExpense.Visibility = Visibility.Visible;
 
             _expenseId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
+            _expenseIndex = grillaGastos.SelectedIndex;
         }
 
         private void button_NewProject_Click(object sender, RoutedEventArgs e)
@@ -140,7 +143,9 @@ namespace CooperativaConstruccion
             }
             else
             {
-                new EditProject(this, _projectId, _projectIndex).ShowDialog();
+                new EditProject(this).ShowDialog();
+
+                grillaProyectos.SelectedIndex = _projectIndex;
             }
         }
 
@@ -185,7 +190,13 @@ namespace CooperativaConstruccion
             }
             else
             {
-                new NewExpense(this, _projectId).ShowDialog();
+                new NewExpense(this).ShowDialog();
+
+                if (_expenseId != 0)
+                {
+                    button_EditExpense.Visibility = Visibility.Visible;
+                    button_DeleteExpense.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -198,7 +209,9 @@ namespace CooperativaConstruccion
             }
             else
             {
-                new EditExpense(this, _expenseId).ShowDialog();
+                new EditExpense(this).ShowDialog();
+
+                grillaProyectos.SelectedIndex = _projectIndex;
             }
         }
 
@@ -223,7 +236,12 @@ namespace CooperativaConstruccion
 
                         ExpensesGrid_Loaded(sender, e);
 
+                        grillaProyectos.SelectedIndex = _projectIndex;
+
                         MessageBox.Show("Gasto / Jornal eliminado correctamente!", "Atención!", MessageBoxButton.OK);
+
+                        button_EditExpense.Visibility = Visibility.Hidden;
+                        button_DeleteExpense.Visibility = Visibility.Hidden;
                     }
 
                 }
@@ -231,8 +249,6 @@ namespace CooperativaConstruccion
                 {
                     MessageBox.Show("No se pudo eliminar el Gasto / Jornal " + ex, "Error!", MessageBoxButton.OK);
                 }
-
-                HideButtons();
             }
         }
 

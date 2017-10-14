@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="Acerca" Height="220" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Acerca" Height="220" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyDown="AboutWindow_KeyDown">
     <Grid>
         <Label Content="Versión 1.0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Leonardo Chiessa (leonardochiessa@gmail.com)" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>

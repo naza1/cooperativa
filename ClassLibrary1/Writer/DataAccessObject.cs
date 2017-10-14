@@ -3,6 +3,7 @@ using FileSystem.Tables;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Globalization;
 using System.IO;
 
 namespace Cooperativa.FileSystem
@@ -11,6 +12,7 @@ namespace Cooperativa.FileSystem
     {
         private SQLiteConnection _dbConnection;
         private SQLiteCommand command;
+        private CultureInfo culture = new CultureInfo("es-AR", true);
 
         public DataAccessObject()
         {
@@ -161,9 +163,9 @@ namespace Cooperativa.FileSystem
 
         private double CalculateRemainingDays(string startDate, string endDate)
         {
-            var startDateProject = DateTime.Parse(startDate);
+            var startDateProject = DateTime.Parse(startDate, culture);
 
-            var endDateProject = DateTime.Parse(endDate);
+            var endDateProject = DateTime.Parse(endDate, culture);
 
             if (endDateProject < DateTime.Now)
             {
@@ -267,7 +269,7 @@ namespace Cooperativa.FileSystem
             _dbConnection.Close();
         }
 
-        public void InsertExpense(Expense expense)
+        public int InsertExpense(Expense expense)
         {
             _dbConnection.Open();
 
@@ -283,7 +285,14 @@ namespace Cooperativa.FileSystem
 
             command.ExecuteNonQuery();
 
+            sql = @"select last_insert_rowid()";
+            command = new SQLiteCommand(sql, _dbConnection);
+
+            var id = command.ExecuteScalar();
+
             _dbConnection.Close();
+
+            return int.Parse(id.ToString());
         }
 
         public List<Expense> GetExpenses(int projectId)

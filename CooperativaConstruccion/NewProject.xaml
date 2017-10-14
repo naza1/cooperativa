@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CooperativaConstruccion"
         mc:Ignorable="d"
-        Title="Nuevo Proyecto" Height="440" Width="465" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0,0">
+        Title="Nuevo Proyecto" Height="440" Width="465" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyDown="NewProject_KeyDown">
+    <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="30,40,0,0" TextWrapping="Wrap" Text="Nombre de Proyecto:" VerticalAlignment="Top"/>
         <TextBox Name="textBox_ProjectName" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ProjectName_KeyDown"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,80,0,0" TextWrapping="Wrap" Text="Monto Inicial:" VerticalAlignment="Top"/>
         <TextBox Name="textBox_ProjectStartBudget" HorizontalAlignment="Left" Height="25" Width="250" Margin="160,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBox_ProjectStartBudget_KeyDown" CommandManager.PreviewExecuted="textBox_ProjectStartBudget_PreviewExecuted"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,120,0,0" TextWrapping="Wrap" Text="Fecha Inicio:" VerticalAlignment="Top"/>
-        <DatePicker Name="datePicker_ProjectStartDate" HorizontalAlignment="Left" Width="250" Margin="160,120,0,0" VerticalAlignment="Top" KeyDown="datePicker_ProjectStartDate_KeyDown" CommandManager.PreviewExecuted="datePicker_ProjectStartDate_PreviewExecuted"/>
+        <DatePicker Name="datePicker_ProjectStartDate" HorizontalAlignment="Left" Width="250" Margin="160,120,0,0" VerticalAlignment="Top" CommandManager.PreviewExecuted="datePicker_ProjectStartDate_PreviewExecuted"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,160,0,0" TextWrapping="Wrap" Text="Fecha Fin:" VerticalAlignment="Top"/>
-        <DatePicker Name="datePicker_ProjectEndDate" HorizontalAlignment="Left" Width="250" Margin="160,160,0,0" VerticalAlignment="Top" KeyDown="datePicker_ProjectEndDate_KeyDown" CommandManager.PreviewExecuted="datePicker_ProjectEndDate_PreviewExecuted"/>
+        <DatePicker Name="datePicker_ProjectEndDate" HorizontalAlignment="Left" Width="250" Margin="160,160,0,0" VerticalAlignment="Top" CommandManager.PreviewExecuted="datePicker_ProjectEndDate_PreviewExecuted"/>
         <TextBlock HorizontalAlignment="Left" Margin="30,200,0,0" TextWrapping="Wrap" Text="Estado:" VerticalAlignment="Top"/>
         <ComboBox Name="comboBox_ProjectStatus" HorizontalAlignment="Left" Width="250" Margin="160,200,0,0" VerticalAlignment="Top" KeyDown="comboBox_ProjectStatus_KeyDown">
             <ComboBoxItem Name="Activo" Content="Activo" Selector.IsSelected="True"/>
@@ -22,8 +22,8 @@
             <ComboBoxItem Name="Finalizado" Content="Finalizado"/>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="30,240,0,0" TextWrapping="Wrap" Text="Observaciones:" VerticalAlignment="Top"/>
-        <TextBox Name="textBox_ProjectObservations" HorizontalAlignment="Left" Height="100" Width="250" Margin="160,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" KeyDown="textBox_ProjectObservations_KeyDown" AcceptsReturn="True"/>
-        <Button Name="button_SaveProject" Content="Guardar" HorizontalAlignment="Left" Width="75" Margin="235,355,0,0" VerticalAlignment="Top" Click="button_SaveProject_Click" KeyDown="button_SaveProject_KeyDown"/>
-        <Button Name="button_Cancel" Content="Cancelar" HorizontalAlignment="Left" Width="75" Margin="335,355,0,0" VerticalAlignment="Top" Click="button_Cancel_Click" KeyDown="button_Cancel_KeyDown"/>
+        <TextBox Name="textBox_ProjectObservations" HorizontalAlignment="Left" Height="100" Width="250" Margin="160,240,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" AcceptsReturn="True"/>
+        <Button Name="button_SaveProject" Content="Guardar" HorizontalAlignment="Left" Width="75" Margin="235,355,0,0" VerticalAlignment="Top" Click="button_SaveProject_Click"/>
+        <Button Name="button_Cancel" Content="Cancelar" HorizontalAlignment="Left" Width="75" Margin="335,355,0,0" VerticalAlignment="Top" Click="button_Cancel_Click"/>
     </Grid>
 </Window>

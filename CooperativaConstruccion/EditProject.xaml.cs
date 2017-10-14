@@ -14,23 +14,19 @@ namespace CooperativaConstruccion
     {
         private DataAccessObject db;
         private MainWindow _main;
-        private int _projectId = 0;
-        private int _projectIndex = 0;
         private CultureInfo culture = new CultureInfo("es-AR", true);
 
-        public EditProject(MainWindow main, int projectId, int projectIndex)
+        public EditProject(MainWindow main)
         {
             InitializeComponent();
             db = new DataAccessObject();
             _main = main;
-            _projectId = projectId;
-            _projectIndex = projectIndex;
             OnLoad();
         }
 
         private void OnLoad()
         {
-            var proj = db.GetProject(_projectId);
+            var proj = db.GetProject(_main._projectId);
 
             textBox_ProjectName.Text = proj.Name;
             textBox_ProjectStartBudget.Text = proj.StartBudget.ToString(culture);
@@ -41,12 +37,16 @@ namespace CooperativaConstruccion
             textBox_ProjectName.Focus();
         }
 
-        private void textBox_ProjectName_KeyDown(object sender, KeyEventArgs e)
+        private void EditProject_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
                 Close();
             }
+        }
+
+        private void textBox_ProjectName_KeyDown(object sender, KeyEventArgs e)
+        {
             if (e.Key == Key.Enter)
             {
                 textBox_ProjectStartBudget.Focus();
@@ -63,10 +63,6 @@ namespace CooperativaConstruccion
             {
                 e.Handled = true;
             }
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
             if (e.Key == Key.Enter)
             {
                 datePicker_ProjectStartDate.Focus();
@@ -81,27 +77,11 @@ namespace CooperativaConstruccion
             }
         }
 
-        private void datePicker_ProjectStartDate_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
-        }
-
         private void datePicker_ProjectStartDate_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Paste)
             {
                 e.Handled = true;
-            }
-        }
-
-        private void datePicker_ProjectEndDate_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
             }
         }
 
@@ -115,10 +95,6 @@ namespace CooperativaConstruccion
 
         private void comboBox_ProjectStatus_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
             if (e.Key == Key.Enter)
             {
                 textBox_ProjectObservations.Focus();
@@ -127,29 +103,9 @@ namespace CooperativaConstruccion
 
         private void textBox_ProjectObservations_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
             if (e.Key == Key.Enter)
             {
                 button_SaveProject.Focus();
-            }
-        }
-
-        private void button_SaveProject_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-            }
-        }
-
-        private void button_Cancel_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
             }
         }
 
@@ -178,20 +134,20 @@ namespace CooperativaConstruccion
                 {
                     var project = new Project
                     {
-                        Id = _projectId,
+                        Id = _main._projectId,
                         Name = textBox_ProjectName.Text,
                         StartBudget = decimal.Parse(textBox_ProjectStartBudget.Text.Replace(" ", "").Replace(".", ","), culture),
                         StartDate = datePicker_ProjectStartDate.SelectedDate.Value.ToShortDateString().ToString(culture),
                         EndDate = datePicker_ProjectEndDate.SelectedDate.Value.ToShortDateString().ToString(culture),
                         Status = comboBox_ProjectStatus.SelectionBoxItem.ToString(),
-                        Observations = textBox_ProjectObservations.Text,
+                        Observations = textBox_ProjectObservations.Text
                     };
 
                     db.UpdateProject(project);
 
                     _main.ProjectsGrid_Loaded(sender, e);
 
-                    _main.grillaProyectos.SelectedIndex = _projectIndex;
+                    _main.grillaProyectos.SelectedIndex = _main._projectIndex;
 
                     Close();
 

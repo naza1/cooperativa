@@ -57,4 +57,3 @@ C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\Cla
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csproj.CoreCompileInputs.cache
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
-C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csprojResolveAssemblyReference.cache

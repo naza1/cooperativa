@@ -14,15 +14,13 @@ namespace CooperativaConstruccion
     {
         private DataAccessObject db;
         private MainWindow _main;
-        private int _projectId = 0;
         private CultureInfo culture = new CultureInfo("es-AR", true);
 
-        public NewExpense(MainWindow main, int projectId)
+        public NewExpense(MainWindow main)
         {
             InitializeComponent();
             db = new DataAccessObject();
             _main = main;
-            _projectId = projectId;
             OnLoad();
         }
 
@@ -35,16 +33,19 @@ namespace CooperativaConstruccion
             textBox_ExpenseTotalPrice.Text = "";
             textBox_ExpenseVoucherNumber.Text = "";
             textBox_ExpenseDescription.Text = "";
-            comboBox_ExpenseType.Focus();
+            textBox_ExpenseName.Focus();
+        }
+
+        private void NewExpense_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
         }
 
         private void comboBox_ExpenseType_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
-            }
             if (e.Key == Key.Enter)
             {
                 textBox_ExpenseName.Focus();
@@ -53,11 +54,6 @@ namespace CooperativaConstruccion
 
         private void textBox_ExpenseName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
-            }
             if (e.Key == Key.Enter)
             {
                 textBox_ExpenseAmount.Focus();
@@ -73,11 +69,6 @@ namespace CooperativaConstruccion
             else
             {
                 e.Handled = true;
-            }
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
             }
             if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
@@ -132,11 +123,6 @@ namespace CooperativaConstruccion
             {
                 e.Handled = true;
             }
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
-            }
             if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
@@ -182,11 +168,6 @@ namespace CooperativaConstruccion
 
         private void textBox_ExpenseTotalPrice_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
-            }
             if (e.Key == Key.Tab || e.Key == Key.Enter)
             {
                 if (textBox_ExpenseAmount.Text != "" && textBox_ExpenseUnitPrice.Text != "")
@@ -232,45 +213,9 @@ namespace CooperativaConstruccion
             {
                 e.Handled = true;
             }
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
-            }
             if (e.Key == Key.Enter)
             {
                 textBox_ExpenseDescription.Focus();
-            }
-        }
-
-        private void textBox_ExpenseDescription_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
-            }
-            if (e.Key == Key.Enter)
-            {
-                button_SaveExpense.Focus();
-            }
-        }
-
-        private void button_SaveExpense_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
-            }
-        }
-
-        private void button_Cancel_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                _main.HideButtons();
-                Close();
             }
         }
 
@@ -290,7 +235,7 @@ namespace CooperativaConstruccion
                 {
                     var expense = new Expense
                     {
-                        ProjectId = _projectId,
+                        ProjectId = _main._projectId,
                         Name = textBox_ExpenseName.Text,
                         Type = comboBox_ExpenseType.SelectionBoxItem.ToString(),
                         Amount = decimal.Parse(textBox_ExpenseAmount.Text.Replace(" ", "").Replace(".", ","), culture),
@@ -298,14 +243,22 @@ namespace CooperativaConstruccion
                         TotalPrice = decimal.Parse(textBox_ExpenseTotalPrice.Text.Replace(" ", "").Replace(".", ","), culture),
                         VoucherNumber = textBox_ExpenseVoucherNumber.Text,
                         Date = DateTime.Now.Date.ToShortDateString(),
-                        Description = textBox_ExpenseDescription.Text,
+                        Description = textBox_ExpenseDescription.Text
                     };
 
-                    db.InsertExpense(expense);
+                    _main._expenseId = db.InsertExpense(expense);
 
                     _main.ProjectsGrid_Loaded(sender, e);
 
                     _main.ExpensesGrid_Loaded(sender, e);
+
+                    _main.grillaProyectos.SelectedIndex = _main._projectIndex;
+
+                    var expenseIndex = _main.grillaGastos.Items.Count - 1;
+
+                    _main.grillaGastos.SelectedIndex = expenseIndex;
+
+                    _main._expenseIndex = expenseIndex;
 
                     MessageBox.Show("Gasto / Jornal guardado correctamente!", "Atención!", MessageBoxButton.OK);
 
@@ -315,7 +268,7 @@ namespace CooperativaConstruccion
                 {
                     MessageBox.Show("No se pudo guardar el Gasto / Jornal, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
 
-                    comboBox_ExpenseType.Focus();
+                    textBox_ExpenseName.Focus();
 
                     return;
                 }
@@ -324,13 +277,7 @@ namespace CooperativaConstruccion
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            _main.HideButtons();
             Close();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            _main.HideButtons();
         }
     }
 }

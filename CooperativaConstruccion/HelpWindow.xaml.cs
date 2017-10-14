@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace CooperativaConstruccion
 {
@@ -10,11 +11,15 @@ namespace CooperativaConstruccion
         public HelpWindow()
         {
             InitializeComponent();
+            scrollViewer_Help.Focus();
         }
 
-        private void TextBlock_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        private void scrollViewer_Help_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == Key.Escape)
+            {
+                Close();
+            }
         }
     }
 }
