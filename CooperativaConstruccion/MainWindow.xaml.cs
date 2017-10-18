@@ -36,6 +36,11 @@ namespace CooperativaConstruccion
                 grillaProyectos.Width = 450;
                 grillaGastos.Width = 350;
             }
+            else if (width < 1367)
+            {
+                grillaProyectos.Width = 550;
+                grillaGastos.Width = 450;
+            }
             else
             {
                 grillaProyectos.Width = 800;
