@@ -9,7 +9,7 @@
     <Grid>
         <TextBlock FontWeight="Bold" HorizontalAlignment="Left" Margin="160,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="PROYECTOS"/>
         <TextBlock FontWeight="Bold" HorizontalAlignment="Right" Margin="0,60,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Name="TotalGastos"/>
-        <ListView ItemsSource="{Binding Updates}" Name="grillaProyectos" Height="Auto" Width="Auto" Margin="160,90,0,30" VerticalAlignment="Stretch" HorizontalAlignment="Left" Loaded="ProjectsGrid_Loaded" MouseLeftButtonUp="grillaProyectos_MouseClick">
+        <ListView ItemsSource="{Binding Updates}" Name="grillaProyectos" Height="Auto" Margin="160,90,0,30" VerticalAlignment="Stretch" HorizontalAlignment="Left" Loaded="ProjectsGrid_Loaded" MouseLeftButtonUp="grillaProyectos_MouseClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Proyecto" DisplayMemberBinding="{Binding Path=Id}"/>
@@ -43,7 +43,7 @@
         <Button Name="button_CloseMainWindow" Content="Cerrar" HorizontalAlignment="Left" Margin="20,440,0,0" VerticalAlignment="Top" Width="106" Click="button_CloseMainWindow_Click"/>
         <Button Name="button_Help" Content="Ayuda" HorizontalAlignment="Left" Margin="20,470,0,60" VerticalAlignment="Bottom" Width="106" Click="button_Help_Click"/>
         <Button Name="button_About" Content="Acerca" HorizontalAlignment="Left" Margin="20,500,0,30" VerticalAlignment="Bottom" Width="106" Click="button_About_Click"/>
-        <ListView ItemsSource="{Binding Updates}" Name="grillaGastos" Height="Auto" Width="Auto" Margin="0,90,30,30" VerticalAlignment="Stretch" HorizontalAlignment="Right" MouseLeftButtonUp="grillaGastos_MouseClick">
+        <ListView ItemsSource="{Binding Updates}" Name="grillaGastos" Height="Auto" Margin="0,91,29,29" VerticalAlignment="Stretch" HorizontalAlignment="Right" MouseLeftButtonUp="grillaGastos_MouseClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="{Binding Path=ActualWidth}" Header="Código" DisplayMemberBinding="{Binding Path=Id}"/>

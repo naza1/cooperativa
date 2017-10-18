@@ -57,3 +57,4 @@ E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csproj.
 E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csprojResolveAssemblyReference.cache
+C:\Users\nazar\documents\visual studio 2017\Projects\CooperativaConstruccion\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csprojResolveAssemblyReference.cache

@@ -22,6 +22,25 @@ namespace CooperativaConstruccion
             InitializeComponent();
             db = new DataAccessObject();
             HideButtons();
+
+            var height = SystemParameters.PrimaryScreenHeight;
+            var width = SystemParameters.PrimaryScreenWidth;
+
+            if (width < 801)
+            {
+                grillaProyectos.Width = 350;
+                grillaGastos.Width = 250;
+            }
+            else if (width < 1281)
+            {
+                grillaProyectos.Width = 450;
+                grillaGastos.Width = 350;
+            }
+            else
+            {
+                grillaProyectos.Width = 800;
+                grillaGastos.Width = 600;
+            }
         }
 
         public void ProjectsGrid_Loaded(object sender, RoutedEventArgs e)
