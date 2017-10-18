@@ -56,3 +56,4 @@ E:\Documentos\cooperativa\ClassLibrary1\bin\Debug\System.Data.SQLite.dll.config
 E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csproj.CoreCompileInputs.cache
 E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+E:\Documentos\cooperativa\ClassLibrary1\obj\Debug\Cooperativa.FileSystem.csprojResolveAssemblyReference.cache

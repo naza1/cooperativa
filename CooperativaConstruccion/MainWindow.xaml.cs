@@ -102,7 +102,6 @@ namespace CooperativaConstruccion
 
             _projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
             _projectIndex = grillaProyectos.SelectedIndex;
-            _expenseId = 0;
 
             ExpensesGrid_Loaded(sender, e);
         }
@@ -132,6 +131,10 @@ namespace CooperativaConstruccion
                 button_EditProject.Visibility = Visibility.Visible;
                 button_DeleteProject.Visibility = Visibility.Visible;
                 button_NewExpense.Visibility = Visibility.Visible;
+                button_EditExpense.Visibility = Visibility.Hidden;
+                button_DeleteExpense.Visibility = Visibility.Hidden;
+                grillaGastos.Items.Clear();
+                TotalGastos.Text = string.Empty;
             }
         }
 
