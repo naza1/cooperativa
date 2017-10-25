@@ -22,30 +22,7 @@ namespace CooperativaConstruccion
             InitializeComponent();
             db = new DataAccessObject();
             HideButtons();
-
-            var height = SystemParameters.PrimaryScreenHeight;
-            var width = SystemParameters.PrimaryScreenWidth;
-
-            if (width < 801)
-            {
-                grillaProyectos.Width = 350;
-                grillaGastos.Width = 250;
-            }
-            else if (width < 1281)
-            {
-                grillaProyectos.Width = 450;
-                grillaGastos.Width = 350;
-            }
-            else if (width < 1367)
-            {
-                grillaProyectos.Width = 550;
-                grillaGastos.Width = 450;
-            }
-            else
-            {
-                grillaProyectos.Width = 800;
-                grillaGastos.Width = 600;
-            }
+            SetWidth();
         }
 
         public void ProjectsGrid_Loaded(object sender, RoutedEventArgs e)
@@ -303,6 +280,38 @@ namespace CooperativaConstruccion
             button_DeleteExpense.Visibility = Visibility.Hidden;
             grillaGastos.Items.Clear();
             TotalGastos.Text = string.Empty;
+        }
+
+        public void SetWidth()
+        {
+            var height = SystemParameters.PrimaryScreenHeight;
+            var width = SystemParameters.PrimaryScreenWidth;
+
+            if (width < 801)
+            {
+                grillaProyectos.Width = 350;
+                grillaGastos.Width = 250;
+            }
+            else if (width < 1281)
+            {
+                grillaProyectos.Width = 450;
+                grillaGastos.Width = 350;
+            }
+            else if (width < 1367)
+            {
+                grillaProyectos.Width = 550;
+                grillaGastos.Width = 450;
+            }
+            else if (width < 1441)
+            {
+                grillaProyectos.Width = 650;
+                grillaGastos.Width = 550;
+            }
+            else
+            {
+                grillaProyectos.Width = 800;
+                grillaGastos.Width = 600;
+            }
         }
     }
 }
