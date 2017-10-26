@@ -103,7 +103,7 @@ namespace CooperativaConstruccion
         {
             if (textBox_ProjectName.Text == string.Empty || textBox_ProjectStartBudget.Text == string.Empty || datePicker_ProjectStartDate.Text == string.Empty || datePicker_ProjectEndDate.Text == string.Empty)
             {
-                MessageBox.Show("Verifique los datos ingresados!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Verifique los datos ingresados!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 textBox_ProjectName.Focus();
 
@@ -111,7 +111,7 @@ namespace CooperativaConstruccion
             }
             else if (datePicker_ProjectStartDate.SelectedDate.Value.Date.CompareTo(datePicker_ProjectEndDate.SelectedDate.Value.Date) > 0)
             {
-                MessageBox.Show("Verifique las fechas ingresadas!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Verifique las fechas ingresadas!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 datePicker_ProjectStartDate.Focus();
 
@@ -144,21 +144,22 @@ namespace CooperativaConstruccion
 
                     _main._projectIndex = projectIndex;
 
+                    _main._expenseId = 0;
+
                     Close();
 
-                    MessageBox.Show("Proyecto creado correctamente!", "Atención!", MessageBoxButton.OK);
+                    MessageBox.Show("Proyecto creado correctamente!", "Atención!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("No se pudo crear el proyecto, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
+                    MessageBox.Show("No se pudo crear el proyecto, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                     textBox_ProjectName.Focus();
 
                     return;
                 }
             }
-            
         }
 
         private void button_Cancel_Click(object sender, RoutedEventArgs e)

@@ -224,7 +224,7 @@ namespace CooperativaConstruccion
         {
             if (textBox_ExpenseName.Text == string.Empty || textBox_ExpenseAmount.Text == string.Empty || textBox_ExpenseUnitPrice.Text == string.Empty || textBox_ExpenseTotalPrice.Text == string.Empty || textBox_ExpenseVoucherNumber.Text == string.Empty)
             {
-                MessageBox.Show("Verifique los datos ingresados!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Verifique los datos ingresados!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 textBox_ExpenseName.Focus();
 
@@ -258,12 +258,12 @@ namespace CooperativaConstruccion
 
                     Close();
 
-                    MessageBox.Show("Gasto / Jornal actualizado correctamente!", "Atención!", MessageBoxButton.OK);
+                    MessageBox.Show("Gasto / Jornal actualizado correctamente!", "Atención!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("No se pudo actualizar el Gasto / Jornal, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK);
+                    MessageBox.Show("No se pudo actualizar el Gasto / Jornal, por favor verifique los datos ingresados " + ex, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                     textBox_ExpenseName.Focus();
 

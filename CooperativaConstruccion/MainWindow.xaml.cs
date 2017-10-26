@@ -103,7 +103,7 @@ namespace CooperativaConstruccion
 
             _projectId = int.Parse(item.GetType().GetProperty("Id").GetValue(item, null).ToString());
             _projectIndex = grillaProyectos.SelectedIndex;
-
+            _expenseId = 0;
             ExpensesGrid_Loaded(sender, e);
         }
 
@@ -132,10 +132,13 @@ namespace CooperativaConstruccion
                 button_EditProject.Visibility = Visibility.Visible;
                 button_DeleteProject.Visibility = Visibility.Visible;
                 button_NewExpense.Visibility = Visibility.Visible;
-                button_EditExpense.Visibility = Visibility.Hidden;
-                button_DeleteExpense.Visibility = Visibility.Hidden;
-                grillaGastos.Items.Clear();
-                TotalGastos.Text = string.Empty;
+                if (_expenseId == 0)
+                {
+                    button_EditExpense.Visibility = Visibility.Hidden;
+                    button_DeleteExpense.Visibility = Visibility.Hidden;
+                    grillaGastos.Items.Clear();
+                    TotalGastos.Text = "TOTAL GASTOS / JORNALES:   " + db.CalculateTotalExpenses(_projectId).ToString("C");
+                }
             }
         }
 
@@ -143,7 +146,7 @@ namespace CooperativaConstruccion
         {
             if (_projectId == 0)
             {
-                MessageBox.Show("Seleccione un Proyecto!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Seleccione un Proyecto!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
@@ -158,14 +161,14 @@ namespace CooperativaConstruccion
         {
             if (_projectId == 0)
             {
-                MessageBox.Show("Seleccione un Proyecto!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Seleccione un Proyecto!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
             {
                 try
                 {
-                    var result = MessageBox.Show("Seguro desea eliminar el Proyecto " + _projectId + " y todos sus Gastos / Jornales?", "Atención!", MessageBoxButton.YesNo);
+                    var result = MessageBox.Show("Seguro desea eliminar el Proyecto " + _projectId + " y todos sus Gastos / Jornales?", "Atención!", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
                     if (result == MessageBoxResult.Yes)
                     {
@@ -175,12 +178,12 @@ namespace CooperativaConstruccion
 
                         HideButtons();
 
-                        MessageBox.Show("Proyecto eliminado correctamente!", "Atención!", MessageBoxButton.OK);
+                        MessageBox.Show("Proyecto eliminado correctamente!", "Atención!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("No se pudo eliminar el Proyecto " + ex, "Error!", MessageBoxButton.OK);
+                    MessageBox.Show("No se pudo eliminar el Proyecto " + ex, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -189,7 +192,7 @@ namespace CooperativaConstruccion
         {
             if (_projectId == 0)
             {
-                MessageBox.Show("Seleccione un Proyecto!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Seleccione un Proyecto!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
@@ -208,7 +211,7 @@ namespace CooperativaConstruccion
         {
             if (_expenseId == 0)
             {
-                MessageBox.Show("Seleccione un Gasto / Jornal!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Seleccione un Gasto / Jornal!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
@@ -223,14 +226,14 @@ namespace CooperativaConstruccion
         {
             if (_expenseId == 0)
             {
-                MessageBox.Show("Seleccione un Gasto / Jornal!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Seleccione un Gasto / Jornal!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
             {
                 try
                 {
-                    var result = MessageBox.Show("Seguro desea eliminar el Gasto / Jornal " + _expenseId + "?", "Atención!", MessageBoxButton.YesNo);
+                    var result = MessageBox.Show("Seguro desea eliminar el Gasto / Jornal " + _expenseId + "?", "Atención!", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
                     if (result == MessageBoxResult.Yes)
                     {
@@ -242,7 +245,7 @@ namespace CooperativaConstruccion
 
                         grillaProyectos.SelectedIndex = _projectIndex;
 
-                        MessageBox.Show("Gasto / Jornal eliminado correctamente!", "Atención!", MessageBoxButton.OK);
+                        MessageBox.Show("Gasto / Jornal eliminado correctamente!", "Atención!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 
                         button_EditExpense.Visibility = Visibility.Hidden;
                         button_DeleteExpense.Visibility = Visibility.Hidden;
@@ -251,7 +254,7 @@ namespace CooperativaConstruccion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("No se pudo eliminar el Gasto / Jornal " + ex, "Error!", MessageBoxButton.OK);
+                    MessageBox.Show("No se pudo eliminar el Gasto / Jornal " + ex, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
